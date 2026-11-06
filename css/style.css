@@ -787,3 +787,11 @@ header.compact .bar { height: 72px; }
   .gal.bento .gal-card { grid-column: span 1; grid-row: span 3; }
   .gal.bento .gal-card.web { grid-column: span 2; grid-row: span 2; }
 }
+
+/* hypotheses: simple two-column list */
+.hyp-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 40px; counter-reset: h; }
+.hyp-list li { display: grid; grid-template-columns: 3ch 1fr; row-gap: 6px; counter-increment: h; }
+.hyp-list li::before { content: counter(h, decimal-leading-zero); color: var(--ink-2); grid-row: span 2; }
+.hyp-list b { font-weight: 700; }
+.hyp-list span { color: var(--ink-2); font-size: 15px; line-height: 1.5; }
+@media (max-width: 640px) { .hyp-list { grid-template-columns: 1fr; gap: 20px; } }
