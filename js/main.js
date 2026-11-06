@@ -39,12 +39,15 @@
   "search": "assets/img/common/work-search.webp",
   "extras": "assets/img/common/work-extras.webp",
   "cmp_new": "assets/img/home/cmp_new.webp",
+  "tutu_results": "assets/img/common/tutu-results.webp",
+  "tutu_search": "assets/img/common/tutu-search.webp",
+  "tutu_web": "assets/img/common/tutu-web.webp",
   "start_web": "assets/img/start/start-web.webp",
   "start_tv": "assets/img/start/start-tv.webp",
   "start_title": "assets/img/start/start-title.webp",
   "start_profile": "assets/img/start/start-profile.webp"
 };
-  const alts = { home: 'Tutu home screen', search: 'Search results', extras: 'Review and add-ons', cmp_new: 'New Tutu home screen', start_web: 'START web home page', start_tv: 'START live TV player', start_title: 'START series page', start_profile: 'START profile with tasks' };
+  const alts = { home: 'Tutu home screen', search: 'Search results', extras: 'Review and add-ons', cmp_new: 'New Tutu home screen', tutu_results: 'Tutu search results with an alternative route', tutu_search: 'Tutu unified search', tutu_web: 'Tutu web home page', start_web: 'START web home page', start_tv: 'START live TV player', start_title: 'START series page', start_profile: 'START profile with tasks' };
   document.querySelectorAll('.shot[data-screen]').forEach((el) => {
     const k = el.dataset.screen;
     el.insertAdjacentHTML('afterbegin', `<img class="ph" src="${SHOTS[k]}" alt="${alts[k]}" draggable="false">`);
