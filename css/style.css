@@ -111,7 +111,7 @@ nav.tabs { position: relative; display: flex; gap: 2px; padding: 0; }
 .hero { display: flex; flex-direction: column; align-items: center; padding-top: 26px; }
 .stage-wrap { position: relative; width: 170px; height: 308px; }
 .stage {
-  position: absolute; inset: 0; background: var(--stage); overflow: hidden;
+  position: absolute; inset: 0; background: transparent; overflow: visible;
   cursor: grab; touch-action: pan-y;
 }
 .stage:active { cursor: grabbing; }
