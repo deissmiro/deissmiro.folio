@@ -697,3 +697,7 @@ header.compact .bar { height: 72px; }
 .pair-card { height: clamp(280px, 30vw, 380px); }
 .pair-card.web img { width: 88%; height: auto; max-height: 86%; }
 .pair-card.app img { height: 86%; width: auto; max-width: 88%; }
+
+.gal-row.single { grid-template-columns: 1fr; }
+.gal-row.single .gal-card.web { height: clamp(320px, 44vw, 600px); }
+.gal-row.single .gal-card.web img { width: auto; height: auto; max-width: 88%; max-height: 86%; }
