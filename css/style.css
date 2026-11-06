@@ -773,3 +773,17 @@ header.compact .bar { height: 72px; }
 .gal-row.trio { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .gal-row.trio .gal-card { height: clamp(320px, 38vw, 480px); }
 @media (max-width: 640px) { .gal-row.trio { grid-template-columns: 1fr; } }
+
+/* gallery: bento mix */
+.gal.bento { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-rows: clamp(84px, 11vw, 140px); gap: 10px; }
+.gal.bento .gal-card { position: relative; height: auto; aspect-ratio: auto; overflow: hidden; }
+.gal.bento .c3 { grid-column: span 3; } .gal.bento .c4 { grid-column: span 4; } .gal.bento .c8 { grid-column: span 8; }
+.gal.bento .r2 { grid-row: span 2; } .gal.bento .r3 { grid-row: span 3; } .gal.bento .r4 { grid-row: span 4; }
+.gal.bento .gal-card img { position: absolute; inset: 0; margin: auto; translate: none; }
+.gal.bento .gal-card.web img { width: 88%; height: auto; max-width: 88%; max-height: 84%; border-radius: 10px; }
+.gal.bento .gal-card.app img { height: 86%; width: auto; max-width: 86%; }
+@media (max-width: 760px) {
+  .gal.bento { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 120px; }
+  .gal.bento .gal-card { grid-column: span 1; grid-row: span 3; }
+  .gal.bento .gal-card.web { grid-column: span 2; grid-row: span 2; }
+}
