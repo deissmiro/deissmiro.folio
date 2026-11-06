@@ -502,7 +502,7 @@ header.compact .bar { height: 72px; }
 .back:hover { color: var(--ink); }
 .back:hover .a { transform: translateX(-5px); }
 .cs h1 { margin: 0; font-size: clamp(24px, 2.8vw, 30px); line-height: 1.12; font-weight: 400; letter-spacing: -.01em; text-wrap: balance; max-width: 34ch; }
-.cs .lede { margin: 0; font-size: 16px; line-height: 1.45; max-width: 72ch; }
+.cs .lede { margin: 0; font-size: clamp(18px, 2vw, 22px); line-height: 1.35; max-width: 46ch; }
 .cs .lede b { font-weight: 700; }
 .meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; padding-top: 16px; border-top: 1px solid #e6e6e4; }
 .meta dt { font-size: 14px; color: var(--ink-2); margin-bottom: 6px; }
