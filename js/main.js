@@ -81,6 +81,7 @@
   "v_car": "assets/img/home/v_car.webp"
 };
   const root = document.getElementById('verts');
+  if (!root) return;
   const cards = [...root.querySelectorAll('.vcard')];
   cards.forEach(img => { img.src = SH[img.dataset.v]; img.draggable = false; });
   const n = cards.length;
