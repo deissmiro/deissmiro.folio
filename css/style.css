@@ -904,3 +904,9 @@ div.shot .ph { transform: translate(-50%, -50%) !important; transition: none; }
 /* cursor tip, same look as the avatar tags */
 .cursor-tip { position: fixed; left: 0; top: 0; z-index: 60; pointer-events: none; font-family: var(--mono); font-size: 14px; line-height: 1; white-space: nowrap; background: var(--ink); color: var(--bg); padding: 5px 6px 4px; opacity: 0; transform-origin: 0 0; transition: opacity .2s; will-change: transform; }
 .cursor-tip.on { opacity: 1; }
+/* work card: web + app side by side, equal height */
+.case .shot.combo { display: flex; align-items: center; justify-content: center; gap: 3%; }
+.case .shot.combo .ph-web { position: static; height: 58%; width: auto; max-width: none; translate: none; border-radius: 8px; }
+.case .shot.combo .ph { position: static; left: auto; top: auto; height: 58%; transform: translate3d(var(--tx,0px), var(--ty,0px), 0) rotate(var(--rot,0deg)) scale(var(--s,1)); }
+.case .shot.combo:hover .ph-web { transform: scale(1.015); }
+.case .shot.combo .ph { order: 2; }
