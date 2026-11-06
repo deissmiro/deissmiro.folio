@@ -815,3 +815,26 @@ header.compact .bar { height: 72px; }
 .seg button:hover { color: var(--ink); }
 .hero-sw-card .m-web, .hero-sw-card .m-app { top: -44px; bottom: 0; }
 @media (max-width: 640px) { .board.hero-sw-card { height: 380px; } .hero-sw-card .m-web { width: 90%; max-width: 90%; } }
+
+/* hero before / after compare */
+.hero-sw-card { --hh: clamp(340px, 44vw, 540px); }
+.hero-sw-card .cmpx { position: absolute; inset: -44px 0 0; margin: auto; width: min(84%, calc(var(--hh) * .74 * 1.75)); height: auto; aspect-ratio: 1.75; border-radius: 12px; overflow: hidden; transition: opacity .45s var(--ease), transform .6s var(--ease); touch-action: pan-y; }
+.cmpx img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; object-fit: fill; transform: none; border-radius: 0; user-select: none; -webkit-user-drag: none; }
+.cmpx .cmpx-before { clip-path: inset(0 calc(100% - var(--p)) 0 0); }
+.cmpx-line { position: absolute; top: 0; bottom: 0; left: var(--p); width: 1px; translate: -.5px 0; background: rgba(255,255,255,.7); pointer-events: none; }
+.cmpx-line i { position: absolute; top: 50%; left: 50%; width: 30px; height: 30px; translate: -50% -50%; border-radius: 50%; background: rgba(240,240,238,.92); box-shadow: 0 0 0 1px rgba(0,0,0,.06); }
+.cmpx-line i::before, .cmpx-line i::after { content: ""; position: absolute; top: 50%; width: 5px; height: 5px; border: solid #8a8a88; border-width: 0 0 1.5px 1.5px; }
+.cmpx-line i::before { left: 8px; transform: translateY(-50%) rotate(45deg); }
+.cmpx-line i::after { right: 8px; transform: translateY(-50%) rotate(-135deg); }
+.cmpx:not(.touched) .cmpx-line i { animation: knobPulse 2.4s ease-in-out 2.6s infinite; }
+@keyframes knobPulse { 0%, 100% { box-shadow: 0 0 0 1px rgba(0,0,0,.06); } 50% { box-shadow: 0 0 0 1px rgba(0,0,0,.06), 0 0 0 7px rgba(240,240,238,.45); } }
+.cmpx-tag { position: absolute; top: 10px; font-size: 12px; line-height: 1; padding: 5px 9px; border-radius: 999px; background: rgba(240,240,238,.85); color: var(--ink-2); pointer-events: none; transition: opacity .3s; }
+.cmpx-tag.l { left: 10px; } .cmpx-tag.r { right: 10px; }
+.cmpx-range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; -webkit-appearance: none; appearance: none; background: transparent; }
+.cmpx-range::-webkit-slider-thumb { -webkit-appearance: none; width: 44px; height: 100vh; }
+.cmpx-range::-moz-range-thumb { width: 44px; height: 100vh; border: 0; }
+@media (max-width: 640px) { .hero-sw-card { --hh: 380px; } .hero-sw-card .cmpx { width: 92%; } }
+/* hero switch on top */
+.seg { top: 16px; bottom: auto; z-index: 3; }
+.hero-sw-card .m-web, .hero-sw-card .m-app { top: 44px; bottom: 0; }
+.hero-sw-card .cmpx { inset: 44px 0 0; }

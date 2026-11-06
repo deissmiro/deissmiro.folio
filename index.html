@@ -104,7 +104,13 @@
 
     <div class="hero-sw" data-mode="web">
       <div class="board hero-sw-card">
-        <img class="m-web" src="assets/img/home/hero-web.webp" alt="New Tutu web home page">
+        <div class="cmpx m-web" style="--p:50%">
+          <img class="cmpx-after" src="assets/img/home/new-web.webp" alt="Tutu web home page after the redesign" draggable="false">
+          <img class="cmpx-before" src="assets/img/home/old-web.webp" alt="Tutu web home page before the redesign" draggable="false">
+          <span class="cmpx-tag l">Before</span><span class="cmpx-tag r">After</span>
+          <div class="cmpx-line" aria-hidden="true"><i></i></div>
+          <input class="cmpx-range" type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
+        </div>
         <img class="m-app" src="assets/img/home/hero-app.webp" alt="New Tutu app home screen">
         <div class="seg" role="tablist" aria-label="Platform">
           <button type="button" role="tab" data-m="web" aria-selected="true">Web</button>
