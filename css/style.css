@@ -965,3 +965,11 @@ div.shot .ph { transform: translate(-50%, -50%) !important; transition: none; }
   .hyp-stats .stat .n { font-size: 22px; }
   .stat .l { font-size: 13.5px; line-height: 1.35; }
 }
+@media (max-width: 640px) {
+  .bar { height: 76px; gap: 10px; }
+  header.compact .bar { height: 64px; }
+  .me-ava { width: 42px; height: 42px; }
+  .tabs a { padding: 9px 13px; font-size: 16px; }
+  .btn-mail { padding: 9px 15px; font-size: 16px; }
+}
+@media (max-width: 360px) { .tabs a { padding-inline: 9px; } .btn-mail { padding-inline: 11px; } }
