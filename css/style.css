@@ -663,3 +663,12 @@ header.compact .bar { height: 72px; }
 .stat .n { font-size: 36px; }
 .stat .l { font-size: 14px; }
 .cols2 { display: grid; }
+
+/* design: web + app side by side */
+.feat.wide { grid-template-columns: 1fr; gap: 24px; }
+.feat.wide .feat-text p { max-width: 60ch; }
+.pair { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 10px; }
+.pair-card { background: var(--card); border-radius: 16px; height: clamp(240px, 26vw, 320px); position: relative; overflow: hidden; }
+.pair-card img { position: absolute; inset: 0; margin: auto; max-width: 88%; max-height: 82%; width: auto; height: auto; border-radius: 12px; transition: transform .7s var(--ease); }
+.pair-card:hover img { transform: scale(1.01); }
+@media (max-width: 640px) { .pair { grid-template-columns: 1fr; } }
