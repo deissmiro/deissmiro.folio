@@ -179,8 +179,7 @@ nav.tabs { position: relative; display: flex; gap: 2px; padding: 0; }
 .shot .ph {
   position: absolute; left: 50%; top: 50%; height: 72%; width: auto; max-width: none; display: block; will-change: transform;
   transform: translate(-50%, -50%) translate3d(var(--tx,0px), var(--ty,0px), 0) rotate(var(--rot,0deg)) scale(var(--s,1));
-  transition: transform .9s var(--ease);
-  filter: drop-shadow(0 6px 10px rgba(0,0,0,.08)); user-select: none;
+  transition: transform .9s var(--ease); user-select: none;
 }
 .shot.live .ph { transition: transform .45s var(--ease); }
 .shot.more::after {
@@ -208,7 +207,7 @@ body[data-view="work"] .work { margin-top: 32px; }
 .case:hover .who .logo { transform: rotate(-14deg) scale(1.06); }
 .case .cases-link { margin-top: 0; font-size: 17px; }
 .case .shot { aspect-ratio: 666 / 456; border-radius: 16px; }
-.case .shot .ph { height: 84%; filter: drop-shadow(0 14px 22px rgba(0,0,0,.1)); }
+.case .shot .ph { height: 84%; }
 .case:hover .cases-link { color: var(--ink); }
 .case:hover .cases-link .a { transform: translateX(5px); }
 
@@ -221,7 +220,7 @@ body[data-view="work"] .work { margin-top: 32px; }
 .duo { display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); gap: 10px; }
 .cs-head + .duo { margin-top: -56px; }
 .board.duo-card { height: clamp(260px, 30vw, 380px); aspect-ratio: auto; display: grid; place-items: center; overflow: hidden; }
-.board.duo-card img { transform: none; filter: drop-shadow(0 14px 24px rgba(0,0,0,.1)); transition: transform .7s var(--ease); }
+.board.duo-card img { transform: none; transition: transform .7s var(--ease); }
 .board.duo-card.web img { margin-top: 26px; width: 82%; height: auto; max-width: none; border-radius: 10px; }
 .board.duo-card.app { position: relative; }
 .board.duo-card.app img { position: absolute; left: 50%; top: 13%; height: 80%; width: auto; max-width: none; translate: -50% 0; }
@@ -379,7 +378,7 @@ body.lb-open { overflow: hidden; }
 .feat + .feat { margin-top: 40px; }
 .feat.rev .feat-img { order: 2; }
 .feat-img { background: var(--card); border-radius: 16px; height: clamp(320px, 36vw, 460px); position: relative; overflow: hidden; display: grid; place-items: center; }
-.feat-img img { position: absolute; inset: 0; margin: auto; height: 86%; width: auto; max-width: 90%; object-fit: contain; transition: transform .7s var(--ease); filter: drop-shadow(0 12px 24px rgba(0,0,0,.1)); }
+.feat-img img { position: absolute; inset: 0; margin: auto; height: 86%; width: auto; max-width: 90%; object-fit: contain; transition: transform .7s var(--ease); }
 .feat:hover .feat-img img { transform: scale(1.01); }
 .feat-text { display: grid; align-content: center; gap: 14px; }
 .sec .body .feat-text h3 { margin: 0; font-size: 20px; }
@@ -393,7 +392,7 @@ body.lb-open { overflow: hidden; }
 .gal-col { display: grid; gap: 20px; align-content: start; }
 .gal-col:nth-child(2) { padding-top: clamp(80px, 14vw, 220px); }
 .gal-card { background: var(--card); border-radius: 16px; aspect-ratio: 4 / 5; position: relative; overflow: hidden; }
-.gal-card img { position: absolute; inset: 0; margin: auto; height: 84%; width: auto; max-width: 90%; object-fit: contain; filter: drop-shadow(0 12px 24px rgba(0,0,0,.1)); transition: transform .7s var(--ease); }
+.gal-card img { position: absolute; inset: 0; margin: auto; height: 84%; width: auto; max-width: 90%; object-fit: contain; transition: transform .7s var(--ease); }
 .gal-card:hover img { transform: scale(1.01); }
 @media (max-width: 520px) { .gal { gap: 10px; } .gal-col { gap: 10px; } }
 .sum { padding: 14px 18px; border-radius: 14px; background: var(--card); font-size: 16px; max-width: none !important; }
@@ -495,7 +494,7 @@ body[data-view^="case"] .hero { display: none; }
   aspect-ratio: 1; border: 0; padding: 0; border-radius: 6px; cursor: pointer;
   transition: transform .3s var(--ease), box-shadow .3s;
 }
-.pal button:hover, .pal button:focus-visible { transform: scale(1.25); position: relative; z-index: 1; box-shadow: 0 6px 16px rgba(0,0,0,.18); outline: none; }
+.pal button:hover, .pal button:focus-visible { transform: scale(1.25); position: relative; z-index: 1; outline: none; }
 #palNote { font-family: var(--mono); font-variant-numeric: tabular-nums; min-height: 1.4em; }
 
 .road { display: grid; gap: 0; border-top: 1px solid #e6e6e4; }
@@ -566,7 +565,6 @@ header.compact .bar { height: 72px; }
 }
 .board img {
   height: 84%; width: auto; max-width: none; display: block; user-select: none;
-  filter: drop-shadow(0 14px 22px rgba(0,0,0,.12));
   transform: translate(calc(var(--mx) * var(--d, 1) * 4px), calc(var(--my) * var(--d, 1) * 3px)) scale(calc(1 + var(--h) * .015));
   transition: transform .6s var(--ease);
 }
