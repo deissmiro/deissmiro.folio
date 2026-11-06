@@ -19,7 +19,7 @@
     links.forEach(a => a.hasAttribute('aria-current') && a.setAttribute('aria-current', 'page'));
     active = tabs.querySelector('[aria-current]');
     heroLink.href = v === 'work' ? '#about' : '#work';
-    heroText.textContent = v === 'work' ? 'About Me' : 'Cases';
+    heroText.textContent = v === 'work' ? 'About' : 'Work';
     document.title = { work: 'Miro Deiss Portfolio', about: 'Miro Deiss — About', 'case-home': 'Homepage and Search Redesign — Miro Deiss', 'case-ds': 'Kite Design System — Miro Deiss' }[v];
     place(active);
   };

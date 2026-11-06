@@ -896,3 +896,8 @@ header.compact .bar { height: 72px; }
 /* static screenshots (START) don't react to hover */
 div.shot { cursor: default; }
 div.shot .ph { transform: translate(-50%, -50%) !important; transition: none; }
+
+/* work card: web + app together */
+.case .shot.combo .ph-web { position: absolute; left: 7%; top: 50%; width: 70%; height: auto; translate: 0 -50%; border-radius: 6px; transition: transform .9s var(--ease); }
+.case .shot.combo .ph { left: 76%; height: 80%; z-index: 1; }
+.case .shot.combo:hover .ph-web { transform: translateX(-4px); }
