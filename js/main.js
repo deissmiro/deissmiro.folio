@@ -326,7 +326,7 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
   document.addEventListener('pointerover', e => {
     if (e.pointerType && e.pointerType !== 'mouse' && e.pointerType !== 'pen') return;
     const hit = e.target.closest('a.shot');
-    if (hit && !on) { on = true; cx = x; cy = y; tip.classList.add('on'); kick(); }
+    if (hit && !on) { tip.textContent = ({ '#case-home': 'View case: Homepage redesign', '#case-glyphs': 'View case: Kite Glyphs' })[hit.getAttribute('href')] || 'View case'; on = true; cx = x; cy = y; tip.classList.add('on'); kick(); }
     else if (!hit && on) { on = false; tip.classList.remove('on'); kick(); }
   });
   addEventListener('scroll', () => { if (on && !document.elementFromPoint(x, y)?.closest('a.shot')) { on = false; tip.classList.remove('on'); } }, { passive: true });
