@@ -298,3 +298,17 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
   };
   requestAnimationFrame(tick);
 })();
+
+/* ---------- email popover ---------- */
+(() => {
+  const btn = document.getElementById('mailBtn'), pop = document.getElementById('mailPop'), copy = document.getElementById('mailCopy'), addr = document.getElementById('mailAddr');
+  const set = (open) => { pop.hidden = !open; btn.setAttribute('aria-expanded', String(open)); };
+  btn.addEventListener('click', (e) => { e.stopPropagation(); set(pop.hidden); });
+  document.addEventListener('click', (e) => { if (!pop.hidden && !pop.contains(e.target)) set(false); });
+  addEventListener('keydown', (e) => { if (e.key === 'Escape' && !pop.hidden) { set(false); btn.focus(); } });
+  copy.addEventListener('click', () => {
+    const ok = () => { copy.textContent = 'Copied'; copy.classList.add('done'); setTimeout(() => { copy.textContent = 'Copy address'; copy.classList.remove('done'); }, 1600); };
+    const fallback = () => { const r = document.createRange(); r.selectNodeContents(addr); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    try { navigator.clipboard.writeText(addr.textContent).then(ok, fallback); } catch (err) { fallback(); }
+  });
+})();

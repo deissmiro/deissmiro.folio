@@ -21,7 +21,18 @@
       <a href="#about" aria-current="page" data-text="About"><span>About</span></a>
       <a href="#cv" data-text="CV"><span>CV</span></a>
     </nav>
-    <a class="btn-mail" href="mailto:deissmiro@gmail.com" title="deissmiro@gmail.com">Email <span class="arr" aria-hidden="true"><i>→</i><i>→</i></span></a>
+    <div class="mail-wrap">
+      <button class="btn-mail" id="mailBtn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="mailPop">Email <span class="arr" aria-hidden="true"><i>→</i><i>→</i></span></button>
+      <div class="mail-pop" id="mailPop" role="dialog" aria-label="Contact by email" hidden>
+        <p class="mail-h">Write to me</p>
+        <p class="mail-addr" id="mailAddr">deissmiro@gmail.com</p>
+        <div class="mail-acts">
+          <a class="mail-act primary" href="mailto:deissmiro@gmail.com?subject=Hi%20Miro">Open mail app</a>
+          <button class="mail-act" id="mailCopy" type="button">Copy address</button>
+        </div>
+        <a class="mail-gmail" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=deissmiro@gmail.com&amp;su=Hi%20Miro" target="_blank" rel="noopener">or write in Gmail ↗</a>
+      </div>
+    </div>
   </div>
   <div class="cs-mini" id="csMini" aria-hidden="true">
     <div class="cs-mini-in">
