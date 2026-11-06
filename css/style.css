@@ -724,3 +724,8 @@ header.compact .bar { height: 72px; }
 .ba2-img figcaption { font-size: 13px; color: var(--ink-2); }
 .ba2-img:last-child figcaption { color: var(--ink); font-weight: 700; }
 @media (max-width: 760px) { .ba2 { grid-template-columns: 1fr 1fr; } .ba2-text { grid-column: 1 / -1; padding: 0; } }
+
+.ba2.web { grid-template-columns: 1fr 1fr; }
+.ba2.web .ba2-text { grid-column: 1 / -1; padding: 0; max-width: 70ch; }
+.ba2.web .ba2-img .board { height: clamp(220px, 24vw, 320px); }
+.ba2.web .ba2-img .board img { height: auto; width: 90%; max-height: 88%; border-radius: 8px; }
