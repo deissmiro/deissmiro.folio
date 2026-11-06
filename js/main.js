@@ -258,3 +258,12 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
     try { navigator.clipboard.writeText(addr.textContent).then(ok, fallback); } catch (err) { fallback(); }
   });
 })();
+
+/* hero: web / app switch */
+(() => {
+  const sw = document.querySelector('.hero-sw'); if (!sw) return;
+  sw.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
+    sw.dataset.mode = b.dataset.m;
+    sw.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-selected', x === b));
+  }));
+})();

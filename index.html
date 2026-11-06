@@ -102,9 +102,14 @@
       </dl>
     </div>
 
-    <div class="duo">
-      <div class="board duo-card web"><img src="assets/img/home/hero-web.webp" alt="New Tutu web home page"></div>
-      <div class="board duo-card app"><img src="assets/img/home/hero-app.webp" alt="New Tutu app home screen">
+    <div class="hero-sw" data-mode="web">
+      <div class="board hero-sw-card">
+        <img class="m-web" src="assets/img/home/hero-web.webp" alt="New Tutu web home page">
+        <img class="m-app" src="assets/img/home/hero-app.webp" alt="New Tutu app home screen">
+        <div class="seg" role="tablist" aria-label="Platform">
+          <button type="button" role="tab" data-m="web" aria-selected="true">Web</button>
+          <button type="button" role="tab" data-m="app" aria-selected="false">App</button>
+        </div>
       </div>
     </div>
 

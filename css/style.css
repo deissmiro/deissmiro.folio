@@ -801,3 +801,17 @@ header.compact .bar { height: 72px; }
 .shot-plate { background: var(--card); border-radius: 16px; padding: 12px; }
 .shot-plate img { display: block; position: static; width: 100%; height: auto; max-width: 100%; transform: none; translate: none; border-radius: 8px; }
 .wide-fig figcaption { margin-top: 12px; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+
+/* hero: one plate, web / app switch */
+.cs-head + .hero-sw { margin-top: -56px; }
+.board.hero-sw-card { position: relative; height: clamp(340px, 44vw, 540px); aspect-ratio: auto; overflow: hidden; display: block; }
+.hero-sw-card img { position: absolute; inset: 0; margin: auto; transform: none; translate: none; transition: opacity .45s var(--ease), transform .6s var(--ease); }
+.hero-sw-card .m-web { width: 80%; height: auto; max-width: 80%; max-height: 74%; border-radius: 10px; }
+.hero-sw-card .m-app { height: 80%; width: auto; max-width: 80%; }
+.hero-sw[data-mode="web"] .m-app, .hero-sw[data-mode="app"] .m-web { opacity: 0; transform: scale(.985); pointer-events: none; }
+.seg { position: absolute; left: 50%; bottom: 18px; translate: -50% 0; display: flex; gap: 2px; padding: 3px; background: #fff; border-radius: 999px; }
+.seg button { font: inherit; font-size: 14px; border: 0; background: transparent; color: var(--ink-2); padding: 7px 16px; border-radius: 999px; cursor: pointer; transition: background .25s, color .25s; }
+.seg button[aria-selected="true"] { background: var(--chip); color: var(--ink); font-weight: 700; }
+.seg button:hover { color: var(--ink); }
+.hero-sw-card .m-web, .hero-sw-card .m-app { top: -44px; bottom: 0; }
+@media (max-width: 640px) { .board.hero-sw-card { height: 380px; } .hero-sw-card .m-web { width: 90%; max-width: 90%; } }
