@@ -222,9 +222,9 @@ body[data-view="work"] .work { margin-top: 32px; }
 .cs-head + .duo { margin-top: -56px; }
 .board.duo-card { height: clamp(260px, 30vw, 380px); aspect-ratio: auto; display: grid; place-items: center; overflow: hidden; }
 .board.duo-card img { transform: none; filter: drop-shadow(0 14px 24px rgba(0,0,0,.1)); transition: transform .7s var(--ease); }
-.board.duo-card.web img { width: 86%; height: auto; max-width: none; border-radius: 10px; }
+.board.duo-card.web img { margin-top: 26px; width: 82%; height: auto; max-width: none; border-radius: 10px; }
 .board.duo-card.app { position: relative; }
-.board.duo-card.app img { position: absolute; left: 50%; top: 8%; height: 84%; width: auto; max-width: none; translate: -50% 0; }
+.board.duo-card.app img { position: absolute; left: 50%; top: 13%; height: 80%; width: auto; max-width: none; translate: -50% 0; }
 .board.duo-card:hover img { transform: scale(1.03); }
 @media (max-width: 640px) { .duo { grid-template-columns: 1fr; } .board.duo-card { height: 300px; } }
 
@@ -269,18 +269,14 @@ body[data-view="work"] .work { margin-top: 32px; }
 .mt-cols { margin-top: 18px; }
 .fig .board.bench { aspect-ratio: auto; padding: 22px; display: block; }
 .board.bench img { width: 100%; height: auto; max-width: 100%; transform: none; filter: none; border-radius: 6px; mix-blend-mode: multiply; }
-.test { background: var(--card); border-radius: 16px; padding: clamp(20px, 3vw, 32px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(20px, 4vw, 48px); align-items: center; }
-.test-stat { display: grid; gap: 10px; }
-.test-n { font-size: clamp(48px, 6vw, 72px); line-height: .9; font-weight: 700; letter-spacing: -.03em; }
-.test-stat p { margin: 0; font-size: 16px; line-height: 1.4; max-width: 30ch; }
-.test-bar { height: 6px; border-radius: 999px; background: #e3e3e1; overflow: hidden; margin-top: 6px; }
+.test { background: var(--card); border-radius: 14px; padding: 16px 20px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: center; }
+.test-n { font-size: 32px; line-height: 1; font-weight: 700; letter-spacing: -.02em; }
+.test-body { display: grid; gap: 8px; min-width: 0; }
+.sec .body .test-body p { margin: 0; font-size: 15px; max-width: none; }
+.test-bar { height: 4px; border-radius: 999px; background: #e3e3e1; overflow: hidden; }
 .test-bar i { display: block; height: 100%; width: var(--w); background: var(--ink); border-radius: inherit; transform-origin: left; animation: barIn 1.2s var(--ease) both; }
-.test-sub { font-size: 13px; color: var(--ink-2); }
+.test-sub { color: var(--ink-2); }
 @keyframes barIn { from { transform: scaleX(0); } }
-.test-quotes { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
-.test-quotes li { font-size: 16px; line-height: 1.4; display: grid; grid-template-columns: 1.2ch 1fr; gap: 6px; }
-.test-quotes li::before { content: "“"; color: var(--ink-2); font-size: 22px; line-height: 1; }
-@media (max-width: 640px) { .test { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .test-bar i { animation: none; } }
 /* ---------- lightbox: index + viewer ---------- */
 .cs .fig .board img { cursor: zoom-in; }
@@ -339,6 +335,14 @@ body[data-view="work"] .work { margin-top: 32px; }
   .lb-foot { padding: 6px 14px 14px 16px; }
 }
 body.lb-open { overflow: hidden; }
+.fig .board.bench { position: relative; padding: 46px 22px 22px; }
+.bench-tag { position: absolute; left: 22px; top: 16px; font-size: 13px; color: var(--ink-2); }
+.finds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.find { border-top: 1.5px solid var(--ink); padding-top: 12px; }
+.find b { display: block; font-size: 16px; margin-bottom: 6px; }
+.find p { margin: 0; font-size: 15px; line-height: 1.4; color: var(--ink-2); }
+@media (max-width: 640px) { .finds { grid-template-columns: 1fr; gap: 18px; } }
+.plat { position: absolute; left: 16px; top: 14px; z-index: 1; font-size: 13px; padding: 4px 10px; border-radius: 999px; background: var(--bg); color: var(--ink); }
 .sum { padding: 14px 18px; border-radius: 14px; background: var(--card); font-size: 16px; max-width: none !important; }
 
 /* ---------- search verticals ---------- */
