@@ -52,6 +52,7 @@
     const k = el.dataset.screen;
     el.insertAdjacentHTML('afterbegin', `<img class="ph" src="${SHOTS[k]}" alt="${alts[k]}" draggable="false">`);
     const ph = el.querySelector('.ph');
+    if (el.tagName !== 'A') return; // static screenshots: no hover motion
     el.addEventListener('pointerenter', () => { ph.style.setProperty('--s', 1.03); setTimeout(() => el.classList.add('live'), 250); });
     el.addEventListener('pointermove', (e) => {
       const r = el.getBoundingClientRect();

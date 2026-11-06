@@ -892,3 +892,7 @@ header.compact .bar { height: 72px; }
 .ba3.is-app .cmpx.in-plate .lay img { height: 86%; width: auto; max-width: 88%; max-height: none; }
 .ba3.is-web .cmpx.in-plate .lay img { width: 86%; height: auto; max-height: 84%; max-width: 86%; }
 .ba3.is-web .board.cmpx.in-plate { height: clamp(280px, 38vw, 440px); }
+
+/* static screenshots (START) don't react to hover */
+div.shot { cursor: default; }
+div.shot .ph { transform: translate(-50%, -50%) !important; transition: none; }
