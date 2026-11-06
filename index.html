@@ -77,6 +77,16 @@
       <a class="shot combo" data-screen="home" href="#case-home" aria-label="Open case: Homepage and Search Redesign"><img class="ph-web" src="assets/img/common/tutu-web.webp" alt="New Tutu web home page" draggable="false"></a>
     </article>
 
+    <article class="case">
+      <div class="case-text">
+        <h2>Kite Glyphs: a Figma Plugin for Font Icons</h2>
+        <p>Designers inserted icons from Tutu’s icon font in up to five steps. I designed and built a Figma plugin that does it in <b>one click</b>, with instant search across the whole set.</p>
+        <div class="who"><span class="logo" aria-hidden="true"></span>Tutu travel — Product Designer</div>
+        <a class="cases-link" href="#case-glyphs">Read case <span class="a">→</span></a>
+      </div>
+      <a class="shot wide" data-screen="glyphs" href="#case-glyphs" aria-label="Open case: Kite Glyphs"></a>
+    </article>
+
     <article class="case" hidden data-temp-hidden="kite">
       <div class="case-text">
         <h2>Kite Design System: Rebuilding the Color Architecture</h2>
@@ -348,6 +358,85 @@
       <div class="gal-card app c4 r3"><img src="assets/img/home/v_car.webp" alt="App search: car rental" loading="lazy"></div>
       <div class="gal-card app c4 r3"><img src="assets/img/home/v_stay.webp" alt="App search: stays" loading="lazy"></div>
       <div class="gal-card app c4 r3"><img src="assets/img/home/sheet-dates.webp" alt="App date picker" loading="lazy"></div>
+    </section>
+
+    <nav class="next" aria-label="Next case">
+      <div><span>More work</span><a class="t" href="#work">Work</a></div>
+      <a class="cases-link" href="#work">Back to work <span class="a">→</span></a>
+    </nav>
+  </article>
+
+  <article class="cs" id="view-case-glyphs" hidden>
+    <div class="cs-head">
+      <a class="back-btn" href="#work" aria-label="Back to work"><span class="a">←</span></a>
+      <h1>Kite Glyphs: a Figma Plugin for Font Icons</h1>
+      <p class="lede">How I automated work with font icons and saved product teams’ time: inserting an icon went from up to <b>five actions</b> to <b>one click</b>.</p>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>Product Designer, design and build</dd></div>
+        <div><dt>Company</dt><dd><span class="logo" aria-hidden="true"></span>Tutu</dd></div>
+        <div><dt>Product</dt><dd>Figma plugin</dd></div>
+        <div><dt>Stack</dt><dd>JS/TS, Figma API</dd></div>
+      </dl>
+    </div>
+
+    <figure class="wide-fig cs-hero-fig"><div class="shot-plate"><img src="assets/img/glyphs/hero.webp" alt="Kite Glyphs plugin: welcome screen in Figma"></div></figure>
+
+    <section class="sec">
+      <h2>Problem</h2>
+      <div class="body">
+        <p class="big">Tutu uses its own icon font, so designers can put icons right into text. In practice, working with it turned into routine and a source of mistakes.</p>
+        <h3 class="mt">Main pain points</h3>
+        <div class="stats hyp-stats">
+          <div class="stat"><span class="n">01</span><span class="l"><b>Too many clicks.</b> Inserting a single icon took up to five actions.</span></div>
+          <div class="stat"><span class="n">02</span><span class="l"><b>Lost time.</b> Finding the right glyph in a huge shared library or a random file was close to impossible.</span></div>
+          <div class="stat"><span class="n">03</span><span class="l"><b>No documentation.</b> Nobody wanted to describe the complicated process in writing, let alone read it.</span></div>
+        </div>
+        <h3 class="mt">How it worked before</h3>
+        <div class="flow">
+          <div class="flow-group"><span class="flow-label">Once</span>
+            <ol class="flow-steps"><li>Download the font</li><li>Open the icon library or file</li></ol>
+          </div>
+          <div class="flow-group"><span class="flow-label">For every icon</span>
+            <ol class="flow-steps"><li>Find the icon</li><li>Copy its code or name</li><li>Paste it into a text layer</li><li>Detach the text style</li><li>Switch the font from Tutu Sans to Icons</li></ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>Research</h2>
+      <div class="body">
+        <p>The work started with research: what already exists, what we actually need, and whether we need a tool at all.</p>
+        <ul class="list">
+          <li><span><b>How designers work today.</b> I looked at how designers use the font now and what third-party solutions are on the market.</span></li>
+          <li><span><b>Figma API.</b> I studied the platform’s limits to understand how to connect the plugin interface to the Figma canvas.</span></li>
+          <li><span><b>MVP requirements.</b> From both, I put together what the first version had to do.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>Solution</h2>
+      <div class="body">
+        <p>I designed and built a plugin that removed the routine completely.</p>
+        <h3 class="mt">Instant search</h3>
+        <p>A grid of every icon, grouped by category, with search by name right inside Figma.</p>
+        <figure class="wide-fig"><div class="shot-plate"><img src="assets/img/glyphs/search.webp" alt="Kite Glyphs: icon grid grouped by category with search" loading="lazy"></div></figure>
+        <h3 class="mt">Insert in one click</h3>
+        <p>A designer just clicks an icon, and it lands on the canvas as a text layer already set in the icon font.</p>
+        <figure class="wide-fig"><div class="shot-plate"><img src="assets/img/glyphs/insert.webp" alt="Kite Glyphs: searching for clock and inserting icons onto the canvas" loading="lazy"></div></figure>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>Results</h2>
+      <div class="body">
+        <div class="stats">
+          <div class="stat"><span class="n">5 → 1</span><span class="l">Actions to insert an icon</span></div>
+          <div class="stat"><span class="n">0</span><span class="l">Manual font and style switching</span></div>
+          <div class="stat"><span class="n">1</span><span class="l">Place to find every glyph</span></div>
+        </div>
+      </div>
     </section>
 
     <nav class="next" aria-label="Next case">
