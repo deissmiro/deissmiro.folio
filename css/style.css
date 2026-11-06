@@ -747,3 +747,12 @@ header.compact .bar { height: 72px; }
 .ba2.is-app .ba2-img .board img { height: 86%; width: auto; }
 .sec .body > .ba2 + .ba2 { margin-top: 48px; }
 @media (max-width: 640px) { .duo, .pair, .gal-row { grid-template-columns: 1fr; } }
+
+/* product hypotheses grid */
+.hyps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 32px; }
+.hyp-card { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 14px; align-items: start; }
+.hyp-ic { width: 24px; height: 24px; color: var(--ink); margin-top: 2px; }
+.sec .body .hyp-card p { margin: 0; font-size: 16px; line-height: 1.55; max-width: none; }
+.hyp-card em { font-style: normal; font-weight: 700; color: var(--tutu); }
+@media (max-width: 900px) { .hyps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .hyps { grid-template-columns: 1fr; gap: 28px; } }
