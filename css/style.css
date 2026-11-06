@@ -925,3 +925,4 @@ div.shot .ph { transform: translate(-50%, -50%) !important; transition: none; }
 .cs-head + .cs-hero-fig { margin-top: -56px; }
 
 .shot-plate video { display: block; width: 100%; height: auto; border-radius: 8px; background: #f4f4f2; }
+.sec .body > .stats + .lab { margin-top: 40px; }
