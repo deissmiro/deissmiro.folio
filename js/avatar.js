@@ -60,7 +60,8 @@ Promise.all([load(big), load(small)]).then(() => {
   if (big.bones.Head) headY = big.bones.Head.getWorldPosition(new THREE.Vector3()).y;
   small.cam.position.set(0, headY + .06, .62); small.cam.lookAt(0, headY + .05, 0);
   stage.classList.add('ready');
-}).catch((err) => { loadingEl.textContent = 'model failed to load'; console.error(err); });
+  document.querySelectorAll('.ava-still').forEach(e => e.remove()); stage.classList.remove('fallback');
+}).catch((err) => { console.error(err); dispatchEvent(new Event('avatar-failed')); });
 
 // drag to spin the avatar
 let spin = 0, spinVel = 0, dragging = false, lastX = 0;

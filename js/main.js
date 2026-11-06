@@ -7,7 +7,8 @@
   const heroLink = document.getElementById('heroLink'), heroText = document.getElementById('heroLinkText');
   const route = () => {
     const views = { '#work': 'work', '#about': 'about', '#case-home': 'case-home', '#case-glyphs': 'case-glyphs' }; // '#case-ds' hidden for now
-    const v = views[location.hash] || 'about';
+    const v = views[location.hash] || (location.hash && location.hash !== '#' ? 'notfound' : 'about');
+    const nf = document.getElementById('view-notfound'); if (nf) nf.hidden = v !== 'notfound';
     document.body.dataset.view = v;
     document.getElementById('view-work').hidden = v !== 'work';
     document.getElementById('view-about').hidden = v !== 'about';
@@ -20,7 +21,7 @@
     active = tabs.querySelector('[aria-current]');
     heroLink.href = v === 'work' ? '#about' : '#work';
     heroText.textContent = v === 'work' ? 'About' : 'Work';
-    document.title = { work: 'Miro Deiss Portfolio', about: 'Miro Deiss — About', 'case-home': 'Homepage and Search Redesign — Miro Deiss', 'case-glyphs': 'Kite Glyphs — Miro Deiss', 'case-ds': 'Kite Design System — Miro Deiss' }[v];
+    document.title = { work: 'Miro Deiss Portfolio', about: 'Miro Deiss — About', 'case-home': 'Homepage and Search Redesign — Miro Deiss', 'case-glyphs': 'Kite Glyphs — Miro Deiss', notfound: 'Page not found — Miro Deiss', 'case-ds': 'Kite Design System — Miro Deiss' }[v];
     place(active);
   };
   addEventListener('hashchange', () => { route(); scrollTo({ top: 0, behavior: 'instant' in document.documentElement.style ? 'instant' : 'auto' }); });
@@ -341,4 +342,43 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
   addEventListener('hashchange', () => setTimeout(center, 50));
   addEventListener('resize', center);
   setTimeout(center, 300);
+})();
+
+/* skeletons, image errors and avatar fallback */
+(() => {
+  const SEL = '.board img, .shot-plate img, .gal-card img, .shot img, .cmpx img';
+  const box = img => img.closest('.board, .shot-plate, .gal-card, .shot, .cmpx') || img.parentElement;
+  const done = img => { const b = box(img); b.classList.remove('sk'); img.classList.add('in'); };
+  const fail = img => {
+    const b = box(img); b.classList.remove('sk'); b.classList.add('img-err');
+    if (b.querySelector('.err-msg')) return;
+    const m = document.createElement('div'); m.className = 'err-msg';
+    m.innerHTML = '<span>Image didn’t load</span><button type="button">Try again</button>';
+    m.querySelector('button').addEventListener('click', e => {
+      e.preventDefault(); e.stopPropagation();
+      b.classList.remove('img-err'); b.classList.add('sk'); m.remove();
+      const src = img.getAttribute('src'); img.src = ''; img.src = src.split('#')[0] + (src.includes('?') ? '&' : '?') + 'r=' + Date.now();
+    });
+    b.appendChild(m);
+  };
+  const watch = img => {
+    if (img.dataset.skw) return; img.dataset.skw = 1;
+    img.addEventListener('load', () => done(img)); img.addEventListener('error', () => fail(img));
+    if (img.complete && img.getAttribute('src')) { img.naturalWidth ? done(img) : fail(img); }
+    else box(img).classList.add('sk');
+  };
+  const scan = () => document.querySelectorAll(SEL).forEach(watch);
+  scan(); setTimeout(scan, 0); addEventListener('hashchange', () => setTimeout(scan, 0));
+  new MutationObserver(scan).observe(document.body, { subtree: true, childList: true, attributes: true, attributeFilter: ['src'] });
+
+  // avatar: show a still picture if the 3D model can't load
+  const stage = document.getElementById('stage'), ava = document.getElementById('meAva');
+  const fallback = () => {
+    if (!stage || stage.classList.contains('ready') || stage.classList.contains('fallback')) return;
+    stage.classList.add('fallback');
+    stage.insertAdjacentHTML('beforeend', '<img class="ava-still" src="favicon-512.png" alt="Miro Deiss avatar">');
+    if (ava && !ava.querySelector('canvas')) ava.insertAdjacentHTML('beforeend', '<img class="ava-still" src="favicon-512.png" alt="">');
+  };
+  setTimeout(fallback, 9000);
+  addEventListener('avatar-failed', fallback);
 })();
