@@ -6,8 +6,8 @@
   let active = tabs.querySelector('[aria-current]');
   const heroLink = document.getElementById('heroLink'), heroText = document.getElementById('heroLinkText');
   const route = () => {
-    const views = { '#about': 'about', '#case-home': 'case-home', '#case-ds': 'case-ds' };
-    const v = views[location.hash] || 'work';
+    const views = { '#work': 'work', '#about': 'about', '#case-home': 'case-home', '#case-ds': 'case-ds' };
+    const v = views[location.hash] || 'about';
     document.body.dataset.view = v;
     document.getElementById('view-work').hidden = v !== 'work';
     document.getElementById('view-about').hidden = v !== 'about';
