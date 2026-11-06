@@ -311,7 +311,6 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
 
 /* cursor tip "View case" over clickable previews */
 (() => {
-  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
   const tip = document.createElement('div');
   tip.className = 'cursor-tip'; tip.textContent = 'View case'; tip.setAttribute('aria-hidden', 'true');
   document.body.appendChild(tip);
@@ -324,6 +323,7 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
   const kick = () => { if (!raf) raf = requestAnimationFrame(loop); };
   document.addEventListener('pointermove', e => { x = e.clientX; y = e.clientY; if (on) kick(); }, { passive: true });
   document.addEventListener('pointerover', e => {
+    if (e.pointerType && e.pointerType !== 'mouse' && e.pointerType !== 'pen') return;
     const hit = e.target.closest('a.shot');
     if (hit && !on) { on = true; cx = x; cy = y; tip.classList.add('on'); kick(); }
     else if (!hit && on) { on = false; tip.classList.remove('on'); kick(); }
