@@ -636,3 +636,30 @@ header.compact .bar { height: 72px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* ---------- case typography: one scale, one rhythm ---------- */
+.sec { gap: 30px; }
+.sec h2 { font-size: 15px; padding-top: 3px; }
+.sec .body { display: flex; flex-direction: column; gap: 20px; font-size: 16px; line-height: 1.6; }
+.sec .body > * { margin-top: 0; margin-bottom: 0; }
+.sec .body p, .sec .body .list { max-width: 60ch; }
+.sec .body .big { font-size: 20px; line-height: 1.45; max-width: 60ch; }
+.sec .body h3, .sec .body .feat-text h3, .sec .body .lab h3 { font-size: 18px; line-height: 1.35; font-weight: 700; margin: 0; }
+.sec .body > h3 + p { margin-top: -10px; }
+.sec .body > h3.mt { margin-top: 52px; }
+.sec .body > .figs, .sec .body > .verts, .sec .body > .lab, .sec .body > .stats, .sec .body > .feat:first-child { margin-top: 12px; }
+.sec .body > .feat + .feat { margin-top: 28px; }
+.fig figcaption { font-size: 14px; line-height: 1.45; }
+.feat-text { gap: 0; }
+.sec .body .feat-text p { margin: 10px 0 0; font-size: 16px; line-height: 1.6; color: var(--ink-2); max-width: 46ch; }
+.feat-text .chip-q { margin-top: 18px; font-size: 14px; }
+.lab { gap: 36px; }
+.lab-top { align-items: start; }
+.sec .body .lab p { margin-top: 10px; font-size: 16px; line-height: 1.6; color: var(--ink); }
+.lab-quotes { gap: 8px; }
+.lab-quotes q, .lab-quotes q:nth-child(2) { transform: none; justify-self: start; font-size: 14px; border-radius: 14px 14px 14px 4px; }
+.lab-quotes q:hover { transform: none; }
+.lab-nums b { font-size: clamp(36px, 4.4vw, 52px); }
+.stat .n { font-size: 36px; }
+.stat .l { font-size: 14px; }
+.cols2 { display: grid; }
