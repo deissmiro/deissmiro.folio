@@ -795,3 +795,9 @@ header.compact .bar { height: 72px; }
 .hyp-list b { font-weight: 700; }
 .hyp-list span { color: var(--ink-2); font-size: 15px; line-height: 1.5; }
 @media (max-width: 640px) { .hyp-list { grid-template-columns: 1fr; gap: 20px; } }
+
+/* plain full-width screenshot on a plate */
+.wide-fig { margin: 28px 0 0; }
+.shot-plate { background: var(--card); border-radius: 16px; padding: 12px; }
+.shot-plate img { display: block; position: static; width: 100%; height: auto; max-width: 100%; transform: none; translate: none; border-radius: 8px; }
+.wide-fig figcaption { margin-top: 12px; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
