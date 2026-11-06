@@ -757,3 +757,14 @@ header.compact .bar { height: 72px; }
 @media (max-width: 900px) { .hyps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .hyps { grid-template-columns: 1fr; gap: 28px; } }
 
+
+/* hypotheses: calm tiles, same as stats */
+.hyps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.hyp-card { display: grid; grid-template-columns: 1fr; gap: 14px; align-content: start; background: var(--card); border-radius: 16px; padding: 22px 22px 20px; transition: background .3s; }
+.hyp-card:hover { background: #efefed; }
+.hyp-ic { width: 22px; height: 22px; margin: 0; color: var(--ink-2); }
+.sec .body .hyp-card p { font-size: 15px; line-height: 1.45; color: var(--ink-2); }
+.hyp-card em { font-weight: 400; color: var(--ink); }
+@media (max-width: 900px) { .hyps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .hyps { grid-template-columns: 1fr; gap: 10px; } }
+.sec .body > .lab + .fig, .lab + .wide-fig { margin-top: 28px; }
