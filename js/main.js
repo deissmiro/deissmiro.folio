@@ -37,9 +37,13 @@
   const SHOTS = {
   "home": "assets/img/common/work-home.webp",
   "search": "assets/img/common/work-search.webp",
-  "extras": "assets/img/common/work-extras.webp"
+  "extras": "assets/img/common/work-extras.webp",
+  "start_web": "assets/img/start/start-web.webp",
+  "start_tv": "assets/img/start/start-tv.webp",
+  "start_title": "assets/img/start/start-title.webp",
+  "start_profile": "assets/img/start/start-profile.webp"
 };
-  const alts = { home: 'Tutu home screen', search: 'Search results', extras: 'Review and add-ons' };
+  const alts = { home: 'Tutu home screen', search: 'Search results', extras: 'Review and add-ons', start_web: 'START web home page', start_tv: 'START live TV player', start_title: 'START series page', start_profile: 'START profile with tasks' };
   document.querySelectorAll('.shot[data-screen]').forEach((el) => {
     const k = el.dataset.screen;
     el.insertAdjacentHTML('afterbegin', `<img class="ph" src="${SHOTS[k]}" alt="${alts[k]}" draggable="false">`);

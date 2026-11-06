@@ -142,6 +142,8 @@ nav.tabs { position: relative; display: flex; gap: 2px; padding: 0; }
   background: var(--tutu) url("../assets/img/common/tutu-logo.png") center / cover no-repeat;
   transition: transform .5s var(--ease);
 }
+.logo.start { background: #FF0019 url("../assets/img/common/start-logo.png") center / cover no-repeat; }
+.shot.wide .ph { height: auto; width: 84%; border-radius: 6px; }
 .role:hover .logo { transform: rotate(-14deg) scale(1.06); }
 .bullets { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; font-family: var(--sans); font-size: 15px; line-height: 1.3; }
 .bullets li { min-width: 0; }
