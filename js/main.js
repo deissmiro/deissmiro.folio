@@ -163,64 +163,6 @@
 
 })();
 
-/* ---------- lightbox (case pages only): index + viewer ---------- */
-(() => {
-  const lb = document.getElementById('lb'), img = document.getElementById('lbImg'), cap = document.getElementById('lbCap'), tree = document.getElementById('lbTree'), crumb = document.getElementById('lbCrumb'), count = document.getElementById('lbCount');
-  let list = [], idx = 0, files = [], meta = [], lastFocus = null;
-  const captionOf = (el) => el.dataset.caption || el.closest('.fig')?.querySelector('figcaption')?.innerHTML || el.alt || '';
-  const titleOf = (el) => el.closest('.fig')?.querySelector('figcaption b')?.textContent || el.dataset.caption?.match(/<b>(.*?)<\/b>/)?.[1] || el.alt || 'Image';
-  const groupOf = (el) => {
-    const fig = el.closest('.fig'), body = fig.closest('.body'), sec = fig.closest('.sec');
-    let g = null;
-    body && body.querySelectorAll('h3').forEach(h => { if (h.compareDocumentPosition(fig) & Node.DOCUMENT_POSITION_FOLLOWING) g = h.textContent.trim(); });
-    return [sec?.querySelector('h2')?.textContent.trim() || '', g || ''];
-  };
-  const build = () => {
-    tree.replaceChildren(); files = []; meta = [];
-    let last = null;
-    list.forEach((el, k) => {
-      const [sec, g] = groupOf(el); meta[k] = { sec, g, title: titleOf(el) };
-      if (g !== last) { const h = document.createElement('p'); h.className = 'lb-group'; h.textContent = g || sec; tree.appendChild(h); last = g; }
-      const b = document.createElement('button'); b.type = 'button'; b.className = 'lb-file';
-      b.innerHTML = `<span class="th" style="background-image:url('${el.getAttribute('src')}')"></span><span class="n">${String(k + 1).padStart(2, '0')}</span><span class="t"></span>`;
-      b.querySelector('.t').textContent = meta[k].title;
-      b.addEventListener('click', () => { idx = k; render(); });
-      tree.appendChild(b); files[k] = b;
-    });
-  };
-  const render = () => {
-    const el = list[idx], m = meta[idx];
-    img.src = el.src; img.alt = el.alt;
-    cap.innerHTML = captionOf(el).replace(/^(<b>.*?<\/b>)\s*:?\s*([a-z])?/, (x, b, c) => b + ' — ' + (c ? c.toUpperCase() : ''));
-    crumb.innerHTML = [m.sec, m.g].filter(Boolean).map((t, i, a) => i === a.length - 1 ? `<b>${t}</b>` : t).join(' / ');
-    count.textContent = `${String(idx + 1).padStart(2, '0')} / ${String(list.length).padStart(2, '0')}`;
-    files.forEach((f, k) => f.setAttribute('aria-current', String(k === idx)));
-    files[idx].scrollIntoView({ block: 'nearest' });
-    img.style.animation = 'none'; img.offsetWidth; img.style.animation = '';
-  };
-  const open = (el) => {
-    list = [...el.closest('.cs').querySelectorAll('.fig .board img')];
-    idx = list.indexOf(el); lastFocus = document.activeElement;
-    build(); lb.hidden = false; document.body.classList.add('lb-open'); render();
-    lb.querySelector('.lb-win').focus({ preventScroll: true });
-  };
-  const close = () => { lb.hidden = true; document.body.classList.remove('lb-open'); lastFocus && lastFocus.focus && lastFocus.focus(); };
-  const step = (d) => { idx = (idx + d + list.length) % list.length; render(); };
-  const flash = (id) => { const k = document.getElementById(id); k.classList.add('hit'); setTimeout(() => k.classList.remove('hit'), 140); };
-  document.addEventListener('click', (e) => { const el = e.target.closest('.cs .fig .board img'); if (el) open(el); });
-  document.getElementById('lbClose').addEventListener('click', close);
-  document.getElementById('lbPrev').addEventListener('click', () => step(-1));
-  document.getElementById('lbNext').addEventListener('click', () => step(1));
-  lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
-  addEventListener('keydown', (e) => {
-    if (lb.hidden) return;
-    if (e.key === 'Escape') return close();
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); flash('lbNext'); step(1); }
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); flash('lbPrev'); step(-1); }
-  });
-  addEventListener('hashchange', () => { if (!lb.hidden) close(); });
-})();
-
 /* ---------- case boards ---------- */
 (() => {
   const mini = document.getElementById('csMini');

@@ -278,7 +278,7 @@ body[data-view="work"] .work { margin-top: 32px; }
 @keyframes barIn { from { transform: scaleX(0); } }
 @media (prefers-reduced-motion: reduce) { .test-bar i { animation: none; } }
 /* ---------- lightbox: index + viewer ---------- */
-.cs .fig .board img { cursor: zoom-in; }
+
 .lb {
   position: fixed; inset: 0; z-index: 50; background: rgba(255,255,255,.78);
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
