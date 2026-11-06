@@ -308,3 +308,25 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
   }), { threshold: .6 });
   document.querySelectorAll('.cmpx.in-plate').forEach(b => { b._hint = make(b); io.observe(b); });
 })();
+
+/* cursor tip "View case" over clickable previews */
+(() => {
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  const tip = document.createElement('div');
+  tip.className = 'cursor-tip'; tip.textContent = 'View case'; tip.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(tip);
+  let x = 0, y = 0, cx = 0, cy = 0, on = false, raf = 0;
+  const loop = () => {
+    cx += (x - cx) * .22; cy += (y - cy) * .22;
+    tip.style.transform = `translate3d(${cx + 16}px, ${cy + 18}px, 0) rotate(-5deg) scale(${on ? 1 : .6})`;
+    raf = (on || Math.abs(x - cx) > .5) ? requestAnimationFrame(loop) : 0;
+  };
+  const kick = () => { if (!raf) raf = requestAnimationFrame(loop); };
+  document.addEventListener('pointermove', e => { x = e.clientX; y = e.clientY; if (on) kick(); }, { passive: true });
+  document.addEventListener('pointerover', e => {
+    const hit = e.target.closest('a.shot');
+    if (hit && !on) { on = true; cx = x; cy = y; tip.classList.add('on'); kick(); }
+    else if (!hit && on) { on = false; tip.classList.remove('on'); kick(); }
+  });
+  addEventListener('scroll', () => { if (on && !document.elementFromPoint(x, y)?.closest('a.shot')) { on = false; tip.classList.remove('on'); } }, { passive: true });
+})();
