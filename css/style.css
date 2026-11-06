@@ -389,6 +389,13 @@ body.lb-open { overflow: hidden; }
 .chip-q::after { content: "”"; }
 @media (max-width: 760px) { .feat { grid-template-columns: 1fr; gap: 20px; } .feat.rev .feat-img { order: 0; } }
 
+.gal { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.gal-col { display: grid; gap: 20px; align-content: start; }
+.gal-col:nth-child(2) { padding-top: clamp(80px, 14vw, 220px); }
+.gal-card { background: var(--card); border-radius: 16px; aspect-ratio: 4 / 5; position: relative; overflow: hidden; }
+.gal-card img { position: absolute; inset: 0; margin: auto; height: 84%; width: auto; max-width: 90%; object-fit: contain; filter: drop-shadow(0 12px 24px rgba(0,0,0,.1)); transition: transform .7s var(--ease); }
+.gal-card:hover img { transform: scale(1.03); }
+@media (max-width: 520px) { .gal { gap: 10px; } .gal-col { gap: 10px; } }
 .sum { padding: 14px 18px; border-radius: 14px; background: var(--card); font-size: 16px; max-width: none !important; }
 
 /* ---------- search verticals ---------- */
