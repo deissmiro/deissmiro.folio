@@ -52,13 +52,13 @@
     const k = el.dataset.screen;
     el.insertAdjacentHTML('afterbegin', `<img class="ph" src="${SHOTS[k]}" alt="${alts[k]}" draggable="false">`);
     const ph = el.querySelector('.ph');
-    el.addEventListener('pointerenter', () => { ph.style.setProperty('--s', 1.07); setTimeout(() => el.classList.add('live'), 250); });
+    el.addEventListener('pointerenter', () => { ph.style.setProperty('--s', 1.03); setTimeout(() => el.classList.add('live'), 250); });
     el.addEventListener('pointermove', (e) => {
       const r = el.getBoundingClientRect();
       const nx = (e.clientX - r.left) / r.width - .5, ny = (e.clientY - r.top) / r.height - .5;
-      ph.style.setProperty('--tx', (nx * 8).toFixed(1) + 'px');
-      ph.style.setProperty('--ty', (ny * 6 - 2).toFixed(1) + 'px');
-      ph.style.setProperty('--rot', (nx * 1.5).toFixed(2) + 'deg');
+      ph.style.setProperty('--tx', (nx * 4).toFixed(1) + 'px');
+      ph.style.setProperty('--ty', (ny * 3 - 1).toFixed(1) + 'px');
+      ph.style.setProperty('--rot', (nx * .6).toFixed(2) + 'deg');
     });
     el.addEventListener('pointerleave', () => {
       el.classList.remove('live');
