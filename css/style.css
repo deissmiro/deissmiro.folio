@@ -923,3 +923,5 @@ div.shot .ph { transform: translate(-50%, -50%) !important; transition: none; }
 .flow-steps li::before { content: counter(f); display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--chip); color: var(--ink-2); font-size: 12px; }
 .flow-steps li:not(:last-child)::after { content: "→"; color: var(--ink-2); margin-left: 4px; }
 .cs-head + .cs-hero-fig { margin-top: -56px; }
+
+.shot-plate video { display: block; width: 100%; height: auto; border-radius: 8px; background: #f4f4f2; }

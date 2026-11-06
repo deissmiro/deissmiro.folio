@@ -46,7 +46,7 @@
   "start_tv": "assets/img/start/start-tv.webp",
   "start_title": "assets/img/start/start-title.webp",
   "start_profile": "assets/img/start/start-profile.webp",
-  "glyphs": "assets/img/glyphs/hero.webp"
+  "glyphs": "assets/img/glyphs/plugin.webp"
 };
   const alts = { home: 'Tutu home screen', search: 'Search results', extras: 'Review and add-ons', cmp_new: 'New Tutu home screen', tutu_results: 'Tutu search results with an alternative route', tutu_search: 'Tutu unified search', tutu_web: 'Tutu web home page', start_web: 'START web home page', start_tv: 'START live TV player', start_title: 'START series page', start_profile: 'START profile with tasks', glyphs: 'Kite Glyphs plugin in Figma' };
   document.querySelectorAll('.shot[data-screen]').forEach((el) => {
