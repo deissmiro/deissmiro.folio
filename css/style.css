@@ -679,3 +679,17 @@ header.compact .bar { height: 72px; }
 
 /* text fills its column */
 .sec .body p, .sec .body .big, .sec .body .list, .sec .body .feat-text p, .feat.wide .feat-text p, .lab p { max-width: none !important; }
+
+.pair-card.tall img { max-height: 90%; }
+.gal-web { grid-column: 1 / -1; display: grid; gap: 20px; }
+.gal-card.web { aspect-ratio: 16 / 10; }
+.gal-card.web img { height: auto; width: 88%; max-width: 88%; max-height: 86%; border-radius: 12px; }
+
+/* gallery: web and app in alternating rows */
+.gal { display: grid; grid-template-columns: 1fr; gap: 10px; }
+.gal-row { display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); gap: 10px; }
+.gal-row.rev { grid-template-columns: minmax(0, 1fr) minmax(0, 1.75fr); }
+.gal-row .gal-card, .gal-row .gal-card.web { aspect-ratio: auto; height: clamp(260px, 30vw, 400px); }
+.gal-row .gal-card.web img { width: 88%; height: auto; max-height: 86%; }
+.gal-row .gal-card.app img { height: 86%; width: auto; }
+@media (max-width: 640px) { .gal-row, .gal-row.rev { grid-template-columns: 1fr; } }
