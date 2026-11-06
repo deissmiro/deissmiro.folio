@@ -838,3 +838,12 @@ header.compact .bar { height: 72px; }
 .seg { top: 16px; bottom: auto; z-index: 3; }
 .hero-sw-card .m-web, .hero-sw-card .m-app { top: 44px; bottom: 0; }
 .hero-sw-card .cmpx { inset: 44px 0 0; }
+
+/* app compare */
+.hero-sw-card .cmpx.is-app { width: auto; height: 80%; aspect-ratio: .492; inset: 44px 0 0; border-radius: 0; overflow: visible; }
+.cmpx.is-app img { object-fit: contain; }
+.cmpx.is-app .cmpx-before { clip-path: inset(0 calc(100% - var(--p)) 0 0); }
+.cmpx.is-app .cmpx-line { top: 4%; bottom: 4%; background: rgba(0,0,0,.12); }
+.hero-sw[data-mode="web"] .cmpx.is-app, .hero-sw[data-mode="app"] .cmpx.m-web { opacity: 0; pointer-events: none; }
+.hero-sw[data-mode="web"] .cmpx.is-app .cmpx-range, .hero-sw[data-mode="app"] .cmpx.m-web .cmpx-range { display: none; }
+.cmpx .cmpx-after { clip-path: inset(0 0 0 var(--p)); }

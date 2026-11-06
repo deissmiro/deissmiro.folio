@@ -270,31 +270,37 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
 
 /* hero: before / after drag compare */
 (() => {
-  const box = document.querySelector('.cmpx'); if (!box) return;
-  const range = box.querySelector('.cmpx-range');
-  let touched = false;
-  const set = v => { box.style.setProperty('--p', v + '%'); range.value = v; };
-  range.addEventListener('input', () => { touched = true; box.classList.add('touched'); set(+range.value); });
-  const hint = () => {
-    if (touched) return;
-    const keys = [[0, 50], [700, 32], [1500, 68], [2200, 50]];
-    const t0 = performance.now();
-    const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-    const step = now => {
-      if (touched) return;
-      const t = now - t0; let i = 0;
-      while (i < keys.length - 2 && t > keys[i + 1][0]) i++;
-      const [ta, va] = keys[i], [tb, vb] = keys[i + 1];
-      const k = Math.min(1, Math.max(0, (t - ta) / (tb - ta)));
-      set(va + (vb - va) * ease(k));
-      if (t < keys[keys.length - 1][0]) requestAnimationFrame(step);
+  const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  const sw = document.querySelector('.hero-sw');
+  const all = [...document.querySelectorAll('.cmpx')];
+  const api = all.map(box => {
+    const range = box.querySelector('.cmpx-range');
+    let touched = false, running = false;
+    const set = v => { box.style.setProperty('--p', v + '%'); range.value = v; };
+    range.addEventListener('input', () => { touched = true; box.classList.add('touched'); set(+range.value); });
+    const hint = () => {
+      if (touched || running) return; running = true;
+      const keys = [[0, 50], [700, 32], [1500, 68], [2200, 50]];
+      const t0 = performance.now();
+      const step = now => {
+        if (touched) { running = false; return; }
+        const t = now - t0; let i = 0;
+        while (i < keys.length - 2 && t > keys[i + 1][0]) i++;
+        const [ta, va] = keys[i], [tb, vb] = keys[i + 1];
+        set(va + (vb - va) * ease(Math.min(1, Math.max(0, (t - ta) / (tb - ta)))));
+        if (t < keys[keys.length - 1][0]) requestAnimationFrame(step); else running = false;
+      };
+      requestAnimationFrame(step);
     };
-    requestAnimationFrame(step);
-  };
-  let shown = 0;
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting && !box.closest('[data-mode="app"]') && shown < 2) { shown++; setTimeout(hint, 400); }
-  }), { threshold: .5 });
-  io.observe(box);
-  document.querySelectorAll('.hero-sw .seg button[data-m="web"]').forEach(b => b.addEventListener('click', () => setTimeout(hint, 350)));
+    return { box, hint };
+  });
+  const visible = b => !sw || sw.dataset.mode === (b.classList.contains('is-app') ? 'app' : 'web');
+  let seen = false;
+  if (sw) {
+    new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting && !seen) { seen = true; api.forEach(a => visible(a.box) && setTimeout(a.hint, 400)); }
+    }), { threshold: .5 }).observe(sw);
+    sw.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () =>
+      setTimeout(() => api.forEach(a => visible(a.box) && a.hint()), 350)));
+  }
 })();
