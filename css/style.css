@@ -926,3 +926,10 @@ div.shot .ph { transform: translate(-50%, -50%) !important; transition: none; }
 
 .shot-plate video { display: block; width: 100%; height: auto; border-radius: 8px; background: #f4f4f2; }
 .sec .body > .stats + .lab { margin-top: 40px; }
+
+/* app before/after: 2x2 grid, text above the slider */
+.ba3-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 24px; margin-top: 48px; }
+.ba3-grid .ba3.is-app { grid-template-columns: 1fr; align-items: start; gap: 14px; margin: 0; }
+.ba3-grid .ba3.is-app .ba2-text { min-height: 7.5em; align-content: start; }
+.ba3-grid .board.cmpx.in-plate { height: clamp(380px, 42vw, 500px); }
+@media (max-width: 760px) { .ba3-grid { grid-template-columns: 1fr; gap: 40px; } .ba3-grid .ba3.is-app .ba2-text { min-height: 0; } }
