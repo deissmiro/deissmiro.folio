@@ -232,6 +232,7 @@
     mini.setAttribute('aria-hidden', String(!show));
     mini.querySelector('a').tabIndex = show ? 0 : -1;
     toTop.classList.toggle('show', scrollY > innerHeight * 1.2);
+    document.documentElement.style.setProperty('--hdr-h', hdr.offsetHeight + 'px');
   };
   addEventListener('scroll', onScroll, { passive: true });
   addEventListener('hashchange', () => setTimeout(onScroll, 50));
