@@ -268,17 +268,16 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
   }));
 })();
 
-/* hero: before / after drag compare */
+/* before / after drag compare (hero + search rows) */
 (() => {
   const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
   const sw = document.querySelector('.hero-sw');
-  const all = [...document.querySelectorAll('.cmpx')];
-  const api = all.map(box => {
+  const make = box => {
     const range = box.querySelector('.cmpx-range');
     let touched = false, running = false;
     const set = v => { box.style.setProperty('--p', v + '%'); range.value = v; };
     range.addEventListener('input', () => { touched = true; box.classList.add('touched'); set(+range.value); });
-    const hint = () => {
+    return () => {
       if (touched || running) return; running = true;
       const keys = [[0, 50], [700, 32], [1500, 68], [2200, 50]];
       const t0 = performance.now();
@@ -292,15 +291,19 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
       };
       requestAnimationFrame(step);
     };
-    return { box, hint };
-  });
-  const visible = b => !sw || sw.dataset.mode === (b.classList.contains('is-app') ? 'app' : 'web');
-  let seen = false;
+  };
+  const heroBoxes = sw ? [...sw.querySelectorAll('.cmpx')].map(b => ({ b, hint: make(b) })) : [];
+  const heroVisible = b => sw.dataset.mode === (b.classList.contains('is-app') ? 'app' : 'web');
   if (sw) {
+    let seen = false;
     new IntersectionObserver(es => es.forEach(e => {
-      if (e.isIntersecting && !seen) { seen = true; api.forEach(a => visible(a.box) && setTimeout(a.hint, 400)); }
+      if (e.isIntersecting && !seen) { seen = true; heroBoxes.forEach(h => heroVisible(h.b) && setTimeout(h.hint, 400)); }
     }), { threshold: .5 }).observe(sw);
-    sw.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () =>
-      setTimeout(() => api.forEach(a => visible(a.box) && a.hint()), 350)));
+    sw.querySelectorAll('.seg button').forEach(btn => btn.addEventListener('click', () =>
+      setTimeout(() => heroBoxes.forEach(h => heroVisible(h.b) && h.hint()), 350)));
   }
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { io.unobserve(e.target); setTimeout(e.target._hint, 300); }
+  }), { threshold: .6 });
+  document.querySelectorAll('.cmpx.in-plate').forEach(b => { b._hint = make(b); io.observe(b); });
 })();
