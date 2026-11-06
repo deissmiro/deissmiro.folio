@@ -676,3 +676,6 @@ header.compact .bar { height: 72px; }
 /* section label stays visible while its section scrolls */
 .sec h2 { position: sticky; top: calc(var(--hdr-h, 130px) + 20px); align-self: start; transition: top .4s var(--ease); }
 @media (max-width: 820px) { .sec h2 { position: static; } }
+
+/* text fills its column */
+.sec .body p, .sec .body .big, .sec .body .list, .sec .body .feat-text p, .feat.wide .feat-text p, .lab p { max-width: none !important; }
