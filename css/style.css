@@ -196,6 +196,14 @@ body[data-view="work"] .work { margin-top: 32px; }
   .case-text { padding-top: 0; order: 2; }
   .work { gap: 80px; margin-top: 80px; }
 }
+/* ---------- case hero: app + web ---------- */
+.board.duo { position: relative; display: block; }
+.board.duo img { position: absolute; display: block; max-width: none; user-select: none; transition: transform .8s var(--ease); }
+.board.duo img.duo-web { left: 6%; top: 50%; width: 68%; height: auto; border-radius: 1.4% / 2.4%; transform: translateY(-50%); filter: drop-shadow(0 18px 30px rgba(0,0,0,.08)); }
+.board.duo img.duo-app { right: 8%; top: 50%; height: 84%; width: auto; transform: translateY(-50%); filter: drop-shadow(0 18px 30px rgba(0,0,0,.12)); }
+.board.duo:hover img.duo-web { transform: translateY(-50%) translateX(-6px); }
+.board.duo:hover img.duo-app { transform: translateY(-50%) translateX(6px) scale(1.02); }
+
 /* ---------- before / after ---------- */
 .cmp { touch-action: pan-y; isolation: isolate; }
 .cmp-layer { position: absolute; inset: 0; display: grid; place-items: center; background: var(--card); }

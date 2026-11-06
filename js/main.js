@@ -68,47 +68,6 @@
   });
 })();
 
-/* ---------- before / after ---------- */
-(() => {
-  const SH = {
-  "cmp_old": "assets/img/home/cmp_old.webp",
-  "cmp_new": "assets/img/home/cmp_new.webp"
-};
-  const cmp = document.getElementById('cmp'), range = document.getElementById('cmpRange');
-  cmp.querySelectorAll('img[data-k]').forEach(img => { img.src = SH[img.dataset.k]; img.draggable = false; });
-  const set = (v) => {
-    cmp.style.setProperty('--pos', v + '%');
-    cmp.querySelector('.cmp-tag.l').style.opacity = v < 12 ? 0 : 1;
-    cmp.querySelector('.cmp-tag.r').style.opacity = v > 88 ? 0 : 1;
-  };
-  // the line glides toward the pointer instead of jumping
-  let cur = 50, target = 50, raf = 0;
-  const glide = () => {
-    cur += (target - cur) * .14;
-    if (Math.abs(target - cur) < .05) cur = target;
-    set(cur);
-    raf = cur === target ? 0 : requestAnimationFrame(glide);
-  };
-  const go = (v) => { target = v; if (!raf) raf = requestAnimationFrame(glide); };
-  range.addEventListener('input', () => go(+range.value));
-  range.addEventListener('pointerdown', () => cmp.classList.add('drag'));
-  addEventListener('pointerup', () => cmp.classList.remove('drag'));
-  // a short hint on first view: the slider sweeps once
-  let hinted = false;
-  new IntersectionObserver(([e]) => {
-    if (!e.isIntersecting || hinted || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    hinted = true;
-    const t0 = performance.now();
-    const step = (now) => {
-      const k = Math.min((now - t0) / 2200, 1);
-      if (cmp.classList.contains('drag')) return;
-      const v = 50 + Math.sin(k * Math.PI * 2) * 14 * (1 - k);
-      range.value = v; cur = target = v; set(v);
-      if (k < 1) requestAnimationFrame(step);
-    };
-    setTimeout(() => requestAnimationFrame(step), 400);
-  }, { threshold: .4 }).observe(cmp);
-})();
 
 
 /* ---------- search verticals ---------- */
