@@ -476,16 +476,21 @@
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Image preview">
   <div class="lb-win" tabindex="-1">
     <aside class="lb-side">
-      <div class="lb-dots"><button class="lb-dot red" id="lbClose" type="button" aria-label="Close"></button><span class="lb-dot"></span><span class="lb-dot"></span></div>
+      <p class="lb-side-h">Index</p>
       <nav class="lb-tree" id="lbTree" aria-label="Images"></nav>
     </aside>
     <section class="lb-view">
+      <div class="lb-top">
+        <span class="lb-crumb" id="lbCrumb"></span>
+        <span class="lb-count" id="lbCount"></span>
+        <button class="lb-x" id="lbClose" type="button" aria-label="Close">✕</button>
+      </div>
       <div class="lb-stage"><img id="lbImg" alt=""></div>
       <div class="lb-foot">
         <p class="lb-cap" id="lbCap"></p>
-        <div class="lb-keys" aria-hidden="false">
-          <span></span><button type="button" class="lb-key" id="lbUp" aria-label="Previous image">↑</button><span></span>
-          <button type="button" class="lb-key" id="lbPrev" aria-label="Previous image">←</button><button type="button" class="lb-key" id="lbDown" aria-label="Next image">↓</button><button type="button" class="lb-key" id="lbNext" aria-label="Next image">→</button>
+        <div class="lb-arrows">
+          <button type="button" class="lb-arr" id="lbPrev" aria-label="Previous image">←</button>
+          <button type="button" class="lb-arr" id="lbNext" aria-label="Next image">→</button>
         </div>
       </div>
     </section>

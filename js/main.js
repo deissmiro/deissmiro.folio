@@ -162,60 +162,39 @@
 
 })();
 
-/* ---------- lightbox (case pages only): finder-style window ---------- */
+/* ---------- lightbox (case pages only): index + viewer ---------- */
 (() => {
-  const lb = document.getElementById('lb'), img = document.getElementById('lbImg'), cap = document.getElementById('lbCap'), tree = document.getElementById('lbTree');
-  const FOLDER = '<svg width="18" height="15" viewBox="0 0 18 15" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1.5 3.2c0-.9.7-1.7 1.6-1.7h3.6l1.6 1.8h6.6c.9 0 1.6.7 1.6 1.6v7.4c0 .9-.7 1.7-1.6 1.7H3.1c-.9 0-1.6-.8-1.6-1.7V3.2Z"/></svg>';
-  let list = [], idx = 0, files = [], lastFocus = null;
+  const lb = document.getElementById('lb'), img = document.getElementById('lbImg'), cap = document.getElementById('lbCap'), tree = document.getElementById('lbTree'), crumb = document.getElementById('lbCrumb'), count = document.getElementById('lbCount');
+  let list = [], idx = 0, files = [], meta = [], lastFocus = null;
   const captionOf = (el) => el.dataset.caption || el.closest('.fig')?.querySelector('figcaption')?.innerHTML || el.alt || '';
-  const titleOf = (el) => {
-    const t = (el.closest('.fig')?.querySelector('figcaption b')?.textContent || el.dataset.caption?.match(/<b>(.*?)<\/b>/)?.[1] || el.alt || 'image');
-    return t.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '') + '.jpg';
-  };
+  const titleOf = (el) => el.closest('.fig')?.querySelector('figcaption b')?.textContent || el.dataset.caption?.match(/<b>(.*?)<\/b>/)?.[1] || el.alt || 'Image';
   const groupOf = (el) => {
     const fig = el.closest('.fig'), body = fig.closest('.body'), sec = fig.closest('.sec');
     let g = null;
     body && body.querySelectorAll('h3').forEach(h => { if (h.compareDocumentPosition(fig) & Node.DOCUMENT_POSITION_FOLLOWING) g = h.textContent.trim(); });
-    return [sec?.querySelector('h2')?.textContent.trim() || 'Images', g];
+    return [sec?.querySelector('h2')?.textContent.trim() || '', g || ''];
   };
   const build = () => {
-    tree.replaceChildren(); files = [];
-    const roots = new Map();
+    tree.replaceChildren(); files = []; meta = [];
+    let last = null;
     list.forEach((el, k) => {
-      const [r, g] = groupOf(el);
-      if (!roots.has(r)) roots.set(r, new Map());
-      const groups = roots.get(r), key = g || '';
-      if (!groups.has(key)) groups.set(key, []);
-      groups.get(key).push(k);
-    });
-    const folder = (name, open) => {
-      const f = document.createElement('div'); f.className = 'lb-folder' + (open ? '' : ' closed');
-      const b = document.createElement('button'); b.type = 'button';
-      b.innerHTML = FOLDER + `<span>${name}</span><span class="car">▲</span>`;
-      b.addEventListener('click', () => f.classList.toggle('closed'));
-      const kids = document.createElement('div'); kids.className = 'lb-kids';
-      f.append(b, kids); return [f, kids];
-    };
-    roots.forEach((groups, r) => {
-      const [rf, rk] = folder(r, true); tree.appendChild(rf);
-      groups.forEach((ks, g) => {
-        let target = rk;
-        if (g) { const [gf, gk] = folder(g, ks.includes(idx)); gf.dataset.ks = ks.join(','); rk.appendChild(gf); target = gk; }
-        ks.forEach(k => {
-          const b = document.createElement('button'); b.type = 'button'; b.className = 'lb-file'; b.textContent = titleOf(list[k]);
-          b.addEventListener('click', () => { idx = k; render(); });
-          target.appendChild(b); files[k] = b;
-        });
-      });
+      const [sec, g] = groupOf(el); meta[k] = { sec, g, title: titleOf(el) };
+      if (g !== last) { const h = document.createElement('p'); h.className = 'lb-group'; h.textContent = g || sec; tree.appendChild(h); last = g; }
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'lb-file';
+      b.innerHTML = `<span class="th" style="background-image:url('${el.getAttribute('src')}')"></span><span class="n">${String(k + 1).padStart(2, '0')}</span><span class="t"></span>`;
+      b.querySelector('.t').textContent = meta[k].title;
+      b.addEventListener('click', () => { idx = k; render(); });
+      tree.appendChild(b); files[k] = b;
     });
   };
   const render = () => {
-    const el = list[idx];
+    const el = list[idx], m = meta[idx];
     img.src = el.src; img.alt = el.alt;
-    cap.innerHTML = captionOf(el).replace(/^(<b>.*?<\/b>)\s*:?\s*([a-z])?/, (m, b, c) => b + ' — ' + (c ? c.toUpperCase() : ''));
+    cap.innerHTML = captionOf(el).replace(/^(<b>.*?<\/b>)\s*:?\s*([a-z])?/, (x, b, c) => b + ' — ' + (c ? c.toUpperCase() : ''));
+    crumb.innerHTML = [m.sec, m.g].filter(Boolean).map((t, i, a) => i === a.length - 1 ? `<b>${t}</b>` : t).join(' / ');
+    count.textContent = `${String(idx + 1).padStart(2, '0')} / ${String(list.length).padStart(2, '0')}`;
     files.forEach((f, k) => f.setAttribute('aria-current', String(k === idx)));
-    const cur = files[idx]; cur.closest('.lb-folder.closed')?.classList.remove('closed');
-    cur.scrollIntoView({ block: 'nearest' });
+    files[idx].scrollIntoView({ block: 'nearest' });
     img.style.animation = 'none'; img.offsetWidth; img.style.animation = '';
   };
   const open = (el) => {
@@ -226,16 +205,17 @@
   };
   const close = () => { lb.hidden = true; document.body.classList.remove('lb-open'); lastFocus && lastFocus.focus && lastFocus.focus(); };
   const step = (d) => { idx = (idx + d + list.length) % list.length; render(); };
-  const flash = (id) => { const k = document.getElementById(id); k.classList.add('hit'); setTimeout(() => k.classList.remove('hit'), 120); };
+  const flash = (id) => { const k = document.getElementById(id); k.classList.add('hit'); setTimeout(() => k.classList.remove('hit'), 140); };
   document.addEventListener('click', (e) => { const el = e.target.closest('.cs .fig .board img'); if (el) open(el); });
   document.getElementById('lbClose').addEventListener('click', close);
-  [['lbUp', -1], ['lbPrev', -1], ['lbDown', 1], ['lbNext', 1]].forEach(([id, d]) => document.getElementById(id).addEventListener('click', () => step(d)));
+  document.getElementById('lbPrev').addEventListener('click', () => step(-1));
+  document.getElementById('lbNext').addEventListener('click', () => step(1));
   lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
   addEventListener('keydown', (e) => {
     if (lb.hidden) return;
-    const map = { ArrowUp: ['lbUp', -1], ArrowLeft: ['lbPrev', -1], ArrowDown: ['lbDown', 1], ArrowRight: ['lbNext', 1] };
-    if (e.key === 'Escape') close();
-    else if (map[e.key]) { e.preventDefault(); flash(map[e.key][0]); step(map[e.key][1]); }
+    if (e.key === 'Escape') return close();
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); flash('lbNext'); step(1); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); flash('lbPrev'); step(-1); }
   });
   addEventListener('hashchange', () => { if (!lb.hidden) close(); });
 })();
