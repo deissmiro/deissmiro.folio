@@ -346,6 +346,49 @@ body.lb-open { overflow: hidden; }
 .figs.one { grid-template-columns: 1fr; gap: 18px; }
 .fig .board.spec { aspect-ratio: auto; padding: 12px; display: block; }
 .fig .board.spec img { width: 100%; height: auto; transform: none; max-width: 100%; filter: none; border-radius: 6px; }
+/* callouts on the hero app card */
+.callout {
+  position: absolute; top: var(--y); z-index: 2; font-size: 12px; white-space: nowrap; padding: 5px 10px; border-radius: 999px;
+  background: var(--ink); color: var(--bg); transform: translateY(-50%); transition: transform .5s var(--ease);
+}
+.callout.l { left: 10px; } .callout.r { right: 10px; }
+.board.duo-card:hover .callout.l { transform: translate(-3px, -50%); }
+.board.duo-card:hover .callout.r { transform: translate(3px, -50%); }
+@media (max-width: 900px) { .callout { display: none; } }
+
+/* research lab block */
+.lab { background: var(--tutu); color: #fff; border-radius: 20px; padding: clamp(22px, 4vw, 40px); display: grid; gap: 34px; }
+.lab-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 30px; align-items: center; }
+.sec .body .lab h3 { color: #fff; font-size: 22px; margin: 0 0 12px; }
+.sec .body .lab p { color: rgba(255,255,255,.82); font-size: 15px; max-width: none; }
+.lab-quotes { display: grid; gap: 10px; justify-items: start; }
+.lab-quotes q {
+  quotes: none; font-size: 14px; line-height: 1.35; padding: 10px 14px; border-radius: 14px 14px 14px 4px;
+  background: rgba(255,255,255,.16); backdrop-filter: blur(6px); transform: rotate(var(--r)); transition: transform .4s var(--ease), background .3s;
+}
+.lab-quotes q:nth-child(2) { justify-self: end; border-radius: 14px 14px 4px 14px; }
+.lab-quotes q:hover { transform: rotate(0) scale(1.03); background: rgba(255,255,255,.24); }
+.lab-nums { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; border-top: 1px solid rgba(255,255,255,.25); padding-top: 22px; }
+.lab-nums span { display: block; font-size: 13px; color: rgba(255,255,255,.7); margin-bottom: 8px; }
+.lab-nums b { font-size: clamp(36px, 5vw, 56px); line-height: 1; font-weight: 700; letter-spacing: -.02em; }
+@media (max-width: 760px) { .lab-top { grid-template-columns: 1fr; } .lab-quotes q:nth-child(2) { justify-self: start; } }
+@media (max-width: 520px) { .lab-nums { grid-template-columns: 1fr; gap: 16px; } }
+
+/* design feature cards */
+.feat { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 10px; }
+.feat + .feat { margin-top: 0; }
+.feat.rev .feat-img { order: 2; }
+.feat-img { background: var(--card); border-radius: 16px; height: clamp(300px, 34vw, 420px); position: relative; overflow: hidden; }
+.feat-img img { position: absolute; left: 50%; top: 10%; height: 90%; width: auto; max-width: none; translate: -50% 0; border-radius: 20px 20px 0 0; transition: transform .7s var(--ease); filter: drop-shadow(0 12px 24px rgba(0,0,0,.1)); }
+.feat:hover .feat-img img { transform: translateY(-8px); }
+.feat-text { background: var(--card); border-radius: 16px; padding: clamp(20px, 3vw, 32px); display: grid; align-content: center; gap: 12px; }
+.sec .body .feat-text h3 { margin: 0; font-size: 20px; }
+.sec .body .feat-text p { margin: 0; font-size: 15px; color: var(--ink-2); }
+.chip-q { quotes: none; justify-self: start; font-size: 13px; padding: 8px 12px; border-radius: 12px 12px 12px 4px; background: var(--bg); color: var(--ink); }
+.chip-q::before { content: "“"; color: var(--ink-2); margin-right: 2px; }
+.chip-q::after { content: "”"; color: var(--ink-2); margin-left: 2px; }
+@media (max-width: 760px) { .feat { grid-template-columns: 1fr; } .feat.rev .feat-img { order: 0; } }
+
 .sum { padding: 14px 18px; border-radius: 14px; background: var(--card); font-size: 16px; max-width: none !important; }
 
 /* ---------- search verticals ---------- */
