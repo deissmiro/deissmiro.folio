@@ -331,3 +331,14 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
   });
   addEventListener('scroll', () => { if (on && !document.elementFromPoint(x, y)?.closest('a.shot')) { on = false; tip.classList.remove('on'); } }, { passive: true });
 })();
+
+/* mobile: start wide boards from the middle */
+(() => {
+  const center = () => document.querySelectorAll('.wide-fig.pan .shot-plate').forEach(p => {
+    if (p.scrollWidth > p.clientWidth + 4 && !p.dataset.c) { p.scrollLeft = (p.scrollWidth - p.clientWidth) / 2; p.dataset.c = 1; }
+  });
+  document.querySelectorAll('.wide-fig.pan img').forEach(i => i.complete ? center() : i.addEventListener('load', center));
+  addEventListener('hashchange', () => setTimeout(center, 50));
+  addEventListener('resize', center);
+  setTimeout(center, 300);
+})();

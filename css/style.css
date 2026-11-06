@@ -933,3 +933,35 @@ div.shot .ph { transform: translate(-50%, -50%) !important; transition: none; }
 .ba3-grid .ba3.is-app .ba2-text { min-height: 7.5em; align-content: start; }
 .ba3-grid .board.cmpx.in-plate { height: clamp(380px, 42vw, 500px); }
 @media (max-width: 760px) { .ba3-grid { grid-template-columns: 1fr; gap: 40px; } .ba3-grid .ba3.is-app .ba2-text { min-height: 0; } }
+
+/* ---------- mobile pass ---------- */
+@media (max-width: 640px) {
+  /* header: avatar, nav and email on one line */
+  .bar { grid-template-columns: auto 1fr auto; grid-template-rows: auto; height: 64px; padding-block: 0; row-gap: 0; gap: 8px; }
+  header.compact .bar { height: 56px; }
+  .me-name { display: none; }
+  .me-ava { width: 36px; height: 36px; }
+  nav.tabs { grid-column: 2; grid-row: 1; justify-self: center; }
+  .tabs a { padding-inline: 11px; font-size: 15px; }
+  .mail-wrap { grid-column: 3; grid-row: 1; }
+  .btn-mail { padding: 7px 12px; font-size: 15px; gap: 0; }
+  .btn-mail .arr { display: none; }
+
+  /* screenshot rows scroll sideways */
+  .figs:not(.one) { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 10px; margin-inline: -16px; padding: 0 16px 4px; scrollbar-width: none; }
+  .figs:not(.one)::-webkit-scrollbar { display: none; }
+  .figs:not(.one) > .fig { flex: 0 0 72%; scroll-snap-align: start; scroll-margin-left: 16px; }
+
+  /* wide boards: pan inside the plate */
+  .wide-fig.pan .shot-plate { overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .wide-fig.pan .shot-plate::-webkit-scrollbar { display: none; }
+  .wide-fig.pan .shot-plate img { width: 240%; max-width: none; }
+  .wide-fig.pan figcaption::after { content: " Swipe to explore →"; color: var(--ink-2); }
+
+  /* hypotheses and metrics: two per row */
+  .stats, .stats.hyp-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .stat { padding: 16px 14px 14px; gap: 8px; border-radius: 14px; }
+  .stat .n { font-size: 28px; }
+  .hyp-stats .stat .n { font-size: 22px; }
+  .stat .l { font-size: 13.5px; line-height: 1.35; }
+}
