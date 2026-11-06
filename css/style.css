@@ -693,3 +693,7 @@ header.compact .bar { height: 72px; }
 .gal-row .gal-card.web img { width: 88%; height: auto; max-height: 86%; }
 .gal-row .gal-card.app img { height: 86%; width: auto; }
 @media (max-width: 640px) { .gal-row, .gal-row.rev { grid-template-columns: 1fr; } }
+
+.pair-card { height: clamp(280px, 30vw, 380px); }
+.pair-card.web img { width: 88%; height: auto; max-height: 86%; }
+.pair-card.app img { height: 86%; width: auto; max-width: 88%; }
