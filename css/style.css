@@ -701,3 +701,12 @@ header.compact .bar { height: 72px; }
 .gal-row.single { grid-template-columns: 1fr; }
 .gal-row.single .gal-card.web { height: clamp(320px, 44vw, 600px); }
 .gal-row.single .gal-card.web img { width: auto; height: auto; max-width: 88%; max-height: 86%; }
+
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.step { margin: 0; display: grid; gap: 14px; align-content: start; }
+.step-img { height: clamp(320px, 32vw, 440px); position: relative; overflow: hidden; }
+.board.step-img img { position: absolute; inset: 0; margin: auto; height: 86%; width: auto; max-width: 90%; transform: none; }
+.step figcaption { display: grid; gap: 4px; font-size: 14px; line-height: 1.45; color: var(--ink-2); }
+.step figcaption b { color: var(--ink); font-size: 16px; }
+.gal-row.trio { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 640px) { .steps, .gal-row.trio { grid-template-columns: 1fr; } }
