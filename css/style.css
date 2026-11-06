@@ -343,6 +343,9 @@ body.lb-open { overflow: hidden; }
 .find p { margin: 0; font-size: 15px; line-height: 1.4; color: var(--ink-2); }
 @media (max-width: 640px) { .finds { grid-template-columns: 1fr; gap: 18px; } }
 .plat { position: absolute; left: 16px; top: 14px; z-index: 1; font-size: 13px; padding: 4px 10px; border-radius: 999px; background: var(--bg); color: var(--ink); }
+.figs.one { grid-template-columns: 1fr; gap: 18px; }
+.fig .board.spec { aspect-ratio: auto; padding: 12px; display: block; }
+.fig .board.spec img { width: 100%; height: auto; transform: none; max-width: 100%; filter: none; border-radius: 6px; }
 .sum { padding: 14px 18px; border-radius: 14px; background: var(--card); font-size: 16px; max-width: none !important; }
 
 /* ---------- search verticals ---------- */

@@ -238,6 +238,8 @@
   onScroll();
   toTop.addEventListener('click', () => scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }));
   const SH = {
+  "spec_web": "assets/img/home/spec-web.webp",
+  "spec_search": "assets/img/home/spec-search.webp",
   "hm_hotels": "assets/img/home/hm_hotels.webp",
   "hm_bus": "assets/img/home/hm_bus.webp",
   "hm_avia": "assets/img/home/hm_avia.webp",
