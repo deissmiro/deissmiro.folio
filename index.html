@@ -382,7 +382,7 @@
         <ul class="list">
           <li>had rigid components with every option sewn in, so a change for one vertical broke others</li>
           <li>pushed teams to detach and override components, so mockups drifted from the library</li>
-          <li>had states tuned only for the light theme: hover, pressed, disabled and loading broke in the dark one</li>
+          <li>had incomplete states: components lacked hover, pressed and focus, and the states they had broke in the dark theme</li>
           <li>held about 1,700 color tokens in five collections with hidden modes</li>
           <li>named colors by how they look, with transparent colors typed in by hand</li>
           <li>had different values in Figma and in code, so every handoff needed manual checks</li>
@@ -395,6 +395,8 @@
           </div>
           <figcaption><b>Before</b>: the theme mode switches in Figma, and in the dark theme the selected date and the airline badge turn white on white, because their colors were fixed for the light theme.</figcaption>
         </figure>
+        <p>States were missing in the components themselves. The main button had only three:</p>
+        <figure class="wide-fig"><div class="shot-plate"><img src="assets/img/kite/button-states-before.webp" alt="Old Kite button in Figma: the State property offers only Default, Loading and Disabled" loading="lazy"></div><figcaption><b>Before</b>: the button’s State property offered only Default, Loading and Disabled. There was no hover, pressed or focus, so every platform drew them its own way.</figcaption></figure>
       </div>
     </section>
 
