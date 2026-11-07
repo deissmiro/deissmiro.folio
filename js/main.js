@@ -532,3 +532,22 @@ document.querySelectorAll('.roles-sw').forEach(fig => {
     imgs[(cur + 1) % imgs.length].loading = 'eager';
   }, 1800);
 });
+
+// Kite hero: cycle modes like Figma variable modes
+document.querySelectorAll('.kite-hero').forEach(h => {
+  const modes = ['Light', 'Dark', 'White label', 'Status'];
+  const pill = h.querySelector('.kh-pill');
+  let i = 0;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  setInterval(() => {
+    if (document.hidden) return;
+    const r = h.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+    i = (i + 1) % modes.length;
+    const old = pill.querySelector('.kh-t:not(.out)');
+    const nu = document.createElement('span'); nu.className = 'kh-t in'; nu.textContent = modes[i];
+    pill.appendChild(nu);
+    h.dataset.mode = i;
+    requestAnimationFrame(() => requestAnimationFrame(() => { nu.classList.remove('in'); old.classList.add('out'); }));
+    setTimeout(() => old.remove(), 600);
+  }, 1800);
+});
