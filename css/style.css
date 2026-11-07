@@ -1288,3 +1288,4 @@ body[data-view="work"] .impact { display: none; }
 .docs-plate { background: #fff; padding: 0; border: 1px solid #e6e6e3; border-radius: 16px; }
 .docs-plate video { border-radius: 0; }
 @media (max-width: 720px) { .docs-plate { padding: 0; } }
+.docs-fig { margin-top: 48px; }
