@@ -452,6 +452,18 @@
           <p>I rebuilt Kite as layers. Primitives hold raw values, semantic tokens give them meaning, a state layer adds interaction, and components only read roles from the layer above.</p>
           <p>Every brand has its own primitives, and one brand mode switches the whole stack. The theme switches in semantics, the state in the state layer. Nothing is hardcoded inside a component, so a new brand, theme or state never means a new variant.</p>
         </div>
+        <figure class="wide-fig roles-sw mt-fig phone">
+          <div class="board roles-plate"><div class="rp-media">
+            <img data-modes="Brand=Main" class="on" src="assets/img/kite/brand-default.webp" alt="A screen in the main brand: purple buttons with medium corners">
+            <img data-modes="Brand=White label" src="assets/img/kite/brand-white-label.webp" alt="The same screen as a white label: red and grey pill-shaped buttons" loading="lazy">
+          </div><div class="vm" aria-hidden="true"></div>
+          </div>
+        </figure>
+        <div class="two-col">
+          <h3>White labels</h3>
+          <p>A brand is more than a color. Corner radius, button shape, type and spacing are tokens too, so the whole design language adapts to a partner.</p>
+          <p>The same screen and the same components become a different product: a new white label is a new set of values, not a new library.</p>
+        </div>
         <figure class="wide-fig roles-sw mt-fig">
           <div class="board roles-plate"><div class="rp-media">
             <img data-modes="Theme=Light;Color group=neutral" class="on" src="assets/img/kite/roles-neutral.webp" alt="A notification block in the neutral group: each part points to its role token">
@@ -498,30 +510,6 @@
           <p>Both themes come from the same roles. Components stay the same, only the values behind the tokens change.</p>
           <p>Every screen gets a dark theme without extra layouts, and states keep their contrast in both.</p>
         </div>
-        <figure class="wide-fig roles-sw mt-fig phone">
-          <div class="board roles-plate"><div class="rp-media">
-            <img data-modes="Brand=Main" class="on" src="assets/img/kite/brand-default.webp" alt="A screen in the main brand: purple buttons with medium corners">
-            <img data-modes="Brand=White label" src="assets/img/kite/brand-white-label.webp" alt="The same screen as a white label: red and grey pill-shaped buttons" loading="lazy">
-          </div><div class="vm" aria-hidden="true"></div>
-          </div>
-        </figure>
-        <div class="two-col">
-          <h3>White labels</h3>
-          <p>A brand is more than a color. Corner radius, button shape, type and spacing are tokens too, so the whole design language adapts to a partner.</p>
-          <p>The same screen and the same components become a different product: a new white label is a new set of values, not a new library.</p>
-        </div>
-        <figure class="wide-fig roles-sw mt-fig phone">
-          <div class="board roles-plate"><div class="rp-media">
-            <img data-modes="State=Default" class="on" src="assets/img/kite/loading-content.webp" alt="A screen with cards, a progress bar and list items">
-            <img data-modes="State=Loading" src="assets/img/kite/loading-skeleton.webp" alt="The same screen in the loading state, drawn as a skeleton" loading="lazy">
-          </div><div class="vm" aria-hidden="true"></div>
-          </div>
-        </figure>
-        <div class="two-col">
-          <h3>Loading in one click</h3>
-          <p>Skeletons are built into the components. One property turns a whole screen into its loading state.</p>
-          <p>The shapes follow the real layout, so nobody draws loading screens by hand and they never fall out of sync.</p>
-        </div>
         <figure class="wide-fig roles-sw mt-fig phone st">
           <div class="board roles-plate"><div class="rp-media">
             <img data-modes="State=Default" class="on" src="assets/img/kite/state-default.webp" alt="An action card in the default state">
@@ -535,6 +523,18 @@
           <h3>States as a mode</h3>
           <p>Hover, active and focus used to be separate variants of every component. I moved states into a variable mode, so one component switches its tokens instead of swapping variants.</p>
           <p>With 68 components and four states, that is <b>272 variants down to 68</b>: over 200 variants nobody has to draw or keep in sync, and every new component gets all its states for free.</p>
+        </div>
+        <figure class="wide-fig roles-sw mt-fig phone">
+          <div class="board roles-plate"><div class="rp-media">
+            <img data-modes="State=Default" class="on" src="assets/img/kite/loading-content.webp" alt="A screen with cards, a progress bar and list items">
+            <img data-modes="State=Loading" src="assets/img/kite/loading-skeleton.webp" alt="The same screen in the loading state, drawn as a skeleton" loading="lazy">
+          </div><div class="vm" aria-hidden="true"></div>
+          </div>
+        </figure>
+        <div class="two-col">
+          <h3>Loading in one click</h3>
+          <p>Skeletons are built into the components. One property turns a whole screen into its loading state.</p>
+          <p>The shapes follow the real layout, so nobody draws loading screens by hand and they never fall out of sync.</p>
         </div>
       </div>
     </section>
