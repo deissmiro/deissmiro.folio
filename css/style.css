@@ -1189,3 +1189,7 @@ body[data-view="work"] .impact { display: none; }
 .tk-modes { grid-column: 1 / -1; margin: 6px 0 0; font-size: 13px; color: var(--ink-2); }
 .tk-modes span { color: var(--ink); font-weight: 700; margin-right: 8px; }
 @media (max-width: 640px) { .tk { grid-template-columns: 1fr; padding: 16px; } .tk-ar { transform: rotate(90deg); justify-self: start; padding: 0 0 0 8px; } }
+
+/* pull quote */
+.pull { margin: 28px 0; padding: 0; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.35; font-weight: 700; color: var(--ink); }
+.pull::before { content: "“"; display: block; font-size: 1.6em; line-height: .6; color: var(--ink-2); margin-bottom: 6px; }

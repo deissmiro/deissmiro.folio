@@ -88,6 +88,16 @@
 
     <article class="case" data-draft>
       <div class="case-text">
+        <h2>Kite Design System: From Rigid Contracts to a Flexible Architecture</h2>
+        <p>I rebuilt Tutu’s design system from rigid component contracts to a flexible architecture across verticals, brands and themes.</p>
+        <div class="who"><span class="logo" aria-hidden="true"></span>Tutu travel — Senior Product Designer</div>
+        <a class="cases-link" href="#case-kite">Read case <span class="a">→</span></a>
+      </div>
+      <a class="shot" data-screen="kite" href="#case-kite" aria-label="Open case: Kite Design System"><img class="ph" src="assets/img/home/hero-app.webp" alt="Tutu app" draggable="false"></a>
+    </article>
+
+    <article class="case" data-draft>
+      <div class="case-text">
         <h2>START Design System: One System for Two Brands</h2>
         <p>I rebuilt START’s design system during the redesign and rebrand: <b>2</b> brands and <b>5+</b> product teams on one set of tokens and components.</p>
         <div class="who"><span class="logo start" aria-hidden="true"></span>START — Product Designer</div>
@@ -343,6 +353,59 @@
       <div class="gal-card app c4 r3"><img src="assets/img/home/v_car.webp" alt="App search: car rental" loading="lazy"></div>
       <div class="gal-card app c4 r3"><img src="assets/img/home/v_stay.webp" alt="App search: stays" loading="lazy"></div>
       <div class="gal-card app c4 r3"><img src="assets/img/home/sheet-dates.webp" alt="App date picker" loading="lazy"></div>
+    </section>
+
+    <nav class="next" aria-label="Next case">
+      <div><span>More work</span><a class="t" href="#work">Work</a></div>
+      <a class="cases-link" href="#work">Back to work <span class="a">→</span></a>
+    </nav>
+  </article>
+
+  <article class="cs" id="view-case-kite" hidden>
+    <div class="cs-head">
+      <a class="back-btn" href="#work" aria-label="Back to work"><span class="a">←</span></a>
+      <h1>Kite Design System: From Rigid Contracts to a Flexible Architecture</h1>
+      <p class="lede">Tutu is one app for trains, flights, buses, commuter trains, hotels, cars and tours. I rebuilt its design system from rigid component contracts to an architecture that teams follow instead of working around.</p>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>Senior Product Designer, Design Systems</dd></div>
+        <div><dt>Company</dt><dd><span class="logo" aria-hidden="true"></span>Tutu</dd></div>
+        <div><dt>Scope</dt><dd>Components, states, color tokens, tooling</dd></div>
+        <div><dt>When</dt><dd>2025 – 2026</dd></div>
+      </dl>
+    </div>
+
+    <section class="sec">
+      <h2>Context</h2>
+      <div class="body">
+        <p class="big">Travel looks simple from the outside, but the product is anything but. One app holds many verticals, and each brings its own hard patterns: round trips, seat selection, complex filters, date pickers, ticket cards and refunds.</p>
+        <p>All of these run on one design system, Kite. It serves several product teams and several brands at once, in a light and a dark theme. Every decision in it is multiplied by every vertical, brand and theme, so when the system bends the wrong way, the whole product feels it.</p>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>Part 1. There</h2>
+      <div class="body">
+        <p class="big">How we got to a rebuild.</p>
+        <p>At the start we wanted what every team wants: strict, “correct” components with no room to step left or right. And at first it worked. The product finally looked consistent, nobody built their own thing, and everyone was happy.</p>
+        <p>Then the product kept living. New verticals, experiments and promo needs didn’t fit the strict components, so teams started working around them. Designers detached and overrode components in Figma, developers couldn’t rebuild what was in the mockup, and every team solved the same problem in its own way.</p>
+        <blockquote class="pull">It looked like the problem was people breaking the rules. For us it was the sign that the rules themselves were broken.</blockquote>
+        <p>That changed the question. Instead of making people follow the system harder, I set out to rebuild the system so that its contracts help teams instead of blocking them.</p>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>Problem</h2>
+      <div class="body">
+        <p>An audit of Kite found problems on every level, from single components to the token model behind them.</p>
+        <div class="stats hyp-stats">
+          <div class="stat"><span class="n">01</span><span class="l"><b>Rigid contracts.</b> Components were built as giants with every possible option sewn in. A small change for one vertical, like an extra icon for flights, could break the same component for trains.</span></div>
+          <div class="stat"><span class="n">02</span><span class="l"><b>Overrides everywhere.</b> When a component didn’t fit, designers detached it or hid layers. Mockups drifted from the library, and developers couldn’t tell what was real.</span></div>
+          <div class="stat"><span class="n">03</span><span class="l"><b>Broken states in the dark theme.</b> Hover, pressed, disabled and loading states were tuned for the light theme. In the dark one they lost contrast, blended into surfaces or looked like a different component.</span></div>
+          <div class="stat"><span class="n">04</span><span class="l"><b>Too many tokens.</b> Around 1,700 color tokens sat in five collections, each with its own modes. To pick one color you had to know which hidden mode it lived in.</span></div>
+          <div class="stat"><span class="n">05</span><span class="l"><b>Colors named by looks.</b> The palette used names invented for one brand. In another brand the same name pointed to a different color, and transparent colors were typed in by hand.</span></div>
+          <div class="stat"><span class="n">06</span><span class="l"><b>Design and code out of sync.</b> The same element had different values in Figma and in code, so every handoff needed manual checks.</span></div>
+        </div>
+      </div>
     </section>
 
     <nav class="next" aria-label="Next case">
