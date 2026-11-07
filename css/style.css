@@ -1245,3 +1245,4 @@ body[data-view="work"] .impact { display: none; }
 .duo-cards p { margin: 0; }
 @media (max-width: 720px) { .duo-cards { grid-template-columns: 1fr; gap: 40px; } }
 .duo-cards h3 { margin: 0 0 12px !important; } .duo-cards p { margin: 0 !important; }
+.roles-sw.phone .roles-plate { aspect-ratio: 1600 / 1222; }
