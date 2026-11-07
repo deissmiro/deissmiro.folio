@@ -1222,3 +1222,19 @@ body[data-view="work"] .impact { display: none; }
 .figs.trio .board img { position: static; width: 100%; height: 100%; max-width: 100%; object-fit: contain; transform: none; translate: none; border-radius: 6px; margin: 0; }
 .figs.trio figcaption { font-size: 13px; }
 @media (max-width: 640px) { .figs.trio > .fig { flex-basis: 78%; } }
+
+/* Kite: color groups switcher */
+.roles-sw .roles-plate { position: relative; aspect-ratio: 1650 / 810; height: auto; padding: 0; overflow: hidden; display: block; }
+.roles-sw .roles-plate img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity .5s var(--ease); cursor: default; }
+.roles-sw .roles-plate img.on { opacity: 1; }
+.grp-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.grp-tabs button { position: relative; overflow: hidden; font: inherit; font-size: 14px; border: 0; background: var(--chip); color: var(--ink-2); padding: 7px 14px; border-radius: 999px; cursor: pointer; transition: background .25s, color .25s; }
+.grp-tabs button:hover { color: var(--ink); }
+.grp-tabs button[aria-selected="true"] { background: var(--ink); color: #fff; }
+.grp-tabs button i { position: absolute; left: 0; bottom: 0; height: 2px; width: 0; background: rgba(255,255,255,.55); }
+.grp-tabs button[aria-selected="true"] i { animation: grp-prog var(--dur, 2.2s) linear forwards; }
+.grp-tabs.paused button i { animation-play-state: paused; }
+@keyframes grp-prog { to { width: 100%; } }
+.roles-sw .roles-plate { background: var(--stage, #f0f0ee); }
+.roles-sw .roles-plate img { inset: 6%; width: 88%; height: 88%; border-radius: 14px; }
+.roles-sw .roles-plate img.in { animation: none; }

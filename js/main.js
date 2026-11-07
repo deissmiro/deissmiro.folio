@@ -386,7 +386,7 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
 /* image viewer: click a case image to look at it in detail */
 (() => {
   const SEL = '.cs .board img, .cs .shot-plate img, .cs .gal-card img, .cs .fig img, .cs .pair img, .cs .ba2 img';
-  const ok = img => img.closest('.cs') && !img.closest('.cmpx') && !img.closest('.hero-sw');
+  const ok = img => img.closest('.cs') && !img.closest('.cmpx') && !img.closest('.hero-sw') && !img.closest('.roles-plate');
   const v = document.createElement('div');
   v.className = 'zv'; v.hidden = true; v.setAttribute('role', 'dialog'); v.setAttribute('aria-modal', 'true'); v.setAttribute('aria-label', 'Image viewer');
   v.innerHTML = '<div class="zv-card" tabindex="-1"><div class="zv-media"><div class="zv-stage"><img class="zv-img" alt=""></div>' +
@@ -505,3 +505,28 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
     });
   });
 })();
+
+// Kite: color groups switcher (auto-cycles like a gif)
+document.querySelectorAll('.roles-sw').forEach(fig => {
+  const imgs = [...fig.querySelectorAll('.roles-plate img')];
+  const tabs = fig.querySelector('.grp-tabs');
+  const DUR = 2200, reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  tabs.style.setProperty('--dur', DUR + 'ms');
+  const btns = imgs.map((img, i) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('role', 'tab'); b.innerHTML = img.dataset.g + '<i></i>';
+    b.addEventListener('click', () => { show(i); restart(); });
+    tabs.appendChild(b); return b;
+  });
+  let cur = 0, timer = null, hover = false;
+  function show(i) {
+    cur = (i + imgs.length) % imgs.length;
+    imgs.forEach((im, k) => im.classList.toggle('on', k === cur));
+    btns.forEach((b, k) => { b.setAttribute('aria-selected', k === cur); const bar = b.querySelector('i'); bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = ''; });
+    imgs[(cur + 1) % imgs.length].loading = 'eager';
+  }
+  function restart() { clearInterval(timer); if (reduce) return; timer = setInterval(() => { if (!hover && !document.hidden) show(cur + 1); }, DUR); }
+  fig.addEventListener('mouseenter', () => { hover = true; tabs.classList.add('paused'); });
+  fig.addEventListener('mouseleave', () => { hover = false; tabs.classList.remove('paused'); restart(); });
+  show(0); restart();
+});
