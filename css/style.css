@@ -1312,3 +1312,5 @@ body[data-view="work"] .impact { display: none; }
   .arch-row { grid-template-columns: minmax(0,1fr) auto; gap: 10px; }
   .arch-tok { grid-column: 1 / -1; grid-row: 2; }
 }
+.arch-plate { padding: 24px 16px; }
+.arch-svg { display: block; width: 100%; height: auto; }
