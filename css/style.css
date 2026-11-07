@@ -1087,3 +1087,5 @@ body[data-view="work"] .impact { display: none; }
 .job-impact { display: grid; justify-items: start; gap: 14px; margin: 28px 0 32px; }
 .job-impact a { font-size: 18px; text-decoration: underline; text-decoration-color: rgba(12,12,12,.25); text-underline-offset: 6px; text-decoration-thickness: 1.5px; transition: text-decoration-color .25s; }
 .job-impact a:hover { text-decoration-color: var(--ink); }
+.job-impact { gap: 8px; margin: 20px 0 28px; }
+.job-impact a { font-size: 15px; text-underline-offset: 4px; text-decoration-thickness: 1px; }
