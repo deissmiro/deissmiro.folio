@@ -377,17 +377,14 @@
     <section class="sec">
       <h2>Problem</h2>
       <div class="body">
-        <p class="big">Tutu sells trains, flights, buses, commuter trains, stays, car rental and tours. All of them are built on one design system, Kite, in several brands and in a light and a dark theme. The system was designed as strict contracts and stopped keeping up with the product.</p>
-        <p>The goal was to rebuild Kite so it scales across verticals, brands and themes. The current system:</p>
+        <p class="big">All Tutu verticals run on one design system, Kite, in several brands and two themes. It was built on rigid contracts and stopped keeping up with the product.</p>
         <ul class="list">
-          <li>had rigid components with every option sewn in, so a change for one vertical broke others</li>
-          <li>pushed teams to detach and override components, so mockups drifted from the library</li>
-          <li>had incomplete states: components lacked hover, pressed and focus, and the states they had broke in the dark theme</li>
-          <li>held about 1,700 color tokens in five collections with hidden modes</li>
-          <li>named colors by how they look, with transparent colors typed in by hand</li>
-          <li>had different values in Figma and in code, so every handoff needed manual checks</li>
+          <li>rigid components: a change for one vertical broke others</li>
+          <li>incomplete states that broke in the dark theme</li>
+          <li>~1,700 color tokens with hidden modes</li>
+          <li>Figma and code out of sync</li>
         </ul>
-        <p>The theme switch showed it best. In the dark theme, inverted elements like the selected date and the airline badge turned white on white:</p>
+        <p>The theme switch showed it best:</p>
         <figure class="wide-fig theme-demo">
           <div class="td-plate">
             <video class="td-screen" src="assets/img/kite/theme-bug.mp4" poster="assets/img/kite/theme-bug-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="Mobile search results switching between dark and light theme: in dark, selected and inverted elements lose their contrast"></video>
