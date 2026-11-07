@@ -1204,3 +1204,15 @@ body[data-view="work"] .impact { display: none; }
 .td-plate { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; padding: 32px; }
 .td-screen { width: auto; max-width: 100%; height: clamp(380px, 46vw, 540px); justify-self: center; border-radius: 22px; }
 @media (max-width: 640px) { .td-plate { grid-template-columns: 1fr; } .td-screen { height: 440px; } }
+/* theme demo: bigger, phone bleeds off the bottom like the Wise example */
+.td-plate { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: start; gap: 40px; padding: 48px 48px 0; height: clamp(440px, 56vw, 640px); overflow: hidden; }
+.td-screen { width: 100%; max-width: 440px; height: auto; justify-self: center; border-radius: 28px 28px 0 0; }
+.td-panel { margin-top: 8px; border-radius: 16px; }
+@media (max-width: 640px) {
+  .td-plate { grid-template-columns: 1fr; height: auto; padding: 20px 20px 0; gap: 16px; }
+  .td-panel { order: -1; width: 100%; }
+  .td-screen { height: 420px; width: auto; object-fit: cover; object-position: top; }
+}
+.td-plate { height: auto; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); padding: 44px 44px 0; }
+.td-screen { max-width: 470px; display: block; }
+@media (max-width: 640px) { .td-plate { padding: 16px 16px 0; } .td-screen { height: auto; width: 100%; } }
