@@ -1063,3 +1063,8 @@ html.zv-lock, html.zv-lock body { overflow: hidden; }
   .zv-prev { left: 8px; right: auto; } .zv-next { right: 8px; left: auto; }
   .zv:not(.single) .zv-bar { padding-right: 6px; }
 }
+
+/* to-top: bigger, white, with a shadow */
+.to-top { width: 60px; height: 60px; font-size: 24px; background: #fff; color: var(--ink); box-shadow: 0 8px 28px rgba(0,0,0,.14), 0 1px 3px rgba(0,0,0,.08); right: calc(28px + env(safe-area-inset-right, 0px)); bottom: calc(28px + env(safe-area-inset-bottom, 0px)); }
+.to-top:hover { background: var(--ink); color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.2); }
+@media (max-width: 640px) { .to-top { width: 54px; height: 54px; font-size: 22px; right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); } }
