@@ -365,7 +365,7 @@
     <div class="cs-head">
       <a class="back-btn" href="#work" aria-label="Back to work"><span class="a">←</span></a>
       <h1>Kite Design System: From Rigid Contracts to a Flexible Architecture</h1>
-      <p class="lede">Flights, trains, buses and stays at Tutu all run on one design system. I rebuilt Kite from the tokens up, so one set of components serves every brand, theme and state, without forks or detached copies.</p>
+      <p class="lede">Kite is Tutu’s design system. One set of tokens and components powers flights, trains, buses and stays on iOS, Android and web, as well as white-label products for partners. I rebuilt it from the tokens up, so every brand, theme and state comes from the same source.</p>
       <dl class="meta">
         <div><dt>Role</dt><dd>Senior Product Designer, Design Systems</dd></div>
         <div><dt>Company</dt><dd><span class="logo" aria-hidden="true"></span>Tutu</dd></div>
@@ -377,7 +377,7 @@
     <section class="sec">
       <h2>Problem</h2>
       <div class="body">
-        <p class="big">Kite already supported white labels, but only by swapping colors. Shapes, type and the dark theme didn’t adapt. Then the product went through a redesign, and we took a closer look at the system.</p>
+        <p class="big">Kite grew around the product rather than ahead of it. White labels were handled by swapping colors alone, while shapes, type and the dark theme stayed hardcoded. When the product started a redesign, every new screen ran into the same limits, so I began with an audit of the system itself.</p>
         <figure class="wide-fig roles-sw phone bug">
           <div class="board roles-plate"><div class="rp-media">
             <img data-modes="Theme=Light" class="on" src="assets/img/kite/bug-light.webp" alt="Flight search results in the light theme: the selected date is a dark chip">
@@ -386,12 +386,12 @@
           </div>
           <figcaption><b>Before.</b> Switch the theme and parts of the screen don’t follow: the selected date turns white on white and the rail tab fades into the background. Their colors were fixed for the light theme.</figcaption>
         </figure>
-        <p>The visible bugs were only the tip of the iceberg. Underneath, the audit found four root causes:</p>
+        <p>The visible bugs were symptoms. The audit traced them to four structural issues:</p>
         <ul class="list">
-          <li><span><b>Rigid contracts.</b> A change for one vertical broke the others, so teams detached components.</span></li>
-          <li><span><b>Missing states.</b> No hover, pressed or focus, and states that broke in the dark theme.</span></li>
-          <li><span><b>~1,700 color tokens</b> named by look, with hidden modes.</span></li>
-          <li><span><b>Two sources of truth.</b> Figma and code drifted apart.</span></li>
+          <li><span><b>Rigid component contracts.</b> Components couldn’t flex to real content, so teams detached them and lost every update.</span></li>
+          <li><span><b>Incomplete state model.</b> No hover, pressed or focus, and the existing states weren’t theme-aware.</span></li>
+          <li><span><b>Token sprawl.</b> About 1,700 color tokens, named by appearance rather than purpose, with hidden modes.</span></li>
+          <li><span><b>Design–code drift.</b> Figma and code defined values separately, so they kept diverging.</span></li>
         </ul>
         <div class="figs trio">
           <figure class="fig"><div class="board hov"><img src="assets/img/kite/button-states-before.webp" alt="Old Kite button: the State property offers only Default, Loading and Disabled" loading="lazy"></div><figcaption><b>Missing states</b>: the main button had only Default, Loading and Disabled. No hover, pressed or focus.</figcaption></figure>
@@ -405,7 +405,7 @@
       <h2>Research</h2>
       <div class="body">
         <p>I ran interviews with the designers and developers who work with Kite every day, to find out what slows them down and what they complain about.</p>
-        <figure class="wide-fig pan"><div class="shot-plate"><img src="assets/img/kite/research-board.webp" alt="Interview boards for two designers: five areas with scores and color-coded notes" loading="lazy"></div><figcaption>Each interview became a board: <b>five areas</b>, a score for each and notes sorted into what works, what hurts and what to add.</figcaption></figure>
+        <figure class="wide-fig pan"><div class="shot-plate clean"><img src="assets/img/kite/research-board.webp" alt="Interview boards for two designers: five areas with scores and color-coded notes" loading="lazy"></div><figcaption>Each interview became a board: <b>five areas</b>, a score for each and notes sorted into what works, what hurts and what to add.</figcaption></figure>
         <p>The same complaints came up again and again:</p>
         <ul class="list">
           <li><span>the library was heavy and slow to load</span></li>
@@ -414,20 +414,6 @@
           <li><span>components didn’t adapt properly to brands and the dark theme</span></li>
           <li><span>values in Figma didn’t match what developers had in code</span></li>
         </ul>
-      </div>
-    </section>
-
-    <section class="sec">
-      <h2>Hypotheses</h2>
-      <div class="body">
-        <div class="stats hyp-stats">
-          <div class="stat"><span class="n">01</span><span class="l"><b>Flexible contracts.</b> Components built from slots and properties will fit every vertical without detaching.</span></div>
-          <div class="stat"><span class="n">02</span><span class="l"><b>States from tokens.</b> If states come from semantic tokens, they will work in both themes, loading included.</span></div>
-          <div class="stat"><span class="n">03</span><span class="l"><b>A flat token model.</b> Fewer collections and no hidden modes will make the right token easy to find.</span></div>
-          <div class="stat"><span class="n">04</span><span class="l"><b>Names by meaning.</b> Naming colors by role, not by look, will turn a new brand into mapping values.</span></div>
-          <div class="stat"><span class="n">05</span><span class="l"><b>One source of truth.</b> Shared tokens for design and code will remove manual checks at handoff.</span></div>
-          <div class="stat"><span class="n">06</span><span class="l"><b>Tools over rules.</b> Figma plugins will keep teams on the system better than documentation alone.</span></div>
-        </div>
       </div>
     </section>
 

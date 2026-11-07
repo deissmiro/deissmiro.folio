@@ -1331,3 +1331,4 @@ body[data-view="work"] .impact { display: none; }
 .case:hover .kite-cover .deck1 { transform: translateY(8px); }
 .case:hover .kite-cover .deck2 { transform: translateY(16px); }
 @media (prefers-reduced-motion: reduce) { .kite-cover .kc { animation: none; transition: none; } }
+.shot-plate.clean { background: #fff; border: 1px solid #e6e6e3; padding: 0; overflow: hidden; } .shot-plate.clean img { border-radius: 0; }
