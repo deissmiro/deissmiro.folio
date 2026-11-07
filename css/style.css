@@ -1317,3 +1317,4 @@ body[data-view="work"] .impact { display: none; }
 .roles-sw.bug figcaption { margin-top: 12px; }
 .mt-big { margin-top: 32px !important; }
 .docs-fig.mt-fig { margin-top: 56px; }
+#view-case-kite .cs-head + .sec { margin-top: -84px; }

@@ -377,7 +377,7 @@
     <section class="sec">
       <h2>Problem</h2>
       <div class="body">
-        <p class="big">Kite was built for one product in one theme. Then came new verticals, white-label partners and a dark theme, and the system started to crack.</p>
+        <p class="big">Kite already supported white labels, but only by swapping colors. Shapes, type and the dark theme didn’t adapt. Then the product went through a redesign, and we took a closer look at the system.</p>
         <figure class="wide-fig roles-sw phone bug">
           <div class="board roles-plate"><div class="rp-media">
             <img data-modes="Theme=Light" class="on" src="assets/img/kite/bug-light.webp" alt="Flight search results in the light theme: the selected date is a dark chip">
@@ -386,7 +386,7 @@
           </div>
           <figcaption><b>Before.</b> Switch the theme and parts of the screen don’t follow: the selected date turns white on white and the rail tab fades into the background. Their colors were fixed for the light theme.</figcaption>
         </figure>
-        <p>The bug was a symptom. The audit found four root causes:</p>
+        <p>The visible bugs were only the tip of the iceberg. Underneath, the audit found four root causes:</p>
         <ul class="list">
           <li><span><b>Rigid contracts.</b> A change for one vertical broke the others, so teams detached components.</span></li>
           <li><span><b>Missing states.</b> No hover, pressed or focus, and states that broke in the dark theme.</span></li>
@@ -404,26 +404,16 @@
     <section class="sec">
       <h2>Research</h2>
       <div class="body">
-        <div class="lab">
-          <div class="lab-top">
-            <div class="lab-text">
-              <h3>Designer interviews</h3>
-              <p>Before touching a single token, I talked to the people who use Kite every day. Product designers from different verticals rated five areas: onboarding, daily work, communication with the system team, value and wishes.</p>
-            </div>
-            <div class="lab-quotes" aria-label="What designers said">
-              <q style="--r:-2deg">I detach the cell to fit my content</q>
-              <q style="--r:1.5deg">Not clear which color token to pick</q>
-              <q style="--r:-1deg">I want guides right inside Figma</q>
-            </div>
-          </div>
-        </div>
+        <p>I ran interviews with the designers and developers who work with Kite every day, to find out what slows them down and what they complain about.</p>
         <figure class="wide-fig pan"><div class="shot-plate"><img src="assets/img/kite/research-board.webp" alt="Interview boards for two designers: five areas with scores and color-coded notes" loading="lazy"></div><figcaption>Each interview became a board: <b>five areas</b>, a score for each and notes sorted into what works, what hurts and what to add.</figcaption></figure>
-        <h3 class="mt">What we heard</h3>
-        <div class="stats hyp-stats">
-          <div class="stat"><span class="n">01</span><span class="l"><b>Detached components.</b> Components didn’t fit real content, so designers broke them apart and lost every update.</span></div>
-          <div class="stat"><span class="n">02</span><span class="l"><b>Guessing tokens.</b> Nobody was sure which token to pick, especially for states and the dark theme.</span></div>
-          <div class="stat"><span class="n">03</span><span class="l"><b>Answers in chat.</b> The rules lived in people’s heads, so every question went to the system team.</span></div>
-        </div>
+        <p>The same complaints came up again and again:</p>
+        <ul class="list">
+          <li><span>the library was heavy and slow to load</span></li>
+          <li><span>too many components, and no clear way to choose between them</span></li>
+          <li><span>not enough colors for real cases</span></li>
+          <li><span>components didn’t adapt properly to brands and the dark theme</span></li>
+          <li><span>values in Figma didn’t match what developers had in code</span></li>
+        </ul>
       </div>
     </section>
 
