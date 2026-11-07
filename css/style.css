@@ -1107,3 +1107,4 @@ body[data-view="work"] .impact { display: none; }
 .sk-tools { grid-column: 1 / -1; margin: 0; font-size: 15px; color: var(--ink-2); }
 .sk-tools span { color: var(--ink); font-weight: 700; margin-right: 8px; }
 @media (max-width: 640px) { .skills { grid-template-columns: 1fr; gap: 28px; } .sk-item summary { font-size: 16px; } }
+.exp > .skills { margin-top: 24px; }
