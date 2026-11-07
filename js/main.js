@@ -382,3 +382,64 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
   setTimeout(fallback, 9000);
   addEventListener('avatar-failed', fallback);
 })();
+
+/* image viewer: click a case image to look at it in detail */
+(() => {
+  const SEL = '.cs .board img, .cs .shot-plate img, .cs .gal-card img, .cs .fig img, .cs .pair img, .cs .ba2 img';
+  const ok = img => img.closest('.cs') && !img.closest('.cmpx') && !img.closest('.hero-sw');
+  const v = document.createElement('div');
+  v.className = 'zv'; v.hidden = true; v.setAttribute('role', 'dialog'); v.setAttribute('aria-modal', 'true'); v.setAttribute('aria-label', 'Image viewer');
+  v.innerHTML = '<div class="zv-stage"><img class="zv-img" alt=""></div>' +
+    '<button class="zv-btn zv-close" type="button" aria-label="Close">✕</button>' +
+    '<button class="zv-btn zv-prev" type="button" aria-label="Previous image">←</button>' +
+    '<button class="zv-btn zv-next" type="button" aria-label="Next image">→</button>' +
+    '<div class="zv-bar"><span class="zv-cap"></span><span class="zv-n"></span><span class="zv-hint">Click to zoom</span></div>';
+  document.body.appendChild(v);
+  const stage = v.querySelector('.zv-stage'), big = v.querySelector('.zv-img');
+  let list = [], i = 0, zoom = false, last = null;
+  const caption = img => { const f = img.closest('figure'); const c = f && f.querySelector('figcaption'); return (c ? c.textContent : img.alt || '').trim(); };
+  const show = k => {
+    i = (k + list.length) % list.length; const src = list[i];
+    setZoom(false); big.src = src.currentSrc || src.src; big.alt = src.alt || '';
+    v.querySelector('.zv-cap').textContent = caption(src);
+    v.querySelector('.zv-n').textContent = list.length > 1 ? `${i + 1} / ${list.length}` : '';
+    v.classList.toggle('single', list.length < 2);
+  };
+  const setZoom = (z, e) => {
+    const can = big.naturalWidth > stage.clientWidth || big.naturalHeight > stage.clientHeight;
+    zoom = z && can; v.classList.toggle('zoomed', zoom); v.classList.toggle('nozoom', !can);
+    if (zoom && e) { const r = big.getBoundingClientRect(); const fx = (e.clientX - r.left) / r.width, fy = (e.clientY - r.top) / r.height;
+      requestAnimationFrame(() => { stage.scrollLeft = fx * stage.scrollWidth - stage.clientWidth / 2; stage.scrollTop = fy * stage.scrollHeight - stage.clientHeight / 2; }); }
+  };
+  const open = img => {
+    const view = img.closest('.cs'); list = [...view.querySelectorAll(SEL)].filter(ok);
+    last = document.activeElement; v.hidden = false; document.documentElement.classList.add('zv-lock');
+    show(list.indexOf(img)); v.querySelector('.zv-close').focus();
+  };
+  const close = () => { v.hidden = true; setZoom(false); document.documentElement.classList.remove('zv-lock'); last && last.focus && last.focus(); };
+  big.addEventListener('load', () => v.classList.toggle('nozoom', !(big.naturalWidth > stage.clientWidth || big.naturalHeight > stage.clientHeight)));
+  document.addEventListener('click', e => {
+    const img = e.target.closest && e.target.closest('img');
+    if (!img || !v.hidden || !img.matches(SEL) || !ok(img) || img.closest('.img-err')) return;
+    e.preventDefault(); open(img);
+  });
+  // drag to pan when zoomed
+  let drag = null, moved = false;
+  stage.addEventListener('pointerdown', e => { if (!zoom || e.pointerType !== 'mouse') return; drag = { x: e.clientX, y: e.clientY, l: stage.scrollLeft, t: stage.scrollTop }; moved = false; stage.setPointerCapture(e.pointerId); });
+  stage.addEventListener('pointermove', e => { if (!drag) return; const dx = e.clientX - drag.x, dy = e.clientY - drag.y; if (Math.abs(dx) + Math.abs(dy) > 4) moved = true; stage.scrollLeft = drag.l - dx; stage.scrollTop = drag.t - dy; });
+  stage.addEventListener('pointerup', () => { drag = null; });
+  stage.addEventListener('click', e => {
+    if (moved) { moved = false; return; }
+    if (e.target === big) setZoom(!zoom, e); else if (!zoom) close();
+  });
+  v.querySelector('.zv-close').addEventListener('click', close);
+  v.querySelector('.zv-prev').addEventListener('click', () => show(i - 1));
+  v.querySelector('.zv-next').addEventListener('click', () => show(i + 1));
+  addEventListener('keydown', e => {
+    if (v.hidden) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft' && list.length > 1) show(i - 1);
+    else if (e.key === 'ArrowRight' && list.length > 1) show(i + 1);
+  });
+  addEventListener('hashchange', () => { if (!v.hidden) close(); });
+})();
