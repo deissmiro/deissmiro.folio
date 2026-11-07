@@ -1319,45 +1319,13 @@ body[data-view="work"] .impact { display: none; }
 .docs-fig.mt-fig { margin-top: 56px; }
 #view-case-kite .cs-head + .sec { margin-top: -84px; }
 
-/* Kite cover: token layers that spread apart on hover */
+/* Kite cover: two floating cards */
+.kite-shot { background: #100d1c; }
 .kite-shot .kite-cover { position: absolute; inset: 0; width: 100%; height: 100%; }
-.kite-cover .kc { transition: transform .7s var(--ease); animation: kcFloat 5s ease-in-out infinite; }
-.kite-cover .l1 { animation-delay: -.4s; } .kite-cover .l2 { animation-delay: -.8s; } .kite-cover .l3 { animation-delay: -1.2s; }
-.kite-cover .deck1, .kite-cover .deck2 { animation: none; }
-@keyframes kcFloat { 50% { translate: 0 -4px; } }
-.case:hover .kite-cover .l1, .kite-shot:focus-visible .kite-cover .l1 { transform: translateY(-28px); }
-.case:hover .kite-cover .l2, .kite-shot:focus-visible .kite-cover .l2 { transform: translateY(-56px); }
-.case:hover .kite-cover .l3, .kite-shot:focus-visible .kite-cover .l3 { transform: translateY(-84px); }
-.case:hover .kite-cover .deck1 { transform: translateY(8px); }
-.case:hover .kite-cover .deck2 { transform: translateY(16px); }
+.kite-cover .kc { transition: transform .8s var(--ease); }
+.kite-cover .kc-t { animation: kcFloat 5s ease-in-out infinite; }
+.kite-cover .kc-b { animation: kcFloat 5s ease-in-out infinite -1.2s; }
+@keyframes kcFloat { 50% { translate: 0 -5px; } }
+.case:hover .kite-cover .kc-t, .kite-shot:focus-visible .kite-cover .kc-t { transform: translateY(-16px); }
+.case:hover .kite-cover .kc-b, .kite-shot:focus-visible .kite-cover .kc-b { transform: translateY(6px); }
 @media (prefers-reduced-motion: reduce) { .kite-cover .kc { animation: none; transition: none; } }
-.shot-plate.clean { background: #fff; border: 1px solid #e6e6e3; padding: 0; overflow: hidden; } .shot-plate.clean img { border-radius: 0; }
-#view-case-kite .sec.ctx + .sec { margin-top: -70px; }
-
-/* Kite hero: logo + mode pill cycling through brands and themes */
-.cs-head + .kite-hero { margin-top: -56px; }
-.kite-hero { --bg: #f1edfd; --ink: #7329ed; --pill: #2a0f63; --pill-ink: #fff; --sub: #6f6a85;
-  position: relative; border-radius: 20px; background: var(--bg); aspect-ratio: 16 / 7; display: grid; place-content: center; justify-items: center; gap: 22px;
-  transition: background .6s var(--ease); overflow: hidden; }
-.kh-row { display: flex; align-items: center; gap: clamp(10px, 1.6vw, 18px); }
-.kh-logo { display: block; width: clamp(140px, 22vw, 260px); aspect-ratio: 508 / 224; background: var(--ink);
-  -webkit-mask: url("../assets/img/kite/tutu-logo-mask.png") center / contain no-repeat; mask: url("../assets/img/kite/tutu-logo-mask.png") center / contain no-repeat; transition: background .6s var(--ease); }
-.kh-pill { position: relative; height: clamp(34px, 4.4vw, 52px); min-width: clamp(96px, 13vw, 160px); padding: 0 clamp(14px, 1.8vw, 22px); border-radius: 999px; background: var(--pill); color: var(--pill-ink);
-  display: grid; place-items: center; overflow: hidden; font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 600; font-size: clamp(15px, 1.9vw, 22px);
-  transition: background .6s var(--ease), color .6s var(--ease), min-width .4s var(--ease); }
-.kh-t { grid-area: 1 / 1; white-space: nowrap; transition: transform .5s var(--ease), opacity .5s; }
-.kh-t.out { transform: translateY(-120%); opacity: 0; }
-.kh-t.in { transform: translateY(120%); opacity: 0; }
-.kh-sub { margin: 0; font-family: Inter, system-ui, sans-serif; font-size: clamp(13px, 1.3vw, 16px); color: var(--sub); transition: color .6s var(--ease); }
-.kite-hero[data-mode="1"] { --bg: #16151f; --ink: #ffffff; --pill: #7329ed; --pill-ink: #fff; --sub: #9a97ad; }
-.kite-hero[data-mode="2"] { --bg: #fff0ec; --ink: #e8352a; --pill: #e8352a; --pill-ink: #fff; --sub: #9a6a63; }
-.kite-hero[data-mode="2"] .kh-pill { border-radius: 10px; }
-@media (max-width: 720px) { .kite-hero { aspect-ratio: 4 / 3; border-radius: 16px; } }
-.cs-head + .kite-hero { margin-top: -96px; }
-.kite-hero { aspect-ratio: 16 / 6; }
-@media (max-width: 720px) { .cs-head + .kite-hero { margin-top: -64px; } .kite-hero { aspect-ratio: 4 / 3; } }
-.cs-head + .kite-hero { margin-top: -108px; }
-.kite-hero { aspect-ratio: 16 / 5; gap: 16px; }
-@media (max-width: 720px) { .cs-head + .kite-hero { margin-top: -64px; } .kite-hero { aspect-ratio: 4 / 3; } }
-.cs h1 { max-width: 60ch; } .cs .lede { max-width: 72ch; }
-.cs .lede { max-width: 80ch; text-wrap: pretty; }
