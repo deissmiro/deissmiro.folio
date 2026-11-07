@@ -1237,3 +1237,4 @@ body[data-view="work"] .impact { display: none; }
 .two-col > * { margin: 0 !important; }
 .two-col h3 { margin-bottom: 12px !important; }
 .roles-sw.mt-fig { margin-top: 56px; }
+.two-col .list { margin: 0; } .two-col .list li:first-child { margin-top: 0; }
