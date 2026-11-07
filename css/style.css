@@ -1108,3 +1108,17 @@ body[data-view="work"] .impact { display: none; }
 .sk-tools span { color: var(--ink); font-weight: 700; margin-right: 8px; }
 @media (max-width: 640px) { .skills { grid-template-columns: 1fr; gap: 28px; } .sk-item summary { font-size: 16px; } }
 .exp > .skills { margin-top: 24px; }
+
+/* core competencies: compact, vertical, like the experience blocks */
+.skills { grid-template-columns: 1fr; gap: 18px; }
+.exp > .skills { margin-top: 0; }
+.sk-title { display: flex; align-items: center; gap: 12px; margin: 0; }
+.sk-tic { width: 26px; height: 26px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.sk-group h3 { margin: 6px 0 6px; font-size: 15px; }
+.sk-item { margin: 0; }
+.sk-item summary { font-size: 15px; gap: 10px; padding: 4px 0; }
+.sk-item summary span { text-underline-offset: 4px; }
+.sk-ar { width: 15px; height: 15px; }
+.sk-item ul { margin: 4px 0 10px 25px; gap: 4px; font-size: 14px; }
+.sk-tools { font-size: 14px; margin-top: 4px; }
+@media (max-width: 640px) { .sk-item summary { font-size: 15px; } }
