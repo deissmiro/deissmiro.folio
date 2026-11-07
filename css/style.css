@@ -1319,13 +1319,5 @@ body[data-view="work"] .impact { display: none; }
 .docs-fig.mt-fig { margin-top: 56px; }
 #view-case-kite .cs-head + .sec { margin-top: -84px; }
 
-/* Kite cover: two floating cards */
-.kite-shot { background: #100d1c; }
-.kite-shot .kite-cover { position: absolute; inset: 0; width: 100%; height: 100%; }
-.kite-cover .kc { transition: transform .8s var(--ease); }
-.kite-cover .kc-t { animation: kcFloat 5s ease-in-out infinite; }
-.kite-cover .kc-b { animation: kcFloat 5s ease-in-out infinite -1.2s; }
-@keyframes kcFloat { 50% { translate: 0 -5px; } }
-.case:hover .kite-cover .kc-t, .kite-shot:focus-visible .kite-cover .kc-t { transform: translateY(-16px); }
-.case:hover .kite-cover .kc-b, .kite-shot:focus-visible .kite-cover .kc-b { transform: translateY(6px); }
-@media (prefers-reduced-motion: reduce) { .kite-cover .kc { animation: none; transition: none; } }
+/* Kite cover: rendered illustration fills the card */
+.case .kite-shot .ph { height: 100%; }
