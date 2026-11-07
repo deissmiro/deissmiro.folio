@@ -483,3 +483,23 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
 
 /* drafts: visible in previews, hidden on the live site */
 (() => { if (/(^|\.)mirodeiss\.com$/.test(location.hostname)) document.querySelectorAll('[data-draft]').forEach(e => e.remove()); })();
+
+/* Kite: sync the Figma mode panel with the screen recording */
+(() => {
+  document.querySelectorAll('.theme-demo').forEach(fig => {
+    const scr = fig.querySelector('.td-screen'), ctrl = fig.querySelector('.td-ctrl');
+    if (!scr || !ctrl) return;
+    const SW = [[1.9, 'dark'], [5.85, 'light'], [8.8, 'dark'], [13.6, 'light']];
+    const SEG = { dark: [0.0, 1.15], light: [1.6, 2.65] }, LEAD = 0.95;
+    let fired = new Set(), last = 0, stopAt = null;
+    const play = mode => { const [a, b] = SEG[mode]; stopAt = b; ctrl.currentTime = a; ctrl.play().catch(() => {}); };
+    ctrl.addEventListener('timeupdate', () => { if (stopAt != null && ctrl.currentTime >= stopAt) { ctrl.pause(); stopAt = null; } });
+    ctrl.addEventListener('loadedmetadata', () => { ctrl.currentTime = 0.5; });
+    scr.addEventListener('timeupdate', () => {
+      const t = scr.currentTime;
+      if (t < last - 1) fired = new Set();
+      last = t;
+      SW.forEach(([ts, mode], i) => { if (!fired.has(i) && t >= ts - LEAD) { fired.add(i); play(mode); } });
+    });
+  });
+})();
