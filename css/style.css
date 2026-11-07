@@ -1285,3 +1285,6 @@ body[data-view="work"] .impact { display: none; }
 .docs-plate { background: #f0f0ee; border-radius: 20px; padding: 32px 32px 0; overflow: hidden; }
 .docs-plate video { display: block; width: 100%; height: auto; border-radius: 12px 12px 0 0; }
 @media (max-width: 720px) { .docs-plate { padding: 16px 16px 0; border-radius: 16px; } }
+.docs-plate { background: #fff; padding: 0; border: 1px solid #e6e6e3; border-radius: 16px; }
+.docs-plate video { border-radius: 0; }
+@media (max-width: 720px) { .docs-plate { padding: 0; } }
