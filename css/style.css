@@ -1318,3 +1318,16 @@ body[data-view="work"] .impact { display: none; }
 .mt-big { margin-top: 32px !important; }
 .docs-fig.mt-fig { margin-top: 56px; }
 #view-case-kite .cs-head + .sec { margin-top: -84px; }
+
+/* Kite cover: token layers that spread apart on hover */
+.kite-shot .kite-cover { position: absolute; inset: 0; width: 100%; height: 100%; }
+.kite-cover .kc { transition: transform .7s var(--ease); animation: kcFloat 5s ease-in-out infinite; }
+.kite-cover .l1 { animation-delay: -.4s; } .kite-cover .l2 { animation-delay: -.8s; } .kite-cover .l3 { animation-delay: -1.2s; }
+.kite-cover .deck1, .kite-cover .deck2 { animation: none; }
+@keyframes kcFloat { 50% { translate: 0 -4px; } }
+.case:hover .kite-cover .l1, .kite-shot:focus-visible .kite-cover .l1 { transform: translateY(-28px); }
+.case:hover .kite-cover .l2, .kite-shot:focus-visible .kite-cover .l2 { transform: translateY(-56px); }
+.case:hover .kite-cover .l3, .kite-shot:focus-visible .kite-cover .l3 { transform: translateY(-84px); }
+.case:hover .kite-cover .deck1 { transform: translateY(8px); }
+.case:hover .kite-cover .deck2 { transform: translateY(16px); }
+@media (prefers-reduced-motion: reduce) { .kite-cover .kc { animation: none; transition: none; } }
