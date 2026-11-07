@@ -1216,3 +1216,9 @@ body[data-view="work"] .impact { display: none; }
 .td-plate { height: auto; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); padding: 44px 44px 0; }
 .td-screen { max-width: 470px; display: block; }
 @media (max-width: 640px) { .td-plate { padding: 16px 16px 0; } .td-screen { height: auto; width: 100%; } }
+/* compact 3-up audit row */
+.figs.trio { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.figs.trio .board { position: relative; height: 210px; aspect-ratio: auto; padding: 14px; display: grid; place-items: center; overflow: hidden; }
+.figs.trio .board img { position: static; width: 100%; height: 100%; max-width: 100%; object-fit: contain; transform: none; translate: none; border-radius: 6px; margin: 0; }
+.figs.trio figcaption { font-size: 13px; }
+@media (max-width: 640px) { .figs.trio > .fig { flex-basis: 78%; } }

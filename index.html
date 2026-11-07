@@ -395,8 +395,12 @@
           </div>
           <figcaption><b>Before</b>: the theme mode switches in Figma, and in the dark theme the selected date and the airline badge turn white on white, because their colors were fixed for the light theme.</figcaption>
         </figure>
-        <p>States were missing in the components themselves. The main button had only three:</p>
-        <figure class="wide-fig"><div class="shot-plate"><img src="assets/img/kite/button-states-before.webp" alt="Old Kite button in Figma: the State property offers only Default, Loading and Disabled" loading="lazy"></div><figcaption><b>Before</b>: the button’s State property offered only Default, Loading and Disabled. There was no hover, pressed or focus, so every platform drew them its own way.</figcaption></figure>
+        <p>An audit of the system showed where else it broke:</p>
+        <div class="figs trio">
+          <figure class="fig"><div class="board hov"><img src="assets/img/kite/button-states-before.webp" alt="Old Kite button: the State property offers only Default, Loading and Disabled" loading="lazy"></div><figcaption><b>Missing states</b>: the main button had only Default, Loading and Disabled. No hover, pressed or focus.</figcaption></figure>
+          <figure class="fig"><div class="board hov"><img src="assets/img/kite/tokens-by-look.webp" alt="Old semantic background tokens named sick, warning, negative, rose and teal" loading="lazy"></div><figcaption><b>Named by look</b>: semantic tokens like rose, teal and sick mixed with real roles like warning and negative.</figcaption></figure>
+          <figure class="fig"><div class="board hov"><img src="assets/img/kite/palette-brands.webp" alt="Old palette: the same blue ramp across four brands, with one step replaced by red in one brand" loading="lazy"></div><figcaption><b>One name, different colors</b>: in one brand the blue ramp’s 500 step was suddenly red.</figcaption></figure>
+        </div>
       </div>
     </section>
 
