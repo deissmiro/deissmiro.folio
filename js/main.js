@@ -6,7 +6,7 @@
   let active = tabs.querySelector('[aria-current]');
   const heroLink = document.getElementById('heroLink'), heroText = document.getElementById('heroLinkText');
   const route = () => {
-    const views = { '#work': 'work', '#about': 'about', '#case-home': 'case-home', '#case-glyphs': 'case-glyphs' }; // '#case-ds' hidden for now
+    const views = { '#work': 'work', '#about': 'about', '#case-home': 'case-home', '#case-glyphs': 'case-glyphs', '#case-start-ds': 'case-startds' }; // '#case-ds' hidden for now
     const v = views[location.hash] || (location.hash && location.hash !== '#' ? 'notfound' : 'about');
     const nf = document.getElementById('view-notfound'); if (nf) nf.hidden = v !== 'notfound';
     document.body.dataset.view = v;
@@ -21,7 +21,7 @@
     active = tabs.querySelector('[aria-current]');
     heroLink.href = v === 'work' ? '#about' : '#work';
     heroText.textContent = v === 'work' ? 'About' : 'Work';
-    document.title = { work: 'Miro Deiss Portfolio', about: 'Miro Deiss — About', 'case-home': 'Homepage and Search Redesign — Miro Deiss', 'case-glyphs': 'Kite Glyphs — Miro Deiss', notfound: 'Page not found — Miro Deiss', 'case-ds': 'Kite Design System — Miro Deiss' }[v];
+    document.title = { work: 'Miro Deiss Portfolio', about: 'Miro Deiss — About', 'case-home': 'Homepage and Search Redesign — Miro Deiss', 'case-glyphs': 'Kite Glyphs — Miro Deiss', 'case-startds': 'START Design System — Miro Deiss', notfound: 'Page not found — Miro Deiss', 'case-ds': 'Kite Design System — Miro Deiss' }[v];
     place(active);
   };
   addEventListener('hashchange', () => { route(); scrollTo({ top: 0, behavior: 'instant' in document.documentElement.style ? 'instant' : 'auto' }); });
@@ -443,4 +443,19 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
     else if (e.key === 'ArrowRight' && list.length > 1) show(i + 1);
   });
   addEventListener('hashchange', () => { if (!v.hidden) close(); });
+})();
+
+/* START DS: brand switch */
+(() => {
+  const sw = document.querySelector('.brand-sw'); if (!sw) return;
+  const btns = sw.querySelectorAll('.seg button');
+  const set = b => { sw.dataset.brand = b; btns.forEach(x => x.setAttribute('aria-selected', x.dataset.b === b)); };
+  btns.forEach(x => x.addEventListener('click', () => { sw.classList.add('touched'); set(x.dataset.b); }));
+  // gentle hint: flip once when it comes into view
+  let done = false;
+  new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting || done) return; done = true;
+    setTimeout(() => { if (!sw.classList.contains('touched')) set('b'); }, 1400);
+    setTimeout(() => { if (!sw.classList.contains('touched')) set('a'); }, 3200);
+  }), { threshold: .5 }).observe(sw);
 })();

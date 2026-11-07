@@ -1129,3 +1129,12 @@ body[data-view="work"] .impact { display: none; }
 .sk-group h3 { margin: 0 0 8px; font-size: 15px; font-weight: 700; }
 .sk-item summary { padding: 3px 0; }
 .sk-lang { margin: 0; padding: 3px 0 3px 25px; font-size: 15px; color: var(--ink-2); } .sk-lang span { display: inline-block; min-width: 9ch; color: var(--ink); }
+
+/* START DS: brand switch hero */
+.cs-head + .brand-sw { margin-top: -56px; }
+.board.brand-sw-card { position: relative; height: clamp(420px, 52vw, 620px); aspect-ratio: auto; overflow: hidden; display: block; }
+.brand-sw-card img { position: absolute; left: 50%; top: 64px; bottom: 24px; height: calc(100% - 88px); width: auto; max-width: none; translate: -50% 0; transform: none; transition: opacity .6s var(--ease); }
+.brand-sw[data-brand="a"] .b-b, .brand-sw[data-brand="b"] .b-a { opacity: 0; }
+.brand-sw .seg { top: 16px; bottom: auto; z-index: 3; }
+.brand-cap { margin: 12px 0 0; font-size: 14px; color: var(--ink-2); }
+@media (max-width: 640px) { .board.brand-sw-card { height: 480px; } }
