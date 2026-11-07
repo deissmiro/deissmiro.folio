@@ -1246,3 +1246,27 @@ body[data-view="work"] .impact { display: none; }
 @media (max-width: 720px) { .duo-cards { grid-template-columns: 1fr; gap: 40px; } }
 .duo-cards h3 { margin: 0 0 12px !important; } .duo-cards p { margin: 0 !important; }
 .roles-sw.phone .roles-plate { aspect-ratio: 1600 / 813; }
+
+/* Kite: plates with a Figma "Variable modes" panel on the side */
+.roles-sw .roles-plate { aspect-ratio: auto !important; display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); align-items: center; gap: 4%; padding: 36px 40px; background: #fff; }
+.roles-sw.phone .roles-plate { background: #f6f6f5; padding-bottom: 0; align-items: start; }
+.roles-sw .rp-media { position: relative; aspect-ratio: 1500 / 750; }
+.roles-sw.phone .rp-media { aspect-ratio: 1260 / 915; }
+.roles-sw .rp-media img { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 0; }
+.vm { background: #2c2c2c; color: #fff; border-radius: 16px; padding: 18px 16px 8px; font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 13px; line-height: 1.2; }
+.roles-sw.phone .vm { align-self: center; }
+.vm-h { display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 14px; margin-bottom: 14px; }
+.vm-h svg { width: 16px; height: 16px; opacity: .8; }
+.vm-r { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.4fr); align-items: center; gap: 8px; margin-bottom: 10px; }
+.vm-r > span { color: #a7a7a7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.vm-v { display: flex; justify-content: space-between; align-items: center; gap: 6px; border: 1px solid #4a4a4a; border-radius: 8px; padding: 8px 10px; white-space: nowrap; overflow: hidden; transition: border-color .3s, background .3s; }
+.vm-v b { font-weight: 500; overflow: hidden; text-overflow: ellipsis; }
+.vm-v i { flex: none; width: 7px; height: 7px; border-right: 1.5px solid #ccc; border-bottom: 1.5px solid #ccc; transform: translateY(-2px) rotate(45deg); }
+.vm-v.hit { border-color: #0d99ff; background: rgba(13,153,255,.12); }
+@media (max-width: 720px) {
+  .roles-sw .roles-plate { grid-template-columns: 1fr; padding: 20px; gap: 16px; }
+  .roles-sw.phone .roles-plate { padding-bottom: 20px; }
+  .roles-sw.phone .rp-media { order: 2; margin-bottom: -20px; }
+}
+.roles-sw:not(.phone) .roles-plate { grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr); padding: 28px 32px; gap: 3%; }
+@media (max-width: 720px) { .roles-sw:not(.phone) .roles-plate { grid-template-columns: 1fr; padding: 20px; } }

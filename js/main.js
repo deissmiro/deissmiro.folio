@@ -506,15 +506,29 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
   });
 })();
 
-// Kite: color groups cycle (plays like a gif)
+// Kite: plates cycle like a gif, with a fake Figma "Variable modes" panel
 document.querySelectorAll('.roles-sw').forEach(fig => {
   const imgs = [...fig.querySelectorAll('.roles-plate img')];
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const vm = fig.querySelector('.vm');
+  const parse = img => (img.dataset.modes || '').split(';').filter(Boolean).map(x => x.split('='));
+  const vals = [];
+  if (vm) {
+    vm.innerHTML = '<div class="vm-h">Variable modes<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="2" y="2" width="5" height="12" rx="2.5"/><path d="M7 5.5l3-3a2.1 2.1 0 013 3l-6 6"/><circle cx="4.5" cy="11.5" r=".6" fill="currentColor"/></svg></div>' +
+      parse(imgs[0]).map(([k]) => '<div class="vm-r"><span>' + k + '</span><div class="vm-v"><b></b><i></i></div></div>').join('');
+    vm.querySelectorAll('.vm-v b').forEach(b => vals.push(b));
+  }
   let cur = 0;
+  const paint = (flash) => parse(imgs[cur]).forEach(([, v], k) => {
+    const b = vals[k]; if (!b) return;
+    if (b.textContent !== v) { b.textContent = v; if (flash) { const box = b.parentNode; box.classList.add('hit'); setTimeout(() => box.classList.remove('hit'), 700); } }
+  });
+  paint(false);
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   setInterval(() => {
     if (document.hidden) return;
     const r = fig.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
     imgs[cur].classList.remove('on'); cur = (cur + 1) % imgs.length; imgs[cur].classList.add('on');
+    paint(true);
     imgs[(cur + 1) % imgs.length].loading = 'eager';
-  }, 1600);
+  }, 1800);
 });
