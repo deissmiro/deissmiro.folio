@@ -445,19 +445,40 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
   addEventListener('hashchange', () => { if (!v.hidden) close(); });
 })();
 
-/* START DS: brand switch */
+/* START DS: Figma-like variable modes */
 (() => {
-  const sw = document.querySelector('.brand-sw'); if (!sw) return;
-  const btns = sw.querySelectorAll('.seg button');
-  const set = b => { sw.dataset.brand = b; btns.forEach(x => x.setAttribute('aria-selected', x.dataset.b === b)); };
-  btns.forEach(x => x.addEventListener('click', () => { sw.classList.add('touched'); set(x.dataset.b); }));
-  // gentle hint: flip once when it comes into view
+  const fx = document.querySelector('.fx'); if (!fx) return;
+  const frames = fx.querySelectorAll('.fx-frame'), name = fx.querySelector('.fx-sel-name');
+  const MODES = { title: 'brand', profile: 'theme' };
+  const state = { title: '1', profile: 'dark' };
+  const paint = () => {
+    const sel = fx.dataset.sel, col = MODES[sel];
+    frames.forEach(f => { f.classList.toggle('sel', f.dataset.frame === sel); f.dataset.mode = state[f.dataset.frame]; });
+    name.textContent = sel === 'title' ? 'Title' : 'Profile';
+    fx.querySelectorAll('.fx-row').forEach(r => {
+      const on = r.dataset.col === col; r.classList.toggle('off', !on);
+      r.querySelectorAll('button').forEach(b => { b.disabled = !on; b.setAttribute('aria-checked', on && b.dataset.v === state[sel]); });
+    });
+  };
+  const select = f => { fx.dataset.sel = f; paint(); };
+  frames.forEach(f => {
+    f.addEventListener('click', () => { fx.classList.add('touched'); select(f.dataset.frame); });
+    f.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(f.dataset.frame); } });
+  });
+  fx.querySelectorAll('.fx-row button').forEach(b => b.addEventListener('click', () => { fx.classList.add('touched'); state[fx.dataset.sel] = b.dataset.v; paint(); }));
+  paint();
+  // demo once in view: flip brand, then select profile and flip theme
   let done = false;
+  const step = (t, fn) => setTimeout(() => { if (!fx.classList.contains('touched')) fn(); }, t);
   new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting || done) return; done = true;
-    setTimeout(() => { if (!sw.classList.contains('touched')) set('b'); }, 1400);
-    setTimeout(() => { if (!sw.classList.contains('touched')) set('a'); }, 3200);
-  }), { threshold: .5 }).observe(sw);
+    step(1200, () => { state.title = '2'; paint(); });
+    step(2600, () => { state.title = '1'; paint(); });
+    step(3600, () => select('profile'));
+    step(4600, () => { state.profile = 'light'; paint(); });
+    step(6000, () => { state.profile = 'dark'; paint(); });
+    step(7000, () => select('title'));
+  }), { threshold: .5 }).observe(fx);
 })();
 
 /* drafts: visible in previews, hidden on the live site */

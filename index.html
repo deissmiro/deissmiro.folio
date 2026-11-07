@@ -364,16 +364,51 @@
       </dl>
     </div>
 
-    <div class="brand-sw" data-brand="a">
-      <div class="board brand-sw-card">
-        <img class="b-a" src="assets/img/startds/brand-a.webp" alt="START title screen in the main brand" draggable="false">
-        <img class="b-b" src="assets/img/startds/brand-b.webp" alt="The same title screen in the second brand" draggable="false">
-        <div class="seg" role="tablist" aria-label="Brand">
-          <button type="button" role="tab" data-b="a" aria-selected="true">Brand 1</button>
-          <button type="button" role="tab" data-b="b" aria-selected="false">Brand 2</button>
-        </div>
+    <div class="fx-wrap">
+    <div class="fx" data-sel="title" data-brand="1" data-theme="dark">
+      <div class="fx-canvas" aria-label="Design canvas">
+        <figure class="fx-frame" data-frame="title" tabindex="0" role="button" aria-label="Select frame: Title">
+          <figcaption>Title</figcaption>
+          <div class="fx-shot">
+            <img class="m1" src="assets/img/startds/brand-a.webp" alt="Title screen, Brand 1" draggable="false">
+            <img class="m2" src="assets/img/startds/brand-b.webp" alt="Title screen, Brand 2" draggable="false">
+          </div>
+        </figure>
+        <figure class="fx-frame" data-frame="profile" tabindex="0" role="button" aria-label="Select frame: Profile">
+          <figcaption>Profile</figcaption>
+          <div class="fx-shot">
+            <img class="m1" src="assets/img/startds/profile-dark.webp" alt="Profile screen, dark theme" draggable="false">
+            <img class="m2" src="assets/img/startds/profile-light.webp" alt="Profile screen, light theme" draggable="false">
+          </div>
+        </figure>
       </div>
-      <p class="brand-cap">The same screen, the same components. Only the brand tokens change.</p>
+      <aside class="fx-panel" aria-label="Variable modes">
+        <div class="fx-tabs"><span class="on">Design</span><span>Prototype</span></div>
+        <div class="fx-sec">
+          <p class="fx-h">Frame</p>
+          <p class="fx-name"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1v14M12 1v14M1 4h14M1 12h14"/></svg><span class="fx-sel-name">Title</span></p>
+        </div>
+        <div class="fx-sec">
+          <p class="fx-h">Variable modes</p>
+          <div class="fx-row" data-col="brand">
+            <span class="fx-col"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2l5.5 3v6L8 14l-5.5-3V5z"/></svg>Brand</span>
+            <div class="fx-modes" role="radiogroup" aria-label="Brand mode">
+              <button type="button" role="radio" data-v="1" aria-checked="true">Brand 1</button>
+              <button type="button" role="radio" data-v="2" aria-checked="false">Brand 2</button>
+            </div>
+          </div>
+          <div class="fx-row" data-col="theme">
+            <span class="fx-col"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2l5.5 3v6L8 14l-5.5-3V5z"/></svg>Theme</span>
+            <div class="fx-modes" role="radiogroup" aria-label="Theme mode">
+              <button type="button" role="radio" data-v="dark" aria-checked="true">Dark</button>
+              <button type="button" role="radio" data-v="light" aria-checked="false">Light</button>
+            </div>
+          </div>
+          <p class="fx-note">Select a frame on the canvas, then switch its mode.</p>
+        </div>
+      </aside>
+    </div>
+    <p class="brand-cap">The same components on every screen. A brand or a theme is just a variable mode: switch it, and every token updates.</p>
     </div>
 
     <section class="sec">
