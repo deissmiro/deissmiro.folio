@@ -365,45 +365,41 @@
     <div class="cs-head">
       <a class="back-btn" href="#work" aria-label="Back to work"><span class="a">←</span></a>
       <h1>Kite Design System: From Rigid Contracts to a Flexible Architecture</h1>
-      <p class="lede">Tutu is one app for trains, flights, buses, commuter trains, hotels, cars and tours. I rebuilt its design system from rigid component contracts to an architecture that teams follow instead of working around.</p>
+      <p class="lede">One design system for every vertical, brand and theme. I rebuilt Kite from rigid component contracts to a flexible architecture, so teams ship with the system instead of working around it.</p>
       <dl class="meta">
         <div><dt>Role</dt><dd>Senior Product Designer, Design Systems</dd></div>
         <div><dt>Company</dt><dd><span class="logo" aria-hidden="true"></span>Tutu</dd></div>
-        <div><dt>Scope</dt><dd>Components, states, color tokens, tooling</dd></div>
+        <div><dt>Platforms</dt><dd>iOS, Android, web</dd></div>
         <div><dt>When</dt><dd>2025 – 2026</dd></div>
       </dl>
     </div>
 
     <section class="sec">
-      <h2>Context</h2>
-      <div class="body">
-        <p class="big">Travel looks simple from the outside, but the product is anything but. One app holds many verticals, and each brings its own hard patterns: round trips, seat selection, complex filters, date pickers, ticket cards and refunds.</p>
-        <p>All of these run on one design system, Kite. It serves several product teams and several brands at once, in a light and a dark theme. Every decision in it is multiplied by every vertical, brand and theme, so when the system bends the wrong way, the whole product feels it.</p>
-      </div>
-    </section>
-
-    <section class="sec">
-      <h2>Part 1. There</h2>
-      <div class="body">
-        <p class="big">How we got to a rebuild.</p>
-        <p>At the start we wanted what every team wants: strict, “correct” components with no room to step left or right. And at first it worked. The product finally looked consistent, nobody built their own thing, and everyone was happy.</p>
-        <p>Then the product kept living. New verticals, experiments and promo needs didn’t fit the strict components, so teams started working around them. Designers detached and overrode components in Figma, developers couldn’t rebuild what was in the mockup, and every team solved the same problem in its own way.</p>
-        <blockquote class="pull">It looked like the problem was people breaking the rules. For us it was the sign that the rules themselves were broken.</blockquote>
-        <p>That changed the question. Instead of making people follow the system harder, I set out to rebuild the system so that its contracts help teams instead of blocking them.</p>
-      </div>
-    </section>
-
-    <section class="sec">
       <h2>Problem</h2>
       <div class="body">
-        <p>An audit of Kite found problems on every level, from single components to the token model behind them.</p>
+        <p class="big">Tutu sells trains, flights, buses, commuter trains, stays, car rental and tours. All of them are built on one design system, Kite, in several brands and in a light and a dark theme. The system was designed as strict contracts and stopped keeping up with the product.</p>
+        <p>The goal was to rebuild Kite so it scales across verticals, brands and themes. The current system:</p>
+        <ul class="list">
+          <li>had rigid components with every option sewn in, so a change for one vertical broke others</li>
+          <li>pushed teams to detach and override components, so mockups drifted from the library</li>
+          <li>had states tuned only for the light theme: hover, pressed, disabled and loading broke in the dark one</li>
+          <li>held about 1,700 color tokens in five collections with hidden modes</li>
+          <li>named colors by how they look, with transparent colors typed in by hand</li>
+          <li>had different values in Figma and in code, so every handoff needed manual checks</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>Hypotheses</h2>
+      <div class="body">
         <div class="stats hyp-stats">
-          <div class="stat"><span class="n">01</span><span class="l"><b>Rigid contracts.</b> Components were built as giants with every possible option sewn in. A small change for one vertical, like an extra icon for flights, could break the same component for trains.</span></div>
-          <div class="stat"><span class="n">02</span><span class="l"><b>Overrides everywhere.</b> When a component didn’t fit, designers detached it or hid layers. Mockups drifted from the library, and developers couldn’t tell what was real.</span></div>
-          <div class="stat"><span class="n">03</span><span class="l"><b>Broken states in the dark theme.</b> Hover, pressed, disabled and loading states were tuned for the light theme. In the dark one they lost contrast, blended into surfaces or looked like a different component.</span></div>
-          <div class="stat"><span class="n">04</span><span class="l"><b>Too many tokens.</b> Around 1,700 color tokens sat in five collections, each with its own modes. To pick one color you had to know which hidden mode it lived in.</span></div>
-          <div class="stat"><span class="n">05</span><span class="l"><b>Colors named by looks.</b> The palette used names invented for one brand. In another brand the same name pointed to a different color, and transparent colors were typed in by hand.</span></div>
-          <div class="stat"><span class="n">06</span><span class="l"><b>Design and code out of sync.</b> The same element had different values in Figma and in code, so every handoff needed manual checks.</span></div>
+          <div class="stat"><span class="n">01</span><span class="l"><b>Flexible contracts.</b> Components built from slots and properties will fit every vertical without detaching.</span></div>
+          <div class="stat"><span class="n">02</span><span class="l"><b>States from tokens.</b> If states come from semantic tokens, they will work in both themes, loading included.</span></div>
+          <div class="stat"><span class="n">03</span><span class="l"><b>A flat token model.</b> Fewer collections and no hidden modes will make the right token easy to find.</span></div>
+          <div class="stat"><span class="n">04</span><span class="l"><b>Names by meaning.</b> Naming colors by role, not by look, will turn a new brand into mapping values.</span></div>
+          <div class="stat"><span class="n">05</span><span class="l"><b>One source of truth.</b> Shared tokens for design and code will remove manual checks at handoff.</span></div>
+          <div class="stat"><span class="n">06</span><span class="l"><b>Tools over rules.</b> Figma plugins will keep teams on the system better than documentation alone.</span></div>
         </div>
       </div>
     </section>
