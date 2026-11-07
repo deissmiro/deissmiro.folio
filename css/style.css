@@ -1352,5 +1352,5 @@ body[data-view="work"] .impact { display: none; }
 .kite-hero[data-mode="1"] { --bg: #16151f; --ink: #ffffff; --pill: #7329ed; --pill-ink: #fff; --sub: #9a97ad; }
 .kite-hero[data-mode="2"] { --bg: #fff0ec; --ink: #e8352a; --pill: #e8352a; --pill-ink: #fff; --sub: #9a6a63; }
 .kite-hero[data-mode="2"] .kh-pill { border-radius: 10px; }
-.kite-hero[data-mode="3"] { --bg: #eef8e9; --ink: #2f7d1b; --pill: #c8ebb6; --pill-ink: #1d4e10; --sub: #5f7a55; }
+.kite-hero[data-mode="3"] { --bg: #e3f4fd; --ink: #0a6ea8; --pill: #12b0f5; --pill-ink: #fff; --sub: #5a7a8c; }
 @media (max-width: 720px) { .kite-hero { aspect-ratio: 4 / 3; border-radius: 16px; } }
