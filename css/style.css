@@ -1238,3 +1238,10 @@ body[data-view="work"] .impact { display: none; }
 .two-col h3 { margin-bottom: 12px !important; }
 .roles-sw.mt-fig { margin-top: 56px; }
 .two-col .list { margin: 0; } .two-col .list li:first-child { margin-top: 0; }
+.duo-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 56px; }
+.duo-cards .roles-sw { margin: 0 0 16px; }
+.duo-cards .roles-sw.tall .roles-plate { aspect-ratio: 880 / 1200; }
+.duo-cards h3 { margin: 0 0 10px; }
+.duo-cards p { margin: 0; }
+@media (max-width: 720px) { .duo-cards { grid-template-columns: 1fr; gap: 40px; } }
+.duo-cards h3 { margin: 0 0 12px !important; } .duo-cards p { margin: 0 !important; }
