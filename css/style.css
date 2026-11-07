@@ -1357,3 +1357,4 @@ body[data-view="work"] .impact { display: none; }
 .case .kite-shot .ph { height: 100%; }
 .job-links.vert { flex-direction: column; align-items: flex-start; gap: 10px; }
 .tabs a span { white-space: nowrap; }
+.work { gap: 56px; } @media (max-width: 820px) { .work { gap: 48px; } }
