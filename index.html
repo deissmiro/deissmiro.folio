@@ -444,7 +444,45 @@
     <section class="sec">
       <h2>Solution</h2>
       <div class="body">
-        <figure class="wide-fig roles-sw">
+        <figure class="wide-fig arch">
+          <div class="arch-plate">
+            <div class="arch-row">
+              <div class="arch-name"><b>Brand</b><span>which product</span></div>
+              <div class="arch-tok"><code>Main</code><code>White label</code></div>
+              <div class="arch-mode"><i>mode</i>Brand</div>
+            </div>
+            <div class="arch-arrow" aria-hidden="true"></div>
+            <div class="arch-row">
+              <div class="arch-name"><b>Primitives</b><span>raw values, no meaning</span></div>
+              <div class="arch-tok"><code><s style="--c:#f3f0ff"></s>aubergine-100</code><code><s style="--c:#7329ed"></s>aubergine-500</code><code>radius-12</code><code>space-16</code></div>
+              <div class="arch-mode mute">—</div>
+            </div>
+            <div class="arch-arrow" aria-hidden="true"></div>
+            <div class="arch-row">
+              <div class="arch-name"><b>Semantic</b><span>group · role · intensity</span></div>
+              <div class="arch-tok"><code>accent / uno</code><code>background / pale</code><code>overlay / deep</code><code>content / inverse</code></div>
+              <div class="arch-mode"><i>mode</i>Theme</div>
+            </div>
+            <div class="arch-arrow" aria-hidden="true"></div>
+            <div class="arch-row">
+              <div class="arch-name"><b>State layer</b><span>interaction on top</span></div>
+              <div class="arch-tok"><code>default</code><code>hover</code><code>active</code><code>focus</code><code>loading</code></div>
+              <div class="arch-mode"><i>mode</i>State</div>
+            </div>
+            <div class="arch-arrow" aria-hidden="true"></div>
+            <div class="arch-row last">
+              <div class="arch-name"><b>Components</b><span>only know roles</span></div>
+              <div class="arch-tok"><code>Button</code><code>Cell</code><code>Badge</code><code>Card</code><code>Checkbox</code></div>
+              <div class="arch-mode mute">—</div>
+            </div>
+          </div>
+        </figure>
+        <div class="two-col">
+          <h3>Token architecture</h3>
+          <p>I rebuilt Kite as layers. Primitives hold raw values, semantic tokens give them meaning, a state layer adds interaction, and components only read roles from the layer above.</p>
+          <p>Each axis switches in one place: the brand on top, the theme in semantics, the state in the state layer. Nothing is hardcoded inside a component, so a new brand, theme or state never means a new variant.</p>
+        </div>
+        <figure class="wide-fig roles-sw mt-fig">
           <div class="board roles-plate"><div class="rp-media">
             <img data-modes="Theme=Light;Color group=neutral" class="on" src="assets/img/kite/roles-neutral.webp" alt="A notification block in the neutral group: each part points to its role token">
             <img data-modes="Theme=Light;Color group=status / positive" src="assets/img/kite/roles-status-positive.webp" alt="The same block in the status positive group" loading="lazy">
