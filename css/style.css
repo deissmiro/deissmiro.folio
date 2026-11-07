@@ -1270,3 +1270,6 @@ body[data-view="work"] .impact { display: none; }
 }
 .roles-sw:not(.phone) .roles-plate { grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr); padding: 28px 32px; gap: 3%; }
 @media (max-width: 720px) { .roles-sw:not(.phone) .roles-plate { grid-template-columns: 1fr; padding: 20px; } }
+.roles-sw:not(.phone) .roles-plate { display: block; padding: 0; }
+.roles-sw:not(.phone) .rp-media { aspect-ratio: 1656 / 942; }
+@media (max-width: 720px) { .roles-sw:not(.phone) .roles-plate { padding: 0; } }
