@@ -412,13 +412,21 @@
     </div>
 
     <section class="sec">
-      <h2>Context</h2>
+      <h2>Problem</h2>
       <div class="body">
-        <p class="big">START was going through a full redesign and rebrand. At the same time the product had to serve a second brand, and five product teams were shipping features on web, mobile and TV every week.</p>
-        <p>The old design system couldn’t keep up. Every brand meant another copy of the library, tokens drifted between platforms, and new components took too long to reach development. I took on the system’s architecture: tokens, components, the white-label model and the process around them.</p>
+        <p class="big">START is a streaming service with films, series, live TV and sport on web, iOS, Android and Smart TV. During the redesign and rebrand the product also had to run a second brand, and the design system wasn’t built for that.</p>
+        <p>Every theme and every brand lived in its own library. Two brands in a dark and a light theme meant <b>4 separate libraries</b> with their own copies of the same components:</p>
+        <ul class="list">
+          <li><span>A button, a card or a player control existed in four versions that slowly drifted apart.</span></li>
+          <li><span>Colors were set by hand inside components instead of coming from shared tokens.</span></li>
+          <li><span>Designers rebuilt every screen manually for each brand and theme, and mistakes slipped into handoff.</span></li>
+          <li><span>A fix or a new component had to be repeated four times, so libraries were always out of sync.</span></li>
+          <li><span>Developers got different specs for the same element and had no single source of truth.</span></li>
+        </ul>
+        <p>The goal was one system for every brand, theme and platform: one set of components, with brands and themes switched by tokens instead of by copying files.</p>
         <div class="stats">
+          <div class="stat"><span class="n">4 → 1</span><span class="l">Libraries merged into one system</span></div>
           <div class="stat"><span class="n">5+</span><span class="l">Product teams on one system</span></div>
-          <div class="stat"><span class="n">2</span><span class="l">Brands on one set of components</span></div>
           <div class="stat"><span class="n">40+</span><span class="l">Components rebuilt across platforms</span></div>
         </div>
       </div>
