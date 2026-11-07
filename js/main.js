@@ -20,7 +20,7 @@
     links.forEach(a => a.hasAttribute('aria-current') && a.setAttribute('aria-current', 'page'));
     active = tabs.querySelector('[aria-current]');
     heroLink.href = v === 'work' ? '#about' : '#work';
-    heroText.textContent = v === 'work' ? 'About' : 'Work';
+    heroText.textContent = v === 'work' ? 'About me' : 'Case studies';
     document.title = { work: 'Miro Deiss Portfolio', about: 'Miro Deiss — About', 'case-home': 'Homepage and Search Redesign — Miro Deiss', 'case-glyphs': 'Kite Glyphs — Miro Deiss', 'case-startds': 'START Design System — Miro Deiss', 'case-kite': 'Making Tutu’s Design System Flexible — Miro Deiss', notfound: 'Page not found — Miro Deiss', 'case-ds': 'Kite Design System — Miro Deiss' }[v];
     place(active);
   };

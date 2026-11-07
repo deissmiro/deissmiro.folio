@@ -1355,3 +1355,5 @@ body[data-view="work"] .impact { display: none; }
 .job-links .cases-link { margin: 0; }
 .case .kite-shot .ph { height: 84%; }
 .case .kite-shot .ph { height: 100%; }
+.job-links.vert { flex-direction: column; align-items: flex-start; gap: 10px; }
+.tabs a span { white-space: nowrap; }
