@@ -491,8 +491,10 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
     if (!scr || !ctrl) return;
     const SW = [[1.9, 'dark'], [5.85, 'light'], [8.8, 'dark'], [13.6, 'light']];
     const SEG = { dark: [0.0, 1.15], light: [1.6, 2.65] }, LEAD = 0.95;
+    const RATE = 1.7; scr.defaultPlaybackRate = scr.playbackRate = RATE;
+    scr.addEventListener('play', () => { scr.playbackRate = RATE; });
     let fired = new Set(), last = 0, stopAt = null;
-    const play = mode => { const [a, b] = SEG[mode]; stopAt = b; ctrl.currentTime = a; ctrl.play().catch(() => {}); };
+    const play = mode => { const [a, b] = SEG[mode]; stopAt = b; ctrl.currentTime = a; ctrl.playbackRate = RATE; ctrl.play().catch(() => {}); };
     ctrl.addEventListener('timeupdate', () => { if (stopAt != null && ctrl.currentTime >= stopAt) { ctrl.pause(); stopAt = null; } });
     ctrl.addEventListener('loadedmetadata', () => { ctrl.currentTime = 0.5; });
     scr.addEventListener('timeupdate', () => {
