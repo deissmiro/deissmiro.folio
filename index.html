@@ -514,6 +514,20 @@
           <p>Skeletons are built into the components. One property turns a whole screen into its loading state.</p>
           <p>The shapes follow the real layout, so nobody draws loading screens by hand and they never fall out of sync.</p>
         </div>
+        <figure class="wide-fig roles-sw mt-fig phone st">
+          <div class="board roles-plate"><div class="rp-media">
+            <img data-modes="State=Default" class="on" src="assets/img/kite/state-default.webp" alt="An action card in the default state">
+            <img data-modes="State=Hover" src="assets/img/kite/state-hover.webp" alt="The same card on hover, slightly darker" loading="lazy">
+            <img data-modes="State=Active" src="assets/img/kite/state-active.webp" alt="The same card when pressed, darker still" loading="lazy">
+            <img data-modes="State=Focus" src="assets/img/kite/state-focus.webp" alt="The same card in focus, with a purple outline" loading="lazy">
+          </div><div class="vm" aria-hidden="true"></div>
+          </div>
+        </figure>
+        <div class="two-col">
+          <h3>States as a mode</h3>
+          <p>Hover, active and focus used to be separate variants of every component. I moved states into a variable mode, so one component switches its tokens instead of swapping variants.</p>
+          <p>With 68 components and four states, that is <b>272 variants down to 68</b>: over 200 variants nobody has to draw or keep in sync, and every new component gets all its states for free.</p>
+        </div>
       </div>
     </section>
 

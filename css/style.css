@@ -1273,3 +1273,6 @@ body[data-view="work"] .impact { display: none; }
 .roles-sw:not(.phone) .roles-plate { display: block; padding: 0; }
 .roles-sw:not(.phone) .rp-media { aspect-ratio: 1656 / 942; }
 @media (max-width: 720px) { .roles-sw:not(.phone) .roles-plate { padding: 0; } }
+.roles-sw.phone.st .roles-plate { background: #fff; padding-bottom: 36px; align-items: center; }
+.roles-sw.phone.st .rp-media { aspect-ratio: 1200 / 630; }
+@media (max-width: 720px) { .roles-sw.phone.st .rp-media { margin-bottom: 0; } }
