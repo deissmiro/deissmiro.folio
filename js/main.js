@@ -327,7 +327,7 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
   document.addEventListener('pointerover', e => {
     if (e.pointerType && e.pointerType !== 'mouse' && e.pointerType !== 'pen') return;
     const hit = e.target.closest('a.shot');
-    if (hit && !on) { tip.textContent = ({ '#case-home': 'View case: Homepage redesign', '#case-glyphs': 'View case: Kite Glyphs' })[hit.getAttribute('href')] || 'View case'; on = true; cx = x; cy = y; tip.classList.add('on'); kick(); }
+    if (hit && !on) { tip.textContent = ({ '#case-home': 'View case: Homepage redesign', '#case-glyphs': 'View case: Kite Glyphs', '#case-start-ds': 'View case: START Design System' })[hit.getAttribute('href')] || 'View case'; on = true; cx = x; cy = y; tip.classList.add('on'); kick(); }
     else if (!hit && on) { on = false; tip.classList.remove('on'); kick(); }
   });
   addEventListener('scroll', () => { if (on && !document.elementFromPoint(x, y)?.closest('a.shot')) { on = false; tip.classList.remove('on'); } }, { passive: true });
@@ -459,3 +459,6 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
     setTimeout(() => { if (!sw.classList.contains('touched')) set('a'); }, 3200);
   }), { threshold: .5 }).observe(sw);
 })();
+
+/* drafts: visible in previews, hidden on the live site */
+(() => { if (/(^|\.)mirodeiss\.com$/.test(location.hostname)) document.querySelectorAll('[data-draft]').forEach(e => e.remove()); })();
