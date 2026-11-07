@@ -506,27 +506,15 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
   });
 })();
 
-// Kite: color groups switcher (auto-cycles like a gif)
+// Kite: color groups cycle (plays like a gif)
 document.querySelectorAll('.roles-sw').forEach(fig => {
   const imgs = [...fig.querySelectorAll('.roles-plate img')];
-  const tabs = fig.querySelector('.grp-tabs');
-  const DUR = 2200, reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  tabs.style.setProperty('--dur', DUR + 'ms');
-  const btns = imgs.map((img, i) => {
-    const b = document.createElement('button');
-    b.type = 'button'; b.setAttribute('role', 'tab'); b.innerHTML = img.dataset.g + '<i></i>';
-    b.addEventListener('click', () => { show(i); restart(); });
-    tabs.appendChild(b); return b;
-  });
-  let cur = 0, timer = null, hover = false;
-  function show(i) {
-    cur = (i + imgs.length) % imgs.length;
-    imgs.forEach((im, k) => im.classList.toggle('on', k === cur));
-    btns.forEach((b, k) => { b.setAttribute('aria-selected', k === cur); const bar = b.querySelector('i'); bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = ''; });
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let cur = 0;
+  setInterval(() => {
+    if (document.hidden) return;
+    const r = fig.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+    imgs[cur].classList.remove('on'); cur = (cur + 1) % imgs.length; imgs[cur].classList.add('on');
     imgs[(cur + 1) % imgs.length].loading = 'eager';
-  }
-  function restart() { clearInterval(timer); if (reduce) return; timer = setInterval(() => { if (!hover && !document.hidden) show(cur + 1); }, DUR); }
-  fig.addEventListener('mouseenter', () => { hover = true; tabs.classList.add('paused'); });
-  fig.addEventListener('mouseleave', () => { hover = false; tabs.classList.remove('paused'); restart(); });
-  show(0); restart();
+  }, 1600);
 });

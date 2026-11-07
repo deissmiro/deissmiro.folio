@@ -444,34 +444,22 @@
     <section class="sec">
       <h2>Solution</h2>
       <div class="body">
-        <h3>New color semantics</h3>
-        <p>I rebuilt the colors around roles instead of looks. Every color now lives in a group, and every group has the same five roles:</p>
-        <ul class="list">
-          <li><span><b>background / pale</b>: the surface of a block</span></li>
-          <li><span><b>overlay / pale</b>: a soft fill, like a secondary button</span></li>
-          <li><span><b>overlay / deep</b>: the main fill, like a primary button</span></li>
-          <li><span><b>content / primary</b>: text and icons on pale fills</span></li>
-          <li><span><b>content / inverse</b>: text and icons on deep fills</span></li>
-        </ul>
         <figure class="wide-fig roles-sw">
           <div class="board roles-plate">
-            <img class="on" src="assets/img/kite/roles-accent-uno.webp" alt="A notification block colored with the accent uno group: each part points to its role token" data-g="accent / uno">
-            <img src="assets/img/kite/roles-accent-duo.webp" alt="The same block in the accent duo group" data-g="accent / duo" loading="lazy">
-            <img src="assets/img/kite/roles-brand-uno.webp" alt="The same block in the brand uno group" data-g="brand / uno" loading="lazy">
-            <img src="assets/img/kite/roles-brand-duo.webp" alt="The same block in the brand duo group" data-g="brand / duo" loading="lazy">
-            <img src="assets/img/kite/roles-status-positive.webp" alt="The same block in the status positive group" data-g="status / positive" loading="lazy">
-            <img src="assets/img/kite/roles-status-negative.webp" alt="The same block in the status negative group" data-g="status / negative" loading="lazy">
-            <img src="assets/img/kite/roles-neutral.webp" alt="The same block in the neutral group" data-g="neutral" loading="lazy">
+            <img class="on" src="assets/img/kite/roles-neutral.webp" alt="A notification block in the neutral group: each part points to its role token">
+            <img src="assets/img/kite/roles-status-positive.webp" alt="The same block in the status positive group" loading="lazy">
+            <img src="assets/img/kite/roles-accent-uno.webp" alt="The same block in the accent uno group" loading="lazy">
+            <img src="assets/img/kite/roles-accent-duo.webp" alt="The same block in the accent duo group" loading="lazy">
+            <img src="assets/img/kite/roles-brand-uno.webp" alt="The same block in the brand uno group" loading="lazy">
+            <img src="assets/img/kite/roles-brand-duo.webp" alt="The same block in the brand duo group" loading="lazy">
+            <img src="assets/img/kite/roles-status-negative.webp" alt="The same block in the status negative group" loading="lazy">
           </div>
-          <div class="grp-tabs" role="tablist" aria-label="Color group"></div>
-          <figcaption><b>One block, seven groups.</b> The component only knows roles, so switching the group recolors it without a single new variant.</figcaption>
         </figure>
-        <p>Groups made the palette predictable:</p>
-        <ul class="list">
-          <li><span><b>accent</b> for highlights and promos, <b>brand</b> for each brand’s own color, <b>status</b> for success and errors, <b>neutral</b> for everything calm</span></li>
-          <li><span>a new brand or theme means new values for the same roles, not new tokens</span></li>
-          <li><span>states and the dark theme come from the same pairs, so contrast holds everywhere</span></li>
-        </ul>
+        <div class="two-col">
+          <h3>Color groups</h3>
+          <p>I rebuilt the colors around roles instead of looks. Every color now lives in a group: accent, brand, status or neutral. Each group has the same five roles, from background / pale to content / inverse.</p>
+          <p>Components only know roles, so switching the group recolors them without a new variant. A new brand or theme means new values for the same roles, not new tokens.</p>
+        </div>
       </div>
     </section>
 
