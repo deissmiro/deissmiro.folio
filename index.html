@@ -460,6 +460,17 @@
           <p>I rebuilt the colors around roles instead of looks. Every color now lives in a group: accent, brand, status or neutral. Each group has the same five roles, from background / pale to content / inverse.</p>
           <p>Components only know roles, so switching the group recolors them without a new variant. A new brand or theme means new values for the same roles, not new tokens.</p>
         </div>
+        <figure class="wide-fig roles-sw mt-fig">
+          <div class="board roles-plate">
+            <img class="on" src="assets/img/kite/intensity-pale.webp" alt="A notification block in pale intensity: light surface, soft secondary and a deep primary button">
+            <img src="assets/img/kite/intensity-deep.webp" alt="The same block in deep intensity: dark surface, inverse text and a white primary button" loading="lazy">
+          </div>
+        </figure>
+        <div class="two-col">
+          <h3>Color intensity</h3>
+          <p>Inside every group, colors form a hierarchy by intensity: pale for calm surfaces and soft fills, deep for the main accent. Saturation grows with importance, so the eye goes to the primary action first.</p>
+          <p>A block can switch from pale to deep with one property. Content tokens flip to inverse on their own, so text and icons keep their contrast without manual fixes.</p>
+        </div>
       </div>
     </section>
 

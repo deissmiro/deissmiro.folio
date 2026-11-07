@@ -1236,3 +1236,4 @@ body[data-view="work"] .impact { display: none; }
 .roles-sw .roles-plate img { inset: 0; width: 100%; height: 100%; border-radius: 0; }
 .two-col > * { margin: 0 !important; }
 .two-col h3 { margin-bottom: 12px !important; }
+.roles-sw.mt-fig { margin-top: 56px; }
