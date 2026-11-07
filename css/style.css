@@ -1089,3 +1089,21 @@ body[data-view="work"] .impact { display: none; }
 .job-impact a:hover { text-decoration-color: var(--ink); }
 .job-impact { gap: 8px; margin: 20px 0 28px; }
 .job-impact a { font-size: 15px; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+
+/* what I do: accordion on About */
+.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 48px; }
+.sk-group h3 { margin: 0 0 16px; font-size: 17px; font-weight: 700; }
+.sk-item { margin: 0 0 6px; }
+.sk-item summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 14px; padding: 6px 0; font-size: 17px; }
+.sk-item summary::-webkit-details-marker { display: none; }
+.sk-item summary span { text-decoration: underline; text-decoration-color: rgba(12,12,12,.25); text-underline-offset: 5px; text-decoration-thickness: 1px; transition: text-decoration-color .25s; }
+.sk-item summary:hover span { text-decoration-color: var(--ink); }
+.sk-ar { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; transition: transform .35s var(--ease); }
+.sk-item[open] .sk-ar { transform: rotate(90deg); }
+.sk-item ul { list-style: none; margin: 6px 0 14px 32px; padding: 0; display: grid; gap: 8px; color: var(--ink-2); font-size: 15px; line-height: 1.45; animation: skOpen .35s var(--ease) both; }
+.sk-item li { position: relative; padding-left: 18px; }
+.sk-item li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 5px; height: 5px; border-radius: 50%; background: var(--ink-2); }
+@keyframes skOpen { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+.sk-tools { grid-column: 1 / -1; margin: 0; font-size: 15px; color: var(--ink-2); }
+.sk-tools span { color: var(--ink); font-weight: 700; margin-right: 8px; }
+@media (max-width: 640px) { .skills { grid-template-columns: 1fr; gap: 28px; } .sk-item summary { font-size: 16px; } }
