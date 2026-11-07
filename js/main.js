@@ -389,11 +389,11 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
   const ok = img => img.closest('.cs') && !img.closest('.cmpx') && !img.closest('.hero-sw');
   const v = document.createElement('div');
   v.className = 'zv'; v.hidden = true; v.setAttribute('role', 'dialog'); v.setAttribute('aria-modal', 'true'); v.setAttribute('aria-label', 'Image viewer');
-  v.innerHTML = '<div class="zv-card" tabindex="-1"><div class="zv-stage"><img class="zv-img" alt=""></div>' +
+  v.innerHTML = '<div class="zv-card" tabindex="-1"><div class="zv-media"><div class="zv-stage"><img class="zv-img" alt=""></div>' +
+    '<button class="zv-btn zv-prev" type="button" aria-label="Previous image"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg></button>' +
+    '<button class="zv-btn zv-next" type="button" aria-label="Next image"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6l6 6-6 6"/></svg></button></div>' +
     '<button class="zv-btn zv-close" type="button" aria-label="Close">✕</button>' +
-    '<div class="zv-bar"><span class="zv-cap"></span><span class="zv-n"></span><span class="zv-hint">Click to zoom</span></div></div>' +
-    '<button class="zv-btn zv-prev" type="button" aria-label="Previous image">←</button>' +
-    '<button class="zv-btn zv-next" type="button" aria-label="Next image">→</button>';
+    '<div class="zv-bar"><span class="zv-cap"></span><span class="zv-n"></span><span class="zv-hint">Click to zoom</span></div></div>';
   document.body.appendChild(v);
   const stage = v.querySelector('.zv-stage'), big = v.querySelector('.zv-img');
   let list = [], i = 0, zoom = false, last = null;
