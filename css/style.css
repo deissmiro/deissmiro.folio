@@ -1123,3 +1123,4 @@ body[data-view="work"] .impact { display: none; }
 .sk-tools { font-size: 14px; margin-top: 4px; }
 @media (max-width: 640px) { .sk-item summary { font-size: 15px; } }
 .sk-tools + .sk-tools { margin-top: -10px; } .sk-tools span { display: inline-block; min-width: 7ch; }
+.sk-tools-h { margin: 6px 0 -6px; font-size: 15px; font-weight: 700; } .sk-tools span { font-weight: 400; color: var(--ink); }
