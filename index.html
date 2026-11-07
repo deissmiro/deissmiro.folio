@@ -454,6 +454,33 @@
       </div>
     </section>
 
+    <section class="sec">
+      <h2>Solution</h2>
+      <div class="body">
+        <p>From the research I rebuilt the system around four things: a new token architecture, one library, clear rules and a way to learn it fast.</p>
+
+        <h3 class="mt">New token architecture</h3>
+        <p>Every value now goes through three layers. Primitives hold the raw palette for each brand. Semantic tokens describe the role, like an accent background or a muted text. Component tokens map those roles to parts of a component. Brands and themes are modes on the first two layers, so a component never knows which brand it is in.</p>
+        <div class="tk" aria-label="Token layers">
+          <div class="tk-col"><span class="tk-h">Primitive</span><span class="tk-chip"><i style="--c:#ff1a2e"></i>red-500</span><span class="tk-chip"><i style="--c:#16b04c"></i>green-500</span><span class="tk-chip"><i style="--c:#141215"></i>neutral-900</span><span class="tk-chip"><i style="--c:#f7f7f7"></i>neutral-50</span></div>
+          <span class="tk-ar" aria-hidden="true">→</span>
+          <div class="tk-col"><span class="tk-h">Semantic</span><span class="tk-chip">color.bg.accent</span><span class="tk-chip">color.bg.surface</span><span class="tk-chip">color.text.primary</span><span class="tk-chip">color.text.muted</span></div>
+          <span class="tk-ar" aria-hidden="true">→</span>
+          <div class="tk-col"><span class="tk-h">Component</span><span class="tk-chip">button.primary.bg</span><span class="tk-chip">card.bg</span><span class="tk-chip">button.primary.label</span><span class="tk-chip">player.caption</span></div>
+          <p class="tk-modes"><span>Modes</span> Brand: START · Brand 2 &nbsp;·&nbsp; Theme: Dark · Light</p>
+        </div>
+
+        <h3 class="mt">One library of components and styles</h3>
+        <p>Four libraries became one. Each component exists once, with properties for type, size and state, and takes its colors, type and spacing from tokens. The same button now works in both brands and both themes without a single copy.</p>
+
+        <h3 class="mt">Guidelines and documentation</h3>
+        <p>Every component got a page with its anatomy, states, do’s and don’ts and rules for when to use it. Developers get the same names and values as in Figma, so design and code finally speak one language.</p>
+
+        <h3 class="mt">Video tutorials</h3>
+        <p>To help teams switch fast, I recorded short videos on how the new system works: setting up modes, building a screen from components and handing it off to development.</p>
+      </div>
+    </section>
+
     <nav class="next" aria-label="Next case">
       <div><span>More work</span><a class="t" href="#work">Work</a></div>
       <a class="cases-link" href="#work">Back to work <span class="a">→</span></a>
