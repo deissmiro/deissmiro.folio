@@ -1352,5 +1352,10 @@ body[data-view="work"] .impact { display: none; }
 .kite-hero[data-mode="1"] { --bg: #16151f; --ink: #ffffff; --pill: #7329ed; --pill-ink: #fff; --sub: #9a97ad; }
 .kite-hero[data-mode="2"] { --bg: #fff0ec; --ink: #e8352a; --pill: #e8352a; --pill-ink: #fff; --sub: #9a6a63; }
 .kite-hero[data-mode="2"] .kh-pill { border-radius: 10px; }
-.kite-hero[data-mode="3"] { --bg: #e3f4fd; --ink: #0a6ea8; --pill: #12b0f5; --pill-ink: #fff; --sub: #5a7a8c; }
 @media (max-width: 720px) { .kite-hero { aspect-ratio: 4 / 3; border-radius: 16px; } }
+.cs-head + .kite-hero { margin-top: -96px; }
+.kite-hero { aspect-ratio: 16 / 6; }
+@media (max-width: 720px) { .cs-head + .kite-hero { margin-top: -64px; } .kite-hero { aspect-ratio: 4 / 3; } }
+.cs-head + .kite-hero { margin-top: -108px; }
+.kite-hero { aspect-ratio: 16 / 5; gap: 16px; }
+@media (max-width: 720px) { .cs-head + .kite-hero { margin-top: -64px; } .kite-hero { aspect-ratio: 4 / 3; } }

@@ -535,7 +535,7 @@ document.querySelectorAll('.roles-sw').forEach(fig => {
 
 // Kite hero: cycle modes like Figma variable modes
 document.querySelectorAll('.kite-hero').forEach(h => {
-  const modes = ['Light', 'Dark', 'White label', 'Accent'];
+  const modes = ['Light', 'Dark', 'White label'];
   const pill = h.querySelector('.kh-pill');
   let i = 0;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
