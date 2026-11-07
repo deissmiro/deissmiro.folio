@@ -1359,3 +1359,5 @@ body[data-view="work"] .impact { display: none; }
 .cs-head + .kite-hero { margin-top: -108px; }
 .kite-hero { aspect-ratio: 16 / 5; gap: 16px; }
 @media (max-width: 720px) { .cs-head + .kite-hero { margin-top: -64px; } .kite-hero { aspect-ratio: 4 / 3; } }
+.cs h1 { max-width: 60ch; } .cs .lede { max-width: 72ch; }
+.cs .lede { max-width: 80ch; text-wrap: pretty; }
