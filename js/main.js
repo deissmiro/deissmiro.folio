@@ -489,14 +489,14 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
   document.querySelectorAll('.theme-demo').forEach(fig => {
     const scr = fig.querySelector('.td-screen'), ctrl = fig.querySelector('.td-ctrl');
     if (!scr || !ctrl) return;
-    const SW = [[1.9, 'dark'], [5.85, 'light'], [8.8, 'dark'], [13.6, 'light']];
+    const SW = [[1.5, 'light'], [3.35, 'dark'], [5.7, 'light'], [7.85, 'dark']];
     const SEG = { dark: [0.0, 1.15], light: [1.6, 2.65] }, LEAD = 0.95;
     const RATE = 1.7; scr.defaultPlaybackRate = scr.playbackRate = RATE;
     scr.addEventListener('play', () => { scr.playbackRate = RATE; });
     let fired = new Set(), last = 0, stopAt = null;
     const play = mode => { const [a, b] = SEG[mode]; stopAt = b; ctrl.currentTime = a; ctrl.playbackRate = RATE; ctrl.play().catch(() => {}); };
     ctrl.addEventListener('timeupdate', () => { if (stopAt != null && ctrl.currentTime >= stopAt) { ctrl.pause(); stopAt = null; } });
-    ctrl.addEventListener('loadedmetadata', () => { ctrl.currentTime = 0.5; });
+    ctrl.addEventListener('loadedmetadata', () => { ctrl.currentTime = 1.0; });
     scr.addEventListener('timeupdate', () => {
       const t = scr.currentTime;
       if (t < last - 1) fired = new Set();
