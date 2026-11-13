@@ -1362,3 +1362,5 @@ body[data-view="work"] .impact { display: none; }
 
 /* Job intro line */
 .job-intro { margin: 0 0 16px; font-size: 15px; line-height: 1.4; color: var(--ink-2); max-width: 80ch; }
+.role:has(+ .job-intro) { margin-bottom: 6px; }
+.job-intro { padding-left: 40px; margin-bottom: 22px; }
