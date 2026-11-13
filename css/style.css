@@ -1364,3 +1364,7 @@ body[data-view="work"] .impact { display: none; }
 .job-intro { margin: 0 0 16px; font-size: 15px; line-height: 1.4; color: var(--ink-2); max-width: 80ch; }
 .role:has(+ .job-intro) { margin-bottom: 6px; }
 .job-intro { padding-left: 40px; margin-bottom: 22px; }
+
+/* Coming soon cases */
+.soon-tag { display: inline-block; font-size: 15px; padding: 5px 10px 4px; border-radius: 8px; background: var(--chip); color: var(--ink-2); }
+.case.soon .shot { cursor: default; }
