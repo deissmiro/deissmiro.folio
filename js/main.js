@@ -552,3 +552,14 @@ document.querySelectorAll('.kite-hero').forEach(h => {
     setTimeout(() => old.remove(), 600);
   }, 1800);
 });
+
+// Hero video: muted by default, toggle sound
+document.querySelectorAll('.kite-hero-vid').forEach((w) => {
+  const v = w.querySelector('video'), b = w.querySelector('.vid-sound'), t = b.querySelector('.vs-t');
+  b.addEventListener('click', () => {
+    v.muted = !v.muted;
+    if (!v.muted) { v.volume = 1; v.play().catch(() => {}); }
+    b.setAttribute('aria-pressed', String(!v.muted));
+    t.textContent = v.muted ? 'Sound off' : 'Sound on';
+  });
+});

@@ -1370,3 +1370,16 @@ body[data-view="work"] .impact { display: none; }
 .case.soon .shot .ph { opacity: .3 !important; filter: grayscale(.5); animation: none !important; }
 @media (max-width: 820px) { .soon-tag { font-size: 20px; padding: 10px 16px 9px; } }
 .case.soon .shot { cursor: default; }
+
+/* Kite hero video with sound toggle */
+.kite-hero-vid { position: relative; border-radius: 20px; overflow: hidden; background: #ece8f6; }
+.kite-hero-vid video { display: block; width: 100%; height: auto; }
+.cs-head + .kite-hero-vid { margin-top: -108px; }
+@media (max-width: 720px) { .cs-head + .kite-hero-vid { margin-top: -64px; } .kite-hero-vid { border-radius: 16px; } }
+.vid-sound { position: absolute; right: 16px; bottom: 16px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px 7px 10px; border: 0; border-radius: 10px; background: rgba(12,12,12,.78); color: #fff; font: 14px/1 var(--mono); cursor: pointer; backdrop-filter: blur(6px); transition: background .2s; }
+.vid-sound:hover { background: #0c0c0c; }
+.vid-sound:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.vs-ic { width: 16px; height: 16px; background: currentColor; -webkit-mask: var(--ic) center / contain no-repeat; mask: var(--ic) center / contain no-repeat;
+  --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 5 6 9H2v6h4l5 4V5z'/%3E%3Cpath d='m23 9-6 6M17 9l6 6'/%3E%3C/svg%3E"); }
+.vid-sound[aria-pressed="true"] .vs-ic { --ic: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 5 6 9H2v6h4l5 4V5z'/%3E%3Cpath d='M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14'/%3E%3C/svg%3E"); }
+@media (max-width: 720px) { .vid-sound { right: 10px; bottom: 10px; font-size: 13px; } }
