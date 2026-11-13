@@ -1366,5 +1366,7 @@ body[data-view="work"] .impact { display: none; }
 .job-intro { padding-left: 40px; margin-bottom: 22px; }
 
 /* Coming soon cases */
-.soon-tag { position: absolute; left: 16px; top: 16px; z-index: 2; font-size: 15px; padding: 6px 10px 5px; border-radius: 8px; background: var(--ink); color: #fff; }
+.soon-tag { position: absolute; left: 50%; top: 50%; translate: -50% -50%; z-index: 2; font-size: 28px; font-weight: 700; padding: 14px 24px 12px; border-radius: 14px; background: var(--ink); color: #fff; white-space: nowrap; }
+.case.soon .shot .ph { opacity: .3 !important; filter: grayscale(.5); animation: none !important; }
+@media (max-width: 820px) { .soon-tag { font-size: 20px; padding: 10px 16px 9px; } }
 .case.soon .shot { cursor: default; }
