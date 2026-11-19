@@ -88,6 +88,16 @@
 
     <article class="case">
       <div class="case-text">
+        <h2>Getting Kite Ready for AI Prototyping</h2>
+        <p>AI kept guessing when it built screens from our design system. I used it to audit Kite, then rebuilt the docs, semantics and component standard so both people and models can read them.</p>
+        <div class="who"><span class="logo" aria-hidden="true"></span>Tutu travel — Senior Product Designer</div>
+        <a class="cases-link" href="#case-kite-ai">Read case <span class="a">→</span></a>
+      </div>
+      <a class="shot" data-screen="kiteai" href="#case-kite-ai" aria-label="Open case: Getting Kite Ready for AI Prototyping"></a>
+    </article>
+
+    <article class="case">
+      <div class="case-text">
         <h2>Kite Glyphs: a Figma Plugin for Font Icons</h2>
         <p>Designers inserted icons from Tutu’s icon font in up to five steps. I designed and built a Figma plugin that does it in <b>one click</b>, with instant search across the whole set.</p>
         <div class="who"><span class="logo" aria-hidden="true"></span>Tutu travel — Product Designer</div>
@@ -568,6 +578,140 @@
 <nav class="next" aria-label="Next case">
       <div><span>More work</span><a class="t" href="#work">Work</a></div>
       <a class="cases-link" href="#work">Back to work <span class="a">→</span></a>
+    </nav>
+  </article>
+
+  <article class="cs" id="view-case-kiteai" hidden>
+    <div class="cs-head">
+      <a class="back-btn" href="#work" aria-label="Back to work"><span class="a">←</span></a>
+      <h1>Getting Kite Ready for AI Prototyping</h1>
+      <p class="lede">Designers and PMs wanted to build screens with AI, but the model kept guessing. I used AI to audit the design system and fixed what it exposed: <b>60+</b> components documented to one standard, and docs written <b>3×</b> faster.</p>
+      <dl class="meta">
+        <div><dt>Role</dt><dd>Senior Product Designer, Design Systems</dd></div>
+        <div><dt>Company</dt><dd><span class="logo" aria-hidden="true"></span>Tutu</dd></div>
+        <div><dt>Tools</dt><dd>Claude, Figma MCP, MDX</dd></div>
+        <div><dt>When</dt><dd>2025 – 2026</dd></div>
+      </dl>
+    </div>
+
+    <figure class="wide-fig cs-hero-fig"><div class="shot-plate clean"><img src="assets/img/kite-ai/docs-site.webp" alt="Kite Docs site: the Colors page with background swatches and token names"></div></figure>
+
+    <section class="sec ctx">
+      <h2>Context</h2>
+      <div class="body">
+        <p class="big">Kite is Tutu’s design system. It powers flights, trains, buses and stays on iOS, Android and web, and white-label products for partners, including a large bank.</p>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>Problem</h2>
+      <div class="body">
+        <p>Four requests hit the system at once, and it couldn’t handle any of them well:</p>
+        <ul class="list">
+          <li><span><b>Redesign and rebrand.</b> Colors, type, corner radius and the logo all changed, but tokens were named by color: red, black, purple. After a rebrand, “purple” either lies or has to be renamed everywhere.</span></li>
+          <li><span><b>White labels.</b> For partners we swapped only the brand color. Everything else stayed Tutu’s, so a partner got Tutu in someone else’s color.</span></li>
+          <li><span><b>Different teams, different rules.</b> Marketing’s primary button wasn’t product’s primary, with rounder, more playful shapes. Landing pages were built around the system, not with it.</span></li>
+          <li><span><b>AI prototyping.</b> Designers and PMs wanted to try screen variants with AI in minutes. This is where things went worst.</span></li>
+        </ul>
+        <p>They all had one root: the system stored finished decisions, but not their meaning or the rules behind them. People filled the gaps with experience and hallway agreements. A model can’t.</p>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>AI audit</h2>
+      <div class="body">
+        <p>Instead of guessing where the system was weak, I tested it on the strictest reader. I gave Claude, connected to Figma through MCP, our component library and our guidelines as they were, and one ordinary task: <b>“Build a ticket search screen.”</b></p>
+        <div class="figs two">
+          <figure class="fig"><div class="board hov"><img src="assets/img/kite-ai/ai-before.webp" alt="Ticket search screen built by AI on the old system: orange main button, emoji icons, a made-up tab bar" loading="lazy"></div><figcaption><b>What AI built</b> from the old library and guidelines.</figcaption></figure>
+          <figure class="fig"><div class="board hov"><img src="assets/img/kite-ai/real-screen.webp" alt="The real Tutu ticket search screen: two levels of tabs, separate fields, purple main button" loading="lazy"></div><figcaption><b>The real screen</b> in the Tutu app.</figcaption></figure>
+        </div>
+        <p>The mistakes fell into three groups:</p>
+        <ul class="list">
+          <li><span><b>Color by name, not by meaning.</b> The main button came out orange and the whole screen was flooded with brand color. Nothing said which color means “main action”. For an error the model didn’t pick the error color, and for an accent it picked red.</span></li>
+          <li><span><b>No documented answer, so it made one up.</b> Emoji instead of our icons, a tab bar with a “Games” tab, filter chips nobody asked for.</span></li>
+          <li><span><b>No written hierarchy.</b> One row of tabs instead of two levels, the form as one card instead of separate fields, and the main button cut off by the card.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>Takeaway</h2>
+      <div class="body">
+        <p class="big">We didn’t read this as “AI is bad and we are good”. We read it as a sign that something was wrong with the system.</p>
+        <p>The model did exactly what the system allowed. It was missing three things: <b>context</b> (why a component or token exists and when to use it), <b>clear rules</b> (what matters most on a screen, which button goes on which background) and <b>honest semantics</b> (tokens named by role, not by color). If a model can’t read a system, new designers, partners and marketing struggle with it too.</p>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>Solution</h2>
+      <div class="body">
+        <p>The audit pointed at three areas, so the work split into three tracks.</p>
+        <div class="figs two">
+          <figure class="fig"><div class="board spec"><img src="assets/img/kite-ai/figma-files.webp" alt="Four Kite documentation files in Figma, one of them an archive of things nobody dared to delete" loading="lazy"></div><figcaption><b>Before</b>: docs spread across Figma files, including an archive of “things it’s a pity to delete”.</figcaption></figure>
+          <figure class="fig"><div class="board spec"><img src="assets/img/kite-ai/mdx.webp" alt="Kite documentation as MDX files in a code repository, with metadata and written rules" loading="lazy"></div><figcaption><b>Now</b>: MDX files in one repository, with metadata and rules in plain text.</figcaption></figure>
+        </div>
+        <div class="two-col">
+          <h3>1. Documentation as text</h3>
+          <p>I updated the docs and moved them out of Figma into MDX files that feed the Kite Docs site. Components, standards, patterns and guides now live in one place that a designer and a model can both read. We documented <b>60+ components</b> to one template.</p>
+          <p>The new rule: <b>text is the source of truth, pictures illustrate it</b>. Every rule shown in an example is also written out, because a rule that exists only in a picture doesn’t exist for a model. AI drafts each page from the Figma component and a designer edits it, which turned out <b>3× faster</b> than writing docs by hand in Figma.</p>
+        </div>
+        <div class="ba">
+          <div class="ba-row ba-h"><span></span><span>Before</span><span>Now</span></div>
+          <div class="ba-row"><b>Token names</b><span>About 1,700 tokens named by look: rose, teal, sick next to warning</span><span>Roles: brand, accent, status, neutral</span></div>
+          <div class="ba-row"><b>Hierarchy</b><span>Hidden in on high / on low modes</span><span>Built into intensity: pale, soft, pure, deep</span></div>
+          <div class="ba-row"><b>Brand</b><span>Only a color</span><span>Color, type, corner radius and spacing</span></div>
+          <div class="ba-row"><b>States</b><span>A separate variant for each</span><span>A variable mode: 272 variants became 68</span></div>
+        </div>
+        <div class="two-col">
+          <h3>2. Semantics that explain themselves</h3>
+          <p>A token’s name is now an instruction. Deep means the main action, pale means a surface, so a model no longer has to guess what “purple” is for. Fewer variants also mean fewer ways to pick the wrong one.</p>
+          <p>Because the brand became more than a color, the same change also covered the rebrand, white labels and marketing’s own style. The full story of the new architecture is in the <a href="#case-kite"><u>Kite case</u></a>.</p>
+        </div>
+        <div class="two-col">
+          <h3>3. One standard for every component</h3>
+          <p>The audit showed uneven components: some had no written behavior, others were missing states. The main button, for example, had no hover, pressed or focus. Each gap was another place where the model had to improvise.</p>
+          <p>Every component now follows one standard, so a model that learns one component understands them all. We rolled it out as a gradual refactor, adding missing props component by component without stopping product teams.</p>
+        </div>
+        <ul class="list">
+          <li><span><b>Props by component type</b>: each kind of component has a defined set of props</span></li>
+          <li><span><b>One naming convention</b>: color, accent and size variants are called the same everywhere</span></li>
+          <li><span><b>One size scale</b> with shared names</span></li>
+          <li><span><b>Shared behavior</b>: states and statuses work the same way through the state layer</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>Results</h2>
+      <div class="body">
+        <p>Preparing the system for a model made it clearer for people too.</p>
+        <div class="stats">
+          <div class="stat"><span class="n">3×</span><span class="l"><b>Faster docs</b> with AI drafts and designer review</span></div>
+          <div class="stat"><span class="n">60+</span><span class="l"><b>Components</b> documented to one standard</span></div>
+          <div class="stat"><span class="n">3 → 1</span><span class="l"><b>Source of truth</b> instead of scattered Figma files</span></div>
+          <div class="stat"><span class="n">2×</span><span class="l"><b>Faster design work</b> thanks to the fixed color semantics</span></div>
+          <div class="stat"><span class="n">3×</span><span class="l"><b>Fewer UI bugs</b> from developers at handoff</span></div>
+          <div class="stat"><span class="n">272 → 68</span><span class="l"><b>Component variants</b> after moving states into a mode</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>What I’d tell another team</h2>
+      <div class="body">
+        <ul class="list">
+          <li><span><b>Start with an AI audit.</b> Give a model your system as it is and one ordinary task. Its mistakes map your gaps.</span></li>
+          <li><span><b>Write rules as text.</b> A rule that lives only in a picture doesn’t exist for a model.</span></li>
+          <li><span><b>Name by role, not by look.</b> A token’s name should say where and why to use it.</span></li>
+          <li><span><b>Use one standard for all components.</b> Shared props, names, sizes and states make the system predictable.</span></li>
+          <li><span><b>Refactor gradually.</b> You can rebuild a system without stopping the product.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="next" aria-label="Next case">
+      <div><span>Next case</span><a class="t" href="#case-kite">Making Tutu’s Design System Flexible</a></div>
+      <a class="cases-link" href="#case-kite">Read case <span class="a">→</span></a>
     </nav>
   </article>
 
