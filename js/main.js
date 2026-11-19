@@ -21,7 +21,7 @@
     active = tabs.querySelector('[aria-current]');
     heroLink.href = v === 'work' ? '#about' : '#work';
     heroText.textContent = v === 'work' ? 'About me' : 'Case studies';
-    document.title = { work: 'Miro Deiss Portfolio', about: 'Miro Deiss — About', 'case-home': 'Homepage and Search Redesign — Miro Deiss', 'case-glyphs': 'Kite Glyphs — Miro Deiss', 'case-startds': 'START Design System — Miro Deiss', 'case-kite': 'Making Tutu’s Design System Flexible — Miro Deiss', 'case-kiteai': 'Getting Kite Ready for AI Prototyping — Miro Deiss', notfound: 'Page not found — Miro Deiss', 'case-ds': 'Kite Design System — Miro Deiss' }[v];
+    document.title = { work: 'Miro Deiss Portfolio', about: 'Miro Deiss — About', 'case-home': 'Homepage and Search Redesign — Miro Deiss', 'case-glyphs': 'Kite Glyphs — Miro Deiss', 'case-startds': 'START Design System — Miro Deiss', 'case-kite': 'Making Tutu’s Design System Flexible — Miro Deiss', 'case-kiteai': 'Kite и прототипирование с ИИ — Miro Deiss', notfound: 'Page not found — Miro Deiss', 'case-ds': 'Kite Design System — Miro Deiss' }[v];
     place(active);
   };
   addEventListener('hashchange', () => { route(); scrollTo({ top: 0, behavior: 'instant' in document.documentElement.style ? 'instant' : 'auto' }); });
@@ -51,7 +51,7 @@
   "kite": "assets/img/kite/cover.webp?v=1794070285",
   "kiteai": "assets/img/kite-ai/cover.webp"
 };
-  const alts = { home: 'Tutu home screen', search: 'Search results', extras: 'Review and add-ons', cmp_new: 'New Tutu home screen', tutu_results: 'Tutu search results with an alternative route', tutu_search: 'Tutu unified search', tutu_web: 'Tutu web home page', start_web: 'START web home page', start_tv: 'START live TV player', start_title: 'START series page', start_profile: 'START profile with tasks', glyphs: 'Kite Glyphs plugin in Figma', kite: 'Two floating cards: a frosted interface screen above a purple token card', kiteai: 'A screen built by AI next to the real Tutu screen' };
+  const alts = { home: 'Tutu home screen', search: 'Search results', extras: 'Review and add-ons', cmp_new: 'New Tutu home screen', tutu_results: 'Tutu search results with an alternative route', tutu_search: 'Tutu unified search', tutu_web: 'Tutu web home page', start_web: 'START web home page', start_tv: 'START live TV player', start_title: 'START series page', start_profile: 'START profile with tasks', glyphs: 'Kite Glyphs plugin in Figma', kite: 'Two floating cards: a frosted interface screen above a purple token card', kiteai: 'Экран, собранный ИИ, рядом с реальным экраном Туту' };
   document.querySelectorAll('.shot[data-screen]').forEach((el) => {
     const k = el.dataset.screen;
     el.insertAdjacentHTML('afterbegin', `<img class="ph" src="${SHOTS[k]}" alt="${alts[k]}" draggable="false">`);
@@ -329,7 +329,7 @@ addEventListener('pointermove', (e) => { const p = window.__pointer; p.x = e.cli
   document.addEventListener('pointerover', e => {
     if (e.pointerType && e.pointerType !== 'mouse' && e.pointerType !== 'pen') return;
     const hit = e.target.closest('a.shot');
-    if (hit && !on) { tip.textContent = ({ '#case-home': 'View case: Homepage redesign', '#case-glyphs': 'View case: Kite Glyphs', '#case-start-ds': 'View case: START Design System', '#case-kite': 'View case: Flexible design system', '#case-kite-ai': 'View case: Kite and AI prototyping' })[hit.getAttribute('href')] || 'View case'; on = true; cx = x; cy = y; tip.classList.add('on'); kick(); }
+    if (hit && !on) { tip.textContent = ({ '#case-home': 'View case: Homepage redesign', '#case-glyphs': 'View case: Kite Glyphs', '#case-start-ds': 'View case: START Design System', '#case-kite': 'View case: Flexible design system', '#case-kite-ai': 'Открыть кейс: Kite и ИИ' })[hit.getAttribute('href')] || 'View case'; on = true; cx = x; cy = y; tip.classList.add('on'); kick(); }
     else if (!hit && on) { on = false; tip.classList.remove('on'); kick(); }
   });
   addEventListener('scroll', () => { if (on && !document.elementFromPoint(x, y)?.closest('a.shot')) { on = false; tip.classList.remove('on'); } }, { passive: true });
