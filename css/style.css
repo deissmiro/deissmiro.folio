@@ -1397,3 +1397,4 @@ body[data-view="work"] .impact { display: none; }
 .sol-fig { margin-top: 28px !important; }
 .wide-fig.sol-fig + .wide-fig.sol-fig, .wide-fig.sol-fig + .figs.sol-fig, .sol-after + .sol-fig { margin-top: 48px !important; }
 .sol-after { margin-top: 20px !important; }
+@media (min-width: 721px) { #view-case-kiteai .cs-head + .cs-hero-fig { margin-top: -128px; } }
