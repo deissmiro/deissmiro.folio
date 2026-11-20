@@ -1394,3 +1394,5 @@ body[data-view="work"] .impact { display: none; }
 .pw-err { width: 100%; margin: 0; font-size: 14px; color: #c0392b; }
 .sol-h { margin: 56px 0 4px; font-size: inherit; font-weight: 700; }
 .sol-h:first-of-type { margin-top: 24px; }
+.sol-fig { margin-top: 48px !important; }
+.wide-fig.sol-fig + .wide-fig.sol-fig { margin-top: 64px !important; }
